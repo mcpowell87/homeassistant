@@ -1,0 +1,4 @@
+name: Trish
+id: trish
+device_trackers:
+        - device_tracker.e4_b2_fb_7d_84_02

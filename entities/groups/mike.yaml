@@ -1,0 +1,5 @@
+mike:
+        name: Mike
+        view: no
+        entities:
+                - device_tracker.e0_33_8e_5b_3e_f6

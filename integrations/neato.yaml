@@ -1,0 +1,4 @@
+---
+neato:
+        username: !secret neato_user
+        password: !secret neato_password
