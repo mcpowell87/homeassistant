@@ -1,0 +1,10 @@
+title: Home
+
+resources:
+        - url: /local/mini-graph-card-bundle.js?v=0.6.0
+          type: module
+        - url: /local/simple-thermostat.js
+          type: module
+
+views:
+        - !include /config/lovelace/views/home.yaml

@@ -1,0 +1,50 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+discovery:
+zwave:
+        usb_path: /dev/ttyUSB0
+
+zha:
+        usb_path: /dev/ttyUSB1
+        database_path: /config/zigbee.db
+
+lovelace:
+        mode: yaml
+
+ecobee:
+        api_key: !secret ecobee_api_key
+
+neato:
+        username: !secret neato_user
+        password: !secret neato_password
+
+device_tracker:
+        - platform: unifi_direct
+          host: 10.0.0.7
+          username: !secret unifi_user
+          password: !secret unifi_password
+          interval_seconds: 10
+          consider_home: 180
+          new_device_defaults:
+                  track_new_devices: false
+
+zeroconf:
+
+notify:
+
+person:
+
+
