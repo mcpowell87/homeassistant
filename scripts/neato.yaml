@@ -1,0 +1,15 @@
+---
+vacuum_toggle:
+        alias: Vacuum Start/Pause
+        sequence:
+                - service: vacuum.start
+                  data:
+                          entity_id: vacuum.alfred
+                - condition: state
+                  state: cleaning
+                  entity_id: vacuum.alfred
+                  for:
+                          seconds: 3
+                - service: vacuum.pause
+                  data:
+                          entity_vacuum.alfred

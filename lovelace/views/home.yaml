@@ -7,24 +7,8 @@ cards:
           title: Family
           show_header_toggle: false
           entities:
-                - group.mike
-                - group.trish
-        - type: custom:simple-thermostat
-          entity: climate.ecobee
-          step_size: 1
-          sensors:
-                  - entity: sensor.ecobee_humidity
-                    name: Humidity
-                  - entity: sensor.living_room_ecobee_sensor_temperature
-                    name: Living Room
-                  - entity: sensor.office_ecobee_sensor_temperature
-                    name: Office
-                  - entity: sensor.bedroom_ecobee_sensor_temperature
-                    name: Bedroom
-          modes:
-                  'off':
-                          name: Make it cold
-                          icon: false
+                - person.mike
+                - person.trish
         - type: thermostat
           title: Ecobee
           entity: climate.ecobee
@@ -41,3 +25,4 @@ cards:
                   name: Office
                 - entity: sensor.bedroom_ecobee_sensor_temperature
                   name: Bedroom
+        - !include ../cards/neato.yaml

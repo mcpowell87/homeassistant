@@ -1,0 +1,11 @@
+platform: template
+sensors:
+        vacuum_state:
+                value_template: 'Alfred: {{ states.vacuum.alfred.attributes.status }}'
+        vacuum_last_run:
+                value_template: '{{ as_timestamp(states.vacuum.alfred.attributes.clean_start) | timestamp_custom("%d/%m/%Y") }}'
+        vacuum_last_qm:
+                value_template: '{{ states.vacuum.alfred.attributes.clean_area | round(0) }} m²'
+        vacuum_battery:
+                value_template: '{{ states.vacuum.alfred.attributes.battery_level }} %'
+                icon_template: '{{ states.vacuum.alfred.attributes.battery_icon }}'

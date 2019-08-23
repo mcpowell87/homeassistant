@@ -11,8 +11,9 @@ ecobee.conf
 pyozw.sqlite
 .ios.conf
 OZW_Log.txt
-.HA_VERSION
 options.xml
+.ring_cache.pickle
+.uuid
 
 deps
 .cloud

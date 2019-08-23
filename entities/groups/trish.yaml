@@ -1,5 +1,0 @@
-trish:
-        name: Trish
-        view: no
-        entities:
-                - device_tracker.e4_b2_fb_f7_84_02
