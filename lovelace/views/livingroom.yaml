@@ -1,0 +1,18 @@
+---
+path: livingroom
+theme: default
+title: Living Room
+badges: []
+cards:
+        - type: custom:roku-card
+          entity: media_player.roku_ultra
+          name: Living Room Roku
+          tv: false
+        - type: conditional
+          conditions:
+                  - entity: media_player.plex_roku_ultra
+                    state_not: "unavailable"
+          card:
+                  type: media-control
+                  entity: media_player.plex_roku_ultra
+                  name: Plex

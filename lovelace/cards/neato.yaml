@@ -2,19 +2,34 @@
 type: picture-elements
 image: /local/image/neato_d4.jpg
 elements:
+        # Title and Program
         - type: state-label
           entity: sensor.vacuum_state
           style:
                  left: 0
                  bottom: 0
                  pointer-events: none
-                 font-size: 16px
+                 font-size: 13px
                  line-height: 32px
                  color: white
                  background-color: rgba(0, 0, 0, 0.3)
                  width: 100%
                  transform: initial
                  padding: 0 8px
+        # Start/Stop
+        - type: icon
+          icon: mdi:play-pause
+          tap_action: call-service
+          service: script.vacuum_toggle
+          style:
+                  bottom: 0
+                  right: 0
+                  transform: initial
+                  color: white
+                  line-height: 32px
+                  padding: 8px
+                  margin: 0 110px 0 0
+        # Return Home
         - type: icon
           icon: mdi:home
           tap_action: call-service
@@ -27,7 +42,8 @@ elements:
                   color: white
                   line-height: 32px
                   padding: 8px
-                  margin: 0 152px 0 0
+                  margin: 0 80px 0 0
+        # Find
         - type: icon
           icon: mdi:bell-ring
           tap_action: call-service
@@ -40,7 +56,8 @@ elements:
                   color: white
                   line-height: 32px
                   padding: 8px
-                  margin: 0 112px 0 0
+                  margin: 0 50px 0 0
+        # Schedule
         - type: state-icon
           entity: switch.alfred_schedule
           tap_action: toggle
@@ -51,7 +68,20 @@ elements:
                   color: white
                   line-height: 32px
                   padding: 8px
-                  margin: 0 8px 0 0
+                  margin: 0 15px -4px 0
+        # Map
+        - type: icon
+          icon: mdi:map
+          entity: camera.alfred_cleaning_map
+          style:
+                  bottom: 0
+                  right: 0
+                  transform: initial
+                  color: white
+                  line-height: 32px
+                  padding: 8px
+                  margin: 0 0 0 0
+        # Battery
         - type: state-label
           entity: sensor.vacuum_battery
           style:
@@ -75,6 +105,7 @@ elements:
                   line-height: 32px
                   margin: 3px 5px 0 0
                   --paper-item-icon-color: rgb(255,255,255)
+        # Last Run Date
         - type: state-label
           entity: sensor.vacuum_last_run
           style:
@@ -97,6 +128,7 @@ elements:
                   color: rgba(255,255,255,1)
                   line-height: 32px
                   margin: 36px 13px
+        # Last Run Area
         - type: state-label
           entity: sensor.vacuum_last_qm
           style:

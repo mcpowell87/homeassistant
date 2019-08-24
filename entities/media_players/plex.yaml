@@ -1,0 +1,5 @@
+---
+platform: plex
+show_all_controls: false
+remove_unavailable_clients: true
+client_remove_interval: 600

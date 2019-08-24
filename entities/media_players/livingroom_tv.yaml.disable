@@ -1,0 +1,5 @@
+---
+platform: samsungtv
+host: !secret livingroom_tv_host
+name: Living Room TV
+port: 8001
