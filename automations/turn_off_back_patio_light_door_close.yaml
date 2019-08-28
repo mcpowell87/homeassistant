@@ -1,0 +1,11 @@
+---
+alias: 'Turn Back Patio Light Off When Back Door Closes'
+trigger:
+        - platform: state
+          entity_id: binary_sensor.back_door_sensor
+          to: 'off'
+          for: 
+                minutes: 5
+action:
+        - service: light.turn_off
+          entity_id: light.back_patio_light

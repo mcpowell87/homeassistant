@@ -1,0 +1,20 @@
+---
+path: status
+theme: default
+title: Status
+badges: []
+cards:
+        - type: entities
+          title: Battery Levels
+          show_header_toggle: false
+          entities:
+                  - type: section
+                    label: Doors
+                  - type: custom:battery-entity
+                    entity: sensor.front_door_sensor_battery
+                    name: Front Door
+                  - type: section
+                    label: Windows
+                  - type: custom:battery-entity
+                    entity: sensor.kitchen_window_sensor_battery
+                    name: Kitchen Window

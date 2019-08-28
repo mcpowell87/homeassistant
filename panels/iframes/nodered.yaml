@@ -1,0 +1,5 @@
+---
+nodered:
+        title: Node-Red
+        icon: mdi:sitemap
+        url: !secret node_red_url

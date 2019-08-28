@@ -1,0 +1,5 @@
+---
+http:
+        base_url: https://home.mcpowell.info
+        use_x_forwarded_for: true
+        trusted_proxies: 10.0.0.16

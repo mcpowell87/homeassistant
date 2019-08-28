@@ -6,3 +6,5 @@ resources: !include_dir_list lovelace/resources
 views:
         - !include /config/lovelace/views/home.yaml
         - !include /config/lovelace/views/livingroom.yaml
+        - !include /config/lovelace/views/outside.yaml
+        - !include /config/lovelace/views/status.yaml

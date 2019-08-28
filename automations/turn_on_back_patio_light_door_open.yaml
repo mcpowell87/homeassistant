@@ -1,0 +1,16 @@
+---
+alias: 'Turn Back Patio Light On When Back Door Opens'
+trigger:
+        - platform: state
+          entity_id: binary_sensor.back_door_sensor
+          to: 'on'
+condition:
+        condition: and
+        conditions:
+                - condition: sun
+                  before: sunrise
+                - condition: sun
+                  after: sunset
+action:
+        - service: light.turn_on
+          entity_id: light.back_patio_light

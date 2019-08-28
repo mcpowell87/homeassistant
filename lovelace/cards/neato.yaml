@@ -19,8 +19,9 @@ elements:
         # Start/Stop
         - type: icon
           icon: mdi:play-pause
-          tap_action: call-service
-          service: script.vacuum_toggle
+          tap_action: 
+                action: call-service
+                service: script.vacuum_toggle
           style:
                   bottom: 0
                   right: 0
@@ -32,8 +33,11 @@ elements:
         # Return Home
         - type: icon
           icon: mdi:home
-          tap_action: call-service
-          service: vacuum.return_to_base
+          tap_action: 
+                action: call-service
+                service: vacuum.return_to_base
+                service_data:
+                        entity_id: vacuum.alfred
           entity: vacuum.alfred
           style:
                   bottom: 0
@@ -46,9 +50,12 @@ elements:
         # Find
         - type: icon
           icon: mdi:bell-ring
-          tap_action: call-service
-          service: vacuum.locate
           entity: vacuum.alfred
+          tap_action: 
+                action: call-service
+                service: vacuum.locate
+                service_data:
+                        entity_id: vacuum.alfred
           style:
                   bottom: 0
                   right: 0
@@ -60,7 +67,8 @@ elements:
         # Schedule
         - type: state-icon
           entity: switch.alfred_schedule
-          tap_action: toggle
+          tap_action: 
+                action: toggle
           style:
                   bottom: 0
                   right: 0

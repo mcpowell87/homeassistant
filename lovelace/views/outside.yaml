@@ -1,0 +1,15 @@
+---
+path: outside
+theme: default
+title: Outside
+badges: []
+cards:
+        - type: entities
+          entities:
+                  - type: custom:slider-entity-row
+                    entity: light.back_patio_light
+                    toggle: true
+                    name: Back Patio
+                    hide_when_off: false
+                    full_row: false
+                    
