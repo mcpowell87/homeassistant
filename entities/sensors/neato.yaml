@@ -5,7 +5,7 @@ sensors:
         vacuum_last_run:
                 value_template: '{{ as_timestamp(states.vacuum.alfred.attributes.clean_start) | timestamp_custom("%m/%d/%Y") }}'
         vacuum_last_qm:
-                value_template: '{{ float(states.vacuum.alfred.attributes.clean_area) * 10.764 | round(0) }} ft²'
+                value_template: '{{ (states.vacuum.alfred.attributes.clean_area * 10.764) | round(0) }} ft²'
         vacuum_battery:
                 value_template: '{{ states.vacuum.alfred.attributes.battery_level }} %'
                 icon_template: '{{ states.vacuum.alfred.attributes.battery_icon }}'

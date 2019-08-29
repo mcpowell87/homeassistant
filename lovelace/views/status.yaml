@@ -13,6 +13,9 @@ cards:
                   - type: custom:battery-entity
                     entity: sensor.front_door_sensor_battery
                     name: Front Door
+                  - type: custom:battery-entity
+                    entity: sensor.back_door_sensor_battery
+                    name: Back Door
                   - type: section
                     label: Windows
                   - type: custom:battery-entity
