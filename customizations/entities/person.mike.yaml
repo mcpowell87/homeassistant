@@ -1,0 +1,3 @@
+---
+person.mike:
+  entity_picture: !secret mike_picture
