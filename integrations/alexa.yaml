@@ -1,3 +1,32 @@
 ---
 alexa:
-        smart_home:
+  smart_home:
+    endpoint: https://api.amazonalexa.com/v3/events
+    client_id: !secret alexa_client_id
+    client_secret: !secret alexa_client_secret
+    filter:
+      include_entities:
+        - light.back_patio_light
+        - light.bedroom_lamp_left
+        - light.bedroom_lamp_right
+        - light.living_room_lamp
+        - light.front_porch_light
+      exclude_entities:
+        - switch.alfred_schedule
+        - group.all_remotes
+        - group.all_vacuum_cleaners
+        - group.all_scripts
+        - switch.office_pc_power_switch
+        - binary_sensor.updater
+        - binary_sensor.front_door_ding
+        - group.all_automations
+        - sensor.back_door_sensor_temp
+        - sensor.front_door_sensor_temp
+        - sensor.kitchen_window_sensor_temp
+        - binary_sensor.ring_front_door_motion
+        - sensor.bedroom_ecobee_sensor_temperature
+        - sensor.living_room_ecobee_sensor_temperature
+        - sensor.office_ecobee_sensor_temperature
+      exclude_domains:
+        - automation
+        - climate

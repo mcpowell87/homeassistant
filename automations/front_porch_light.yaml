@@ -1,0 +1,59 @@
+---
+# --------------------------------------
+# Automations for the front porch light
+# --------------------------------------
+
+# Turn on the front porch light 15 minutes after sunset.
+  - alias: 'Turn on front porch light at night'
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: '00:15:00'
+    condition:
+      - condition: state
+        entity_id: sun.sun
+        state: below_horizon
+    action:
+      - service: light.turn_on
+        entity_id: light.front_porch_light
+
+# Turn off the front porch light at midnight.
+  - alias: 'Turn off front porch light at midnight'
+    trigger:
+      - platform: time
+        at: '00:00:00'
+    action:
+      - service: light.turn_off
+        entity_id: light.front_porch_light
+
+# Turn on the light when ring detects motion.  
+  - alias: 'Turn on front porch light after motion detected.'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ring_front_door_motion
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: sun.sun
+            state: below_horizon
+          - condition: time
+            after: '00:00:00'
+    action:
+      - service: light.turn_on
+        entity_id: light.front_porch_light
+
+# Turn off the light after 5 minutes of no motion
+  - alias: 'Turn off the front porch light when motion ends'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.ring_front_door_motion
+        from: 'on'
+        to: 'off'
+        for:
+          minutes: 5
+    action:
+      - service: light.turn_off
+        entity_id: light.front_porch_light

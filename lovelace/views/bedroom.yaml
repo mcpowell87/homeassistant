@@ -1,2 +1,18 @@
 ---
-host: 10.0.3.12
+path: bedroom
+theme: default
+title: Bedroom
+badges: []
+cards:
+        - type: entities
+          title: Nightstand Lamps
+          show_header_toggle: true
+          entities:
+                  - type: custom:slider-entity-row
+                    entity: light.bedroom_lamp_left
+                    toggle: true
+                    hide_when_off: false
+                  - type: custom:slider-entity-row
+                    entity: light.bedroom_lamp_right
+                    toggle: true
+                    hide_when_off: false

@@ -16,3 +16,9 @@ cards:
                   type: media-control
                   entity: media_player.plex_roku_ultra
                   name: Plex
+        - type: entities
+          entities:
+                  - type: custom:slider-entity-row
+                    entity: light.living_room_lamp
+                    toggle: true
+                    hide_when_off: false

@@ -21,3 +21,10 @@ cards:
                   - type: custom:battery-entity
                     entity: sensor.kitchen_window_sensor_battery
                     name: Kitchen Window
+        - type: custom:mini-graph-card
+          entities:
+                  - entity: sensor.office_pc_power_switch_power
+                    name: Power
+                    show_state: true
+                    graph: line
+          icon: mdi:power-plug
