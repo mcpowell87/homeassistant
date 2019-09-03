@@ -2,7 +2,8 @@
 path: default_view
 theme: default
 title: Home
-badges: 
+badges:
+  - alarm_control_panel.alexa_guard 
   - person.mike
   - person.trish
 cards: 

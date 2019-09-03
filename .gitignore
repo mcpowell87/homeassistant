@@ -1,5 +1,6 @@
 *.db
 *.log
+*.swp
 
 secrets.yaml
 known_devices.yaml
@@ -15,7 +16,9 @@ options.xml
 .ring_cache.pickle
 .uuid
 plex.conf
+*.pickle
 
 deps
 .cloud
 .storage
+custom_components

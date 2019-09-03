@@ -1,0 +1,13 @@
+---
+alexa_media:
+  accounts:
+    - email: !secret amazon_user
+      password: !secret amazon_password
+      url: amazon.com
+      exclude_devices:
+      include_devices:
+        - "Kitchen Dot"
+        - "Basement Dot"
+        - "Living Room Dot"
+        - "Master Bedroom Echo Spot"
+        - "Alexa Guard 93164"

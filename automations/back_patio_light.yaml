@@ -4,7 +4,7 @@
 # ------------------------------------
 
 # Turns on the back patio light when the back door opens.
-  - alias: 'Turn on back patio light when back door opens'
+  - alias: 'Back Patio Light - Turn on when back door opens'
     trigger:
       - platform: state
         entity_id: binary_sensor.back_door_sensor
@@ -19,7 +19,7 @@
         entity_id: light.back_patio_light
 
   # Turns off the back patio light after the back door has been closed for 5 minutes.
-  - alias: 'Turn off the back patio light after the back door has been closed for 5 minutes'
+  - alias: 'Back Patio Light - Turn off when back door closes'
     trigger:
       - platform: state
         entity_id: binary_sensor.back_door_sensor

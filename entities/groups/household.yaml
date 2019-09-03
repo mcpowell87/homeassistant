@@ -1,0 +1,6 @@
+---
+household:
+  name: Household
+  entities:
+    - person.mike
+    - person.trish
