@@ -4,27 +4,46 @@ theme: default
 title: Status
 badges: []
 cards:
-        - type: entities
-          title: Battery Levels
-          show_header_toggle: false
-          entities:
-                  - type: section
-                    label: Doors
-                  - type: custom:battery-entity
-                    entity: sensor.front_door_sensor_battery
-                    name: Front Door
-                  - type: custom:battery-entity
-                    entity: sensor.back_door_sensor_battery
-                    name: Back Door
-                  - type: section
-                    label: Windows
-                  - type: custom:battery-entity
-                    entity: sensor.kitchen_window_sensor_battery
-                    name: Kitchen Window
-        - type: custom:mini-graph-card
-          entities:
-                  - entity: sensor.office_pc_power_switch_power
-                    name: Power
-                    show_state: true
-                    graph: line
-          icon: mdi:power-plug
+  - type: entities
+    title: Battery Levels
+    show_header_toggle: false
+    entities:
+      - type: section
+        label: Doors
+      - type: custom:battery-entity
+        entity: sensor.front_door_sensor_battery
+        name: Front Door
+      - type: custom:battery-entity
+        entity: sensor.back_door_sensor_battery
+        name: Back Door
+      - type: custom:battery-entity
+        entity: sensor.basement_door_sensor_battery
+        name: Basement Door
+      - type: section
+        label: Leak Sensors
+      - type: custom:battery-entity
+        entity: sensor.basement_leak_sensor_battery
+        name: Basement Leak Sensor
+      - type: custom:battery-entity
+        entity: sensor.washer_leak_sensor_battery
+        name: Washer Leak Sensor
+      - type: section
+        label: Windows
+      - type: custom:battery-entity
+        entity: sensor.kitchen_window_sensor_battery
+        name: Kitchen Window
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        icon: mdi:power-plug
+        entities:
+          - entity: sensor.office_pc_power_switch_power
+            name: Office PC
+            show_state: true
+      - type: custom:mini-graph-card
+        icon: mdi:power-plug
+        lower_bound: 0
+        entities:
+          - entity: sensor.server_rack_power_switch_power
+            name: Server Rack
+            show_state: true

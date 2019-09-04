@@ -44,7 +44,7 @@
 
 - alias: Battery - Clear alert when full
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 00
   condition:

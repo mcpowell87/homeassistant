@@ -17,6 +17,8 @@ options.xml
 .uuid
 plex.conf
 *.pickle
+www/image/mike.jpg
+www/image/trish.jpg
 
 deps
 .cloud

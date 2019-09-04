@@ -27,10 +27,16 @@ cards:
         primary:
           entity: sensor.back_door_sensor_battery
           name: Battery
+      - entity: binary_sensor.basement_door_sensor
+        type: custom:multiple-entity-row
+        name: Basement Door
+        primary:
+          entity: sensor.back_door_sensor_battery
+          name: Battery
   - type: thermostat
     title: Ecobee
     entity: climate.ecobee
-  - type: entities
+  - type: glance
     name: Ecobee
     entities: 
       - entity: sensor.ecobee_humidity
