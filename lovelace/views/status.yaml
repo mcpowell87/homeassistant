@@ -42,7 +42,6 @@ cards:
             show_state: true
       - type: custom:mini-graph-card
         icon: mdi:power-plug
-        lower_bound: 0
         entities:
           - entity: sensor.server_rack_power_switch_power
             name: Server Rack
