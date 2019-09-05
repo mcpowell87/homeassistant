@@ -15,7 +15,7 @@
         entity_id: sun.sun
         state: below_horizon
     action:
-      - service: light.turn_onf
+      - service: light.turn_on
         entity_id: light.back_patio_light
 
   # Turns off the back patio light after the back door has been closed for 5 minutes.
