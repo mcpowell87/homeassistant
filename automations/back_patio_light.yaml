@@ -8,7 +8,6 @@
     trigger:
       - platform: state
         entity_id: binary_sensor.back_door_sensor
-        from: 'off'
         to: 'on'
     condition:
       - condition: state
@@ -23,7 +22,6 @@
     trigger:
       - platform: state
         entity_id: binary_sensor.back_door_sensor
-        from: 'on'
         to: 'off'
         for:
           minutes: 5
