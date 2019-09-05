@@ -1,0 +1,3 @@
+---
+zwave.server_rack_power_switch:
+  node_name: Server Rack Power Switch

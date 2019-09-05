@@ -1,0 +1,3 @@
+---
+zwave.office_pc_power_switch:
+  node_name: Office PC Power Switch

@@ -4,8 +4,9 @@
     trigger:
       platform: state
       entity_id: group.household
-      to: not_home
-      from: home
+      to: "not_home"
+      for:
+        "00:10:00"
     action:
       service: alarm_control_panel.alarm_arm_away
       data:
@@ -16,8 +17,7 @@
     trigger:
       platform: state
       entity_id: group.household
-      to: home
-      from: not_home
+      to: "home"
     action:
       service: alarm_control_panel.alarm_arm_home
       data:

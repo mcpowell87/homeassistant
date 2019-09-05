@@ -1,0 +1,3 @@
+---
+zwave.washer_power_switch:
+  node_name: Washer Power Switch

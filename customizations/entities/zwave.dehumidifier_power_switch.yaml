@@ -1,0 +1,3 @@
+---
+zwave.dehumidifier_power_switch:
+  node_name: Dehumidifier Power Switch
