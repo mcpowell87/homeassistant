@@ -1,0 +1,7 @@
+---
+washer_status:
+  name: Washer Status
+  options:
+    - Idle
+    - Running
+  initial: Idle

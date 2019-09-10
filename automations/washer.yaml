@@ -1,0 +1,44 @@
+---
+# Detect when the washer runs and set it to the 'Running' state
+  - alias: Washer - Set to running when power is on
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.washer_power_switch_power
+        above: 10
+    condition:
+      - condition: state
+        entity_id: input_select.washer_status
+        state: Idle
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.washer_status
+          option: Running
+
+# When the power reduces under 5, mark it as idle and send a notification
+  - alias: Washer - Set to idle and send notification after power reduces
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.washer_power_switch_power
+        below: 3
+        for:
+          minutes: 10
+    condition:
+      - condition: state
+        entity_id: input_select.washer_status
+        state: Running
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.washer_status
+          option: Idle
+      - service: notify.alexa_media
+        data:
+          message: 'The wash is finished.'
+          data:
+            type: announce
+            method: all
+          target:
+            - media_player.living_room_dot
+            - media_player.kitchen_dot
+            - media_player.master_bedroom_echo_spot

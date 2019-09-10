@@ -1,0 +1,11 @@
+---
+platform: broadlink
+host: !secret rm_mini3_host
+mac: !secret rm_mini3_mac
+friendly_name: RM Mini3
+type: rm_mini
+switches:
+  klipsch_speakers:
+    friendly_name: Living Room Speakers
+    command_on: ''
+    command_off: ''
