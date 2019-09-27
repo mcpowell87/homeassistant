@@ -1,0 +1,16 @@
+---
+path: office
+theme: default
+title: Office
+badges:
+  - entity: sensor.office_ecobee_sensor_temperature
+    name: Temperature
+  - entity: binary_sensor.office_ecobee_sensor_occupancy
+    name: Occupancy
+cards:
+  - type: custom:mini-graph-card
+    icon: mdi:desktop-tower-monitor
+    entities:
+      - entity: sensor.office_pc_power_switch_power
+        name: Office PC
+        show_state: true
