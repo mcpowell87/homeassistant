@@ -19,6 +19,7 @@ plex.conf
 *.pickle
 www/image/mike.jpg
 www/image/trish.jpg
+home-assistant_v2.db-*
 
 deps
 .cloud

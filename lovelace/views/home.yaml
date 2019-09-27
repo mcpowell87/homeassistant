@@ -3,52 +3,41 @@ path: default_view
 theme: default
 title: Home
 badges:
+  - entity: sensor.ecobee_temperature
+    name: Temperature
   - alarm_control_panel.alexa_guard 
   - person.mike
   - person.trish
 cards: 
   - type: weather-forecast
     entity: weather.weather
-  - type: entities
-    title: Sensors
-    show_header_toggle: false
+  - type: glance
     entities:
-      - type: section
-        label: Doors
       - entity: binary_sensor.front_door_sensor
-        type: custom:multiple-entity-row
         name: Front Door
-        primary: 
-          entity: sensor.front_door_sensor_battery
-          name: Battery
       - entity: binary_sensor.back_door_sensor
-        type: custom:multiple-entity-row
         name: Back Door
-        primary:
-          entity: sensor.back_door_sensor_battery
-          name: Battery
       - entity: binary_sensor.basement_door_sensor
-        type: custom:multiple-entity-row
         name: Basement Door
-        primary:
-          entity: sensor.back_door_sensor_battery
-          name: Battery
   - type: thermostat
     title: Ecobee
     entity: climate.ecobee
   - type: glance
-    name: Ecobee
-    entities: 
-      - entity: sensor.ecobee_humidity
-        name: Humidity
-      - entity: sensor.ecobee_temperature
-        name: Ecobee
-      - entity: sensor.living_room_ecobee_sensor_temperature
-        name: Living Room
-      - entity: sensor.office_ecobee_sensor_temperature
-        name: Office
-      - entity: sensor.bedroom_ecobee_sensor_temperature
-        name: Bedroom
+    entities:
+    - name: Living Room
+      entity: light.living_room
+      tap_action:
+        action: toggle
+        service: light.toggle
+        service_data:
+          entity_id: light.living_room
+    - name: Bedroom
+      entity: light.bedroom
+      tap_action:
+        action: toggle
+        service: light.toggle
+        service_data:
+          entity_id: light.bedroom
   - type: picture-glance
     title: Ring Doorbell
     entities:

@@ -1,0 +1,2 @@
+rachio:
+  api_key: !secret rachio_api_key

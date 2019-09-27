@@ -2,7 +2,11 @@
 path: bedroom
 theme: default
 title: Bedroom
-badges: []
+badges: 
+  - entity: sensor.bedroom_ecobee_sensor_temperature
+    name: Temperature
+  - entity: binary_sensor.bedroom_ecobee_sensor_occupancy
+    name: Occupancy
 cards:
         - type: entities
           title: Nightstand Lamps

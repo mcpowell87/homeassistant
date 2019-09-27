@@ -2,7 +2,11 @@
 path: livingroom
 theme: default
 title: Living Room
-badges: []
+badges: 
+  - entity: sensor.living_room_ecobee_sensor_temperature
+    name: Temperature
+  - entity: binary_sensor.living_room_ecobee_sensor_occupancy
+    name: Occupancy
 cards:
         - type: custom:roku-card
           entity: media_player.roku_ultra

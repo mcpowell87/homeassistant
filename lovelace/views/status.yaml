@@ -46,14 +46,10 @@ cards:
           - entity: sensor.server_rack_power_switch_power
             name: Server Rack
             show_state: true
-  - type: custom:mini-graph-card
-    icon: mdi:washing-machine
-    points_per_hour: 12
-    hours_to_show: 6
-    entities:
-      - entity: sensor.washer_power_switch_power
-        name: Washer
-        show_state: true
   - type: entities
     entities:
-      - switch.klipsch_speakers
+      - entity: input_select.washer_status
+        type: custom:multiple-entity-row
+        icon: mdi:washing-machine
+        name: Washer
+        secondary_info: last-changed
