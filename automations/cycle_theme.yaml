@@ -1,0 +1,18 @@
+---
+alias: Theme - Change to dark mode at sunset
+trigger:
+  - platform: sun
+    event: sunset
+action:
+  - service: frontend.set_theme
+    data:
+      name: slate
+
+alias: Theme - Change to light mode at sunrise
+trigger:
+  - platform: sun
+    event: sunrise
+action:
+  - service: frontend.set_theme
+    data:
+      name: default
