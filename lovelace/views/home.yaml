@@ -9,7 +9,7 @@ badges:
   - person.mike
   - person.trish
 cards: 
-  - type: weather-forecast
+  - type: custom:weather-card
     entity: weather.weather
   - type: glance
     entities:

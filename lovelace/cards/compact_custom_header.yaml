@@ -1,0 +1,14 @@
+---
+menu: show
+notifications: clock
+voice: hide
+options: show
+clock_format: 12
+clock_am_pm: true
+clock_date: true
+exceptions:
+  - conditions:
+      user_agent: Mobile
+    config:
+      menu: overflow
+      notifications: overflow

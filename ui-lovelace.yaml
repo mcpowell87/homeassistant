@@ -1,7 +1,7 @@
 title: Home
 
 resources: !include_dir_list lovelace/resources
-
+cch: !include lovelace/cards/compact_custom_header.yaml
 
 views:
         - !include /config/lovelace/views/home.yaml

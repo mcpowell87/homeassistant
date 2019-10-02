@@ -2,3 +2,4 @@
 platform: darksky
 api_key: !secret darksky_api_key
 name: Weather
+mode: daily
