@@ -1,7 +1,5 @@
 ---
 menu: show
-notifications: clock
-voice: hide
 options: show
 clock_format: 12
 clock_am_pm: true
@@ -10,5 +8,9 @@ exceptions:
   - conditions:
       user_agent: Mobile
     config:
-      menu: overflow
-      notifications: overflow
+      swipe: true
+      swipe_animate: swipe
+  - conditions:
+      query_string: kiosk
+    config:
+      kiosk: true

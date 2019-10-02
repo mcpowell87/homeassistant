@@ -1,6 +1,5 @@
 ---
 path: default_view
-theme: default
 title: Home
 badges:
   - entity: sensor.ecobee_temperature
@@ -8,9 +7,12 @@ badges:
   - alarm_control_panel.alexa_guard 
   - person.mike
   - person.trish
-cards: 
+cards:
   - type: custom:weather-card
     entity: weather.weather
+  - type: thermostat
+    title: Ecobee
+    entity: climate.ecobee
   - type: glance
     entities:
       - entity: binary_sensor.front_door_sensor
@@ -19,9 +21,6 @@ cards:
         name: Back Door
       - entity: binary_sensor.basement_door_sensor
         name: Basement Door
-  - type: thermostat
-    title: Ecobee
-    entity: climate.ecobee
   - type: glance
     entities:
     - name: Living Room

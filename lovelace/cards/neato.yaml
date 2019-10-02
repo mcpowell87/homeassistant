@@ -89,6 +89,7 @@ elements:
       line-height: 32px
       padding: 8px
       margin: 0 0 0 0
+    # Translucent panel
   - type: state-label
     entity: sensor.vacuum_battery
     style:
@@ -98,8 +99,8 @@ elements:
       pointer-events: none
       color: rgba(0,0,0,0)
       font-size: 0px
-      width: 25%
-      height: 40%
+      width: 115px
+      height: 105px
       background-color: rgba(0,0,0,0.3)
       line-height: 1px
   # Battery
