@@ -1,0 +1,8 @@
+---
+klipsch_mute:
+  alias: Klipsch Mute
+  sequence:
+    - service: broadlink.send
+      data:
+        host: !secret rm_mini3_host
+        packet: !secret klipsch_mute_packet

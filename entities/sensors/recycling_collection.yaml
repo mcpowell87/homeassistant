@@ -1,0 +1,7 @@
+---
+platform: garbage_collection
+name: Recycling
+frequency: weekly
+collection_days:
+  - thu
+verbose_state: true

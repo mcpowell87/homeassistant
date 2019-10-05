@@ -1,0 +1,8 @@
+---
+klipsch_volume_up:
+  alias: Klipsch Volume Up
+  sequence:
+    - service: broadlink.send
+      data:
+        host: !secret rm_mini3_host
+        packet: !secret klipsch_vol_up_packet

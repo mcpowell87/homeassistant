@@ -44,3 +44,7 @@ cards:
       - binary_sensor.ring_front_door_ding
     camera_image: camera.ring_doorbell_camera
   - !include ../cards/neato.yaml
+  - type: entities
+    entities:
+      - sensor.garbage
+      - sensor.recycling

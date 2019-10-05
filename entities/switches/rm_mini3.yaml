@@ -5,7 +5,7 @@ mac: !secret rm_mini3_mac
 friendly_name: RM Mini3
 type: rm_mini
 switches:
-  klipsch_speakers:
-    friendly_name: Living Room Speakers
-    command_on: ''
-    command_off: ''
+  klipsch_speakers_volume:
+    friendly_name: Living Room Speakers Volume
+    command_on: 'JgBYAAABHpQSExI4ERQRFBEUERQRFBEUETkRFBE5ETkRORE5ETkROREUERMSOBI4EjgSExITEhMSOBI4EhMSExEUETkRORE5EQAFBwABJUkRAAxAAAEkShEADQU='
+    command_off: 'JgBYAAABHpMSExI4EhMSExITEhMSExEUETkRFBE5ETkRORE5ETkROBI5ETgSOBITEhMSExITEhMRFBEUERQRORE5ETkRORE4EgAFBQABJEoSAAw/AAEiShIADQU='

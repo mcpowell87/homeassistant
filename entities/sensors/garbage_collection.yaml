@@ -1,0 +1,8 @@
+---
+platform: garbage_collection
+name: Garbage
+frequency: weekly
+collection_days:
+  - mon
+  - thu
+verbose_state: true

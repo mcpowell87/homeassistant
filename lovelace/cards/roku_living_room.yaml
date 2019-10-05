@@ -1,0 +1,26 @@
+---
+type: custom:roku-card
+entity: media_player.roku_ultra
+name: Living Room Roku
+tv: true
+power:
+  tap_action:
+    action: call-service
+    service: script.living_room_tv_power
+volume_mute:
+  tap_action:
+    action: call-service
+    service: script.klipsch_mute
+volume_up:
+  tap_action:
+    action: call-service
+    service: script.klipsch_volume_up
+volume_down:
+  tap_action:
+    action: call-service
+    service: script.klipsch_volume_down
+apps:
+  - id: Plex
+    icon: /local/image/plex.png
+  - id: Netflix
+    icon: /local/image/netflix.png

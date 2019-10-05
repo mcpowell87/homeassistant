@@ -8,10 +8,7 @@ badges:
   - entity: binary_sensor.living_room_ecobee_sensor_occupancy
     name: Occupancy
 cards:
-        - type: custom:roku-card
-          entity: media_player.roku_ultra
-          name: Living Room Roku
-          tv: false
+        - !include ../cards/roku_living_room.yaml
         - type: conditional
           conditions:
                   - entity: media_player.plex_roku_ultra
