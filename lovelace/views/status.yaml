@@ -53,6 +53,3 @@ cards:
         icon: mdi:washing-machine
         name: Washer
         secondary_info: last-changed
-  - type: entities
-    entities:
-      - entity: switch.klipsch_speakers_volume
