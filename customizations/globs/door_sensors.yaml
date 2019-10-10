@@ -1,2 +1,2 @@
 "binary_sensor.*_door_sensor":
-        device_class: door
+  device_class: door

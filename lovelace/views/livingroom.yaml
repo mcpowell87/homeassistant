@@ -2,24 +2,24 @@
 path: livingroom
 theme: default
 title: Living Room
-badges: 
+badges:
   - entity: sensor.living_room_ecobee_sensor_temperature
     name: Temperature
   - entity: binary_sensor.living_room_ecobee_sensor_occupancy
     name: Occupancy
 cards:
-        - !include ../cards/roku_living_room.yaml
-        - type: conditional
-          conditions:
-                  - entity: media_player.plex_roku_ultra
-                    state_not: "unavailable"
-          card:
-                  type: media-control
-                  entity: media_player.plex_roku_ultra
-                  name: Plex
-        - type: entities
-          entities:
-                  - type: custom:slider-entity-row
-                    entity: light.living_room_lamp
-                    toggle: true
-                    hide_when_off: false
+  - !include ../cards/roku_living_room.yaml
+  - type: conditional
+    conditions:
+      - entity: media_player.plex_roku_ultra
+        state_not: "unavailable"
+    card:
+      type: media-control
+      entity: media_player.plex_roku_ultra
+      name: Plex
+  - type: entities
+    entities:
+      - type: custom:slider-entity-row
+        entity: light.living_room_lamp
+        toggle: true
+        hide_when_off: false

@@ -2,4 +2,4 @@ name: Mike
 id: mike
 user_id: !secret user_id_mike
 device_trackers:
-        device_tracker.e0_33_8e_5b_3e_f6
+  - device_tracker.e0_33_8e_5b_3e_f6

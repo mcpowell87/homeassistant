@@ -1,17 +1,17 @@
 ---
 vacuum_toggle:
-        alias: Vacuum Start Pause
-        sequence:
-                - service: vacuum.neato_custom_cleaning
-                  data:
-                          entity_id: vacuum.alfred
-                          category: 4
-                          navigation: 1
-                - condition: state
-                  state: 'cleaning'
-                  entity_id: vacuum.alfred
-                  for:
-                          seconds: 3
-                - service: vacuum.pause
-                  data:
-                          entity_id: vacuum.alfred
+  alias: Vacuum Start Pause
+  sequence:
+    - service: vacuum.neato_custom_cleaning
+      data:
+        entity_id: vacuum.alfred
+        category: 4
+        navigation: 1
+    - condition: state
+      state: "cleaning"
+      entity_id: vacuum.alfred
+      for:
+        seconds: 3
+    - service: vacuum.pause
+      data:
+        entity_id: vacuum.alfred
