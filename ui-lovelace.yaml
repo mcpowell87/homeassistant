@@ -10,3 +10,4 @@ views:
   - !include /config/lovelace/views/office.yaml
   - !include /config/lovelace/views/outside.yaml
   - !include /config/lovelace/views/status.yaml
+  - !include /config/lovelace/views/test.yaml

@@ -1,6 +1,6 @@
 ---
 path: bedroom
-theme: default
+icon: mdi:hotel
 title: Bedroom
 badges:
   - entity: sensor.bedroom_ecobee_sensor_temperature

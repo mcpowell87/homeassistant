@@ -1,0 +1,33 @@
+---
+title: test
+path: test
+panel: true
+cards:
+  - type: vertical-stack
+    cards:
+    - entity: weather.weather
+      type: weather-forecast
+    - type: horizontal-stack
+      cards:
+        - entity: light.front_porch_light
+          name: Front Porch
+          icon: mdi:coach-lamp
+          type: entity-button
+        - entity: light.back_patio_light
+          name: Back Patio
+          icon: mdi:coach-lamp
+          type: entity-button
+        - entity: light.living_room
+          icon: mdi:floor-lamp
+          type: entity-button
+        - entity: light.bedroom
+          icon: mdi:bed-king
+          type: entity-button
+    - type: glance
+      entities:
+        - entity: binary_sensor.front_door_sensor
+          name: Front
+        - entity: binary_sensor.back_door_sensor
+          name: Back
+        - entity: binary_sensor.basement_door_sensor
+          name: Basement

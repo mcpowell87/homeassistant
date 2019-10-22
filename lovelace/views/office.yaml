@@ -1,6 +1,6 @@
 ---
 path: office
-theme: default
+icon: mdi:desk-lamp
 title: Office
 badges:
   - entity: sensor.office_ecobee_sensor_temperature

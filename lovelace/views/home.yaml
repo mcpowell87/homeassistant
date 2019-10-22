@@ -1,6 +1,7 @@
 ---
 path: default_view
 title: Home
+icon: mdi:home
 badges:
   - entity: sensor.ecobee_temperature
     name: Temperature

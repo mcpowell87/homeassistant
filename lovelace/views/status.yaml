@@ -1,6 +1,6 @@
 ---
 path: status
-theme: default
+icon: mdi:chart-line
 title: Status
 badges: []
 cards:
