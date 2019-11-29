@@ -39,3 +39,6 @@ cards:
         entity: light.living_room_lamp
         toggle: true
         hide_when_off: false
+  - type: entity-button
+    entity: switch.living_room_outlet_switch
+    name: Living Room Outlet

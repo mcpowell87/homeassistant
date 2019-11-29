@@ -23,6 +23,16 @@ cards:
         - entity: light.bedroom
           icon: mdi:bed-king
           type: entity-button
+    - type: horizontal-stack
+      cards:
+        - entity: switch.living_room_outlet_switch
+          name: Christmas Tree
+          icon: mdi:pine-tree
+          type: entity-button
+        - entity: switch.basement_outlet_switch
+          name: Basement Outlet
+          icon: mdi:power-socket-us
+          type: entity-button
     - type: glance
       entities:
         - entity: binary_sensor.front_door_sensor
