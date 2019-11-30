@@ -8,6 +8,6 @@ alexa_media:
       include_devices:
         - "Kitchen Dot"
         - "Basement Dot"
-        - "Living Room Dot"
+        - "Living Room Show"
         - "Master Bedroom Echo Spot"
         - "Alexa Guard 93164"

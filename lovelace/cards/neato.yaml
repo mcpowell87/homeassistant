@@ -91,7 +91,7 @@ elements:
       margin: 0 0 0 0
     # Translucent panel
   - type: state-label
-    entity: sensor.vacuum_battery
+    entity: sensor.alfred_battery
     style:
       top: 0
       right: 0
@@ -105,7 +105,7 @@ elements:
       line-height: 1px
   # Battery
   - type: state-label
-    entity: sensor.vacuum_battery
+    entity: sensor.alfred_battery
     style:
       top: 0
       right: 0
@@ -117,7 +117,7 @@ elements:
       line-height: 32px
       margin: 1px 35px
   - type: state-icon
-    entity: sensor.vacuum_battery
+    entity: sensor.alfred_battery
     style:
       top: 0
       right: 0

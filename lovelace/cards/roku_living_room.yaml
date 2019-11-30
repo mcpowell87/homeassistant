@@ -24,3 +24,5 @@ apps:
     icon: /local/image/plex.png
   - id: Netflix
     icon: /local/image/netflix.png
+  - id: Disney Plus
+    icon: /local/image/disneyplus.png
