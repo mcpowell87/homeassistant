@@ -20,9 +20,9 @@ volume_down:
     action: call-service
     service: script.klipsch_volume_down
 apps:
-  - id: Plex
-    icon: /local/image/plex.png
-  - id: Netflix
-    icon: /local/image/netflix.png
-  - id: Disney Plus
-    icon: /local/image/disneyplus.png
+  - app: Plex
+    image: /local/image/plex.png
+  - app: Netflix
+    image: /local/image/netflix.png
+  - app: Disney Plus
+    image: /local/image/disneyplus.png
