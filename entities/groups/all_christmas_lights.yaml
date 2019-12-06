@@ -2,6 +2,5 @@
 all_christmas_lights:
   name: All Christmas Lights
   entities:
-    - switch.living_room_outlet_switch
-    - switch.spare_bedroom_outlet_switch
-    - switch.upstairs_room_outlet_switch
+    - group.indoor_christmas_lights
+    - group.outdoor_christmas_lights
