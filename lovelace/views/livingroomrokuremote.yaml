@@ -1,0 +1,17 @@
+---
+title: Roku
+path: roku
+icon: mdi:remote-tv
+panel: true
+cards:
+  - type: vertical-stack
+    cards:
+      - !include ../cards/roku_living_room.yaml
+      - type: conditional
+        conditions:
+          - entity: media_player.plex_roku_ultra
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.plex_roku_ultra
+          name: Plex

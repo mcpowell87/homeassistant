@@ -1,16 +1,15 @@
 ---
 menu: show
 options: show
+background: rgb(25, 25, 25, 0.7)
 clock_format: 12
 clock_am_pm: true
 clock_date: true
 exceptions:
   - conditions:
-      user_agent: Mobile
+      user: Tablet
     config:
       swipe: true
+      options: clock
       swipe_animate: swipe
-  - conditions:
-      query_string: kiosk
-    config:
-      kiosk: true
+      hide_tabs: 0, 1, 2, 3, 4, 5

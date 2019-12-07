@@ -1,0 +1,45 @@
+---
+path: climate
+title: Climate
+icon: mdi:home-thermometer
+panel: true
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:simple-thermostat
+        entity: climate.ecobee
+        icon:
+          heat: mdi:fire
+          cool: mdi:snowflake
+          idle: mdi:power
+        step_size: 1
+        decimals: 0
+        sensors:
+          - entity: sensor.ecobee_humidity
+            name: Humidity
+        control:
+          - hvac
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            entities:
+              - entity: sensor.living_room_ecobee_sensor_temperature
+                name: Living Room
+                icon: mdi:sofa
+          - type: glance
+            entities:
+              - entity: sensor.bedroom_ecobee_sensor_temperature
+                name: Bedroom
+                icon: mdi:bed-king
+          - type: glance
+            entities:
+              - entity: sensor.office_ecobee_sensor_temperature
+                name: Office
+                icon: mdi:desk-lamp
+          - type: glance
+            entities:
+              - entity: sensor.dining_room_ecobee_sensor_temperature
+                name: Dining Room
+                icon: mdi:table-chair
+      - entity: weather.weather
+        type: custom:weather-card

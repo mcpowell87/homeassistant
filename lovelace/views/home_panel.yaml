@@ -1,0 +1,89 @@
+---
+title: Home
+icon: mdi:home
+path: home-tablet
+panel: true
+cards:
+  - type: vertical-stack
+    cards:
+    - type: horizontal-stack
+      cards:
+        - type: glance
+          entities:
+            - alarm_control_panel.alexa_guard
+        - type: glance
+          entities:
+            - person.mike
+        - type: glance
+          entities:
+            - person.trish
+    - type: horizontal-stack
+      cards:
+        - type: glance
+          entities:
+            - entity: sensor.ecobee_temperature
+              name: Home
+        - type: glance
+          entities:
+            - entity: sensor.ecobee_humidity
+              name: Humidity
+        - type: glance
+          entities:
+            - entity: sensor.living_room_ecobee_sensor_temperature
+              name: Living Room
+              icon: mdi:sofa
+        - type: glance
+          entities:
+            - entity: sensor.bedroom_ecobee_sensor_temperature
+              name: Bedroom
+              icon: mdi:bed-king
+        - type: glance
+          entities:
+            - entity: sensor.office_ecobee_sensor_temperature
+              name: Office
+              icon: mdi:desk-lamp
+        - type: glance
+          entities:
+            - entity: sensor.dining_room_ecobee_sensor_temperature
+              name: Dining Room
+              icon: mdi:table-chair
+    - type: horizontal-stack
+      cards:
+        - type: glance
+          entities:
+            - entity: binary_sensor.front_door_sensor
+              name: Front
+        - type: glance
+          entities:
+            - entity: binary_sensor.back_door_sensor
+              name: Back
+        - type: glance
+          entities:
+            - entity: binary_sensor.basement_door_sensor
+              name: Basement
+    - type: horizontal-stack
+      cards:
+        - entity: light.front_porch_light
+          name: Front Porch
+          icon: mdi:coach-lamp
+          type: entity-button
+        - entity: light.back_patio_light
+          name: Back Patio
+          icon: mdi:coach-lamp
+          type: entity-button
+        - entity: light.living_room
+          icon: mdi:floor-lamp
+          type: entity-button
+        - entity: light.bedroom
+          icon: mdi:bed-king
+          type: entity-button
+    - type: horizontal-stack
+      cards:
+        - entity: group.indoor_christmas_lights
+          name: Indoor Christmas Lights
+          icon: mdi:pine-tree
+          type: custom:button-card
+        - entity: group.outdoor_christmas_lights
+          name: Outdoor Christmas Lights
+          icon: mdi:home
+          type: custom:button-card
