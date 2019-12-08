@@ -8,6 +8,12 @@ cards:
     cards:
       - type: custom:simple-thermostat
         entity: climate.ecobee
+        debug_cardmod: true
+        style: 
+          |
+            ha-card {
+                --st-mode-background: rgb(0,0,0,0);
+            }
         icon:
           heat: mdi:fire
           cool: mdi:snowflake
