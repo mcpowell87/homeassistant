@@ -17,6 +17,8 @@ cards:
         - type: glance
           entities:
             - person.trish
+    - type: custom:simple-weather-card
+      entity: weather.weather
     - type: horizontal-stack
       cards:
         - type: glance
@@ -77,6 +79,20 @@ cards:
         - entity: light.bedroom
           icon: mdi:bed-king
           type: entity-button
+    - type: horizontal-stack
+      cards:
+        - type: custom:slider-entity-row
+          entity: light.front_porch_light
+          full_row: true
+        - type: custom:slider-entity-row
+          entity: light.back_patio_light
+          full_row: true
+        - type: custom:slider-entity-row
+          entity: light.living_room
+          full_row: true
+        - type: custom:slider-entity-row
+          entity: light.bedroom
+          full_row: true
     - type: horizontal-stack
       cards:
         - entity: group.indoor_christmas_lights

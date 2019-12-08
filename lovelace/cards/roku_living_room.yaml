@@ -20,7 +20,7 @@ volume_down:
     action: call-service
     service: script.klipsch_volume_down
 apps:
-  - app: Plex
+  - app: Plex - Stream Free TV & Movies
     image: /local/image/plex.png
   - app: Netflix
     image: /local/image/netflix.png
