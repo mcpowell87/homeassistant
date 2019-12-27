@@ -39,12 +39,12 @@ cards:
         service: light.toggle
         service_data:
           entity_id: light.bedroom
-  - type: picture-glance
-    title: Ring Doorbell
-    entities:
-      - binary_sensor.ring_front_door_motion
-      - binary_sensor.ring_front_door_ding
-    camera_image: camera.ring_doorbell_camera
+#  - type: picture-glance
+#    title: Ring Doorbell
+#    entities:
+#      - binary_sensor.ring_front_door_motion
+#      - binary_sensor.ring_front_door_ding
+#    camera_image: camera.ring_doorbell_camera
   - !include ../cards/neato.yaml
   - type: entities
     entities:

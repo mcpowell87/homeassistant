@@ -5,7 +5,7 @@
 secrets.yaml
 known_devices.yaml
 groups.yaml
-zigbee.db
+zigbee.db*
 zwscene.xml
 zwcfg_*
 ecobee.conf
