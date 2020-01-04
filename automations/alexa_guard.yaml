@@ -1,28 +1,4 @@
 ---
-# Arms alexa guard when no one is home.
-  - alias: Alexa Guard - Arm when away
-    trigger:
-      platform: state
-      entity_id: group.household
-      to: "not_home"
-      for:
-        "00:10:00"
-    action:
-      service: alarm_control_panel.alarm_arm_away
-      data:
-        entity_id: alarm_control_panel.alexa_guard
-
-# Disarms alexa guard when someone comes home.
-  - alias: Alexa Guard - Disarm when home
-    trigger:
-      platform: state
-      entity_id: group.household
-      to: "home"
-    action:
-      service: alarm_control_panel.alarm_arm_home
-      data:
-        entity_id: alarm_control_panel.alexa_guard
-
 # Arms alexa guard if HA reboots and no one is home.
   - alias: Alexa Guard - Set default state to arm if no one is home when HA reboots.
     trigger:
@@ -46,7 +22,7 @@
         entity_id: group.household
         state: "home"
     action:
-      - service: alarm_control_panel.alarm_arm_home
+      - service: alarm_control_panel.alarm_disarm
         data:
           entity_id: alarm_control_panel.alexa_guard
 

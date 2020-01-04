@@ -5,3 +5,4 @@ collection_days:
   - mon
   - thu
 verbose_state: true
+#move_country_holidays: US
