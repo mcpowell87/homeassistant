@@ -95,11 +95,4 @@ cards:
           full_row: true
     - type: horizontal-stack
       cards:
-        - entity: group.indoor_christmas_lights
-          name: Indoor Christmas Lights
-          icon: mdi:pine-tree
-          type: custom:button-card
-        - entity: group.outdoor_christmas_lights
-          name: Outdoor Christmas Lights
-          icon: mdi:home
-          type: custom:button-card
+        - !include ../cards/washer_dryer.yaml

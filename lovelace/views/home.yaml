@@ -11,9 +11,7 @@ badges:
 cards:
   - type: custom:weather-card
     entity: weather.weather
-  - type: thermostat
-    title: Ecobee
-    entity: climate.ecobee
+  - !include ../cards/thermostat.yaml
   - type: custom:search-card
   - type: glance
     entities:
@@ -39,6 +37,7 @@ cards:
         service: light.toggle
         service_data:
           entity_id: light.bedroom
+  
 #  - type: picture-glance
 #    title: Ring Doorbell
 #    entities:
@@ -46,6 +45,7 @@ cards:
 #      - binary_sensor.ring_front_door_ding
 #    camera_image: camera.ring_doorbell_camera
   - !include ../cards/neato.yaml
+  - !include ../cards/washer_dryer.yaml
   - type: entities
     entities:
       - sensor.garbage

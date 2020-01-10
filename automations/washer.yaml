@@ -14,6 +14,23 @@
         data:
           entity_id: input_select.washer_status
           option: Running
+      - service: input_datetime.set_datetime
+        entity_id: input_datetime.washer_start
+        data_template:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+# Update washer home assistant entity.
+  - alias: Washer - Timer
+    trigger:
+      - platform: time_pattern
+        seconds: '*'
+    condition:
+      - condition: numeric_state
+        entity_id: sensor.washer_power_switch_power
+        above: 10
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.washer_on_time
 
 # When the power reduces under 5, mark it as idle and send a notification
   - alias: Washer - Set to idle and send notification after power reduces
@@ -22,7 +39,7 @@
         entity_id: sensor.washer_power_switch_power
         below: 3
         for:
-          minutes: 10
+          minutes: 5
     condition:
       - condition: state
         entity_id: input_select.washer_status

@@ -6,25 +6,7 @@ panel: true
 cards:
   - type: vertical-stack
     cards:
-      - type: custom:simple-thermostat
-        entity: climate.ecobee
-        debug_cardmod: true
-        style: 
-          |
-            ha-card {
-                --st-mode-background: rgb(0,0,0,0);
-            }
-        icon:
-          heat: mdi:fire
-          cool: mdi:snowflake
-          idle: mdi:power
-        step_size: 1
-        decimals: 0
-        sensors:
-          - entity: sensor.ecobee_humidity
-            name: Humidity
-        control:
-          - hvac
+      - !include ../cards/thermostat.yaml
       - type: horizontal-stack
         cards:
           - type: glance

@@ -1,0 +1,16 @@
+---
+type: custom:vertical-stack-in-card
+title: Washer
+cards:
+  - entity: sensor.washer_on_time_complete
+    icon: 'mdi:washing-machine'
+    scale: 20px
+    show_name: false
+    tap_action: none
+    type: 'custom:button-card'
+  - entity: sensor.washer_on_time_complete
+    scale: 20px
+    style:
+      - text-transform: capitalize
+    title: Time elapsed
+    type: 'custom:bignumber-card'
