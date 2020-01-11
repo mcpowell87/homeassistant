@@ -1,0 +1,7 @@
+---
+dryer_status:
+  name: Dryer Status
+  options:
+    - Idle
+    - Running
+  initial: Idle

@@ -46,10 +46,4 @@ cards:
           - entity: sensor.server_rack_power_switch_power
             name: Server Rack
             show_state: true
-  - type: entities
-    entities:
-      - entity: input_select.washer_status
-        type: custom:multiple-entity-row
-        icon: mdi:washing-machine
-        name: Washer
-        secondary_info: last-changed
+  - !include ../cards/washer_dryer.yaml

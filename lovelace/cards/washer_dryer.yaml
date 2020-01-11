@@ -1,16 +1,30 @@
 ---
 type: custom:vertical-stack-in-card
-title: Washer
+title: Laundry
 cards:
-  - entity: sensor.washer_on_time_complete
-    icon: 'mdi:washing-machine'
-    scale: 20px
-    show_name: false
-    tap_action: none
-    type: 'custom:button-card'
-  - entity: sensor.washer_on_time_complete
-    scale: 20px
-    style:
-      - text-transform: capitalize
-    title: Time elapsed
-    type: 'custom:bignumber-card'
+  - type: horizontal-stack
+    cards:
+      - entity: sensor.washer_on_time_complete
+        scale: 20px
+        show_name: false
+        tap_action: none
+        type: 'custom:button-card'
+      - entity: sensor.dryer_on_time_complete
+        scale: 20px
+        show_name: false
+        tap_action: none
+        type: 'custom:button-card'
+  - type: horizontal-stack
+    cards:
+      - entity: sensor.washer_on_time_complete
+        scale: 20px
+        style:
+          - text-transform: capitalize
+        title: Time elapsed
+        type: 'custom:bignumber-card'
+      - entity: sensor.dryer_on_time_complete
+        scale: 20px
+        style:
+          - text-transform: capitalize
+        title: Time elapsed
+        type: 'custom:bignumber-card'
