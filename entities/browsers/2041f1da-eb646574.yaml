@@ -1,0 +1,5 @@
+---
+name: tablet
+disable:
+  - light
+  - media_player

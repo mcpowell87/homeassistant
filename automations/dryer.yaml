@@ -4,7 +4,7 @@
     trigger:
       - platform: numeric_state
         entity_id: sensor.dryer_power_switch_power
-        above: 10
+        above: 25
     condition:
       - condition: state
         entity_id: input_select.dryer_status
@@ -27,7 +27,7 @@
     condition:
       - condition: numeric_state
         entity_id: sensor.dryer_power_switch_power
-        above: 10
+        above: 25
     action:
       - service: homeassistant.update_entity
         entity_id: sensor.dryer_on_time
@@ -37,9 +37,9 @@
     trigger:
       - platform: numeric_state
         entity_id: sensor.dryer_power_switch_power
-        below: 3
+        below: 25
         for:
-          minutes: 5
+          minutes: 1
     condition:
       - condition: state
         entity_id: input_select.dryer_status

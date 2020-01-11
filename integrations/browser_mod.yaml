@@ -1,3 +1,3 @@
 ---
 browser_mod:
-  devices: !include_dir_merge_named ../entitied/browsers/
+  devices: !include_dir_named ../entities/browsers/
