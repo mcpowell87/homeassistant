@@ -1,0 +1,7 @@
+---
+emulated_hue:
+  listen_port: 8300
+  expose_by_default: false
+  entities:
+    light.living_room_lamp:
+      name: "Living Room Lamp"
