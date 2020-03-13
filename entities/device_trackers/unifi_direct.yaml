@@ -1,6 +1,6 @@
 ---
 platform: unifi_direct
-host: 10.0.0.7
+host: 10.0.0.121
 username: !secret unifi_user
 password: !secret unifi_password
 interval_seconds: 10
