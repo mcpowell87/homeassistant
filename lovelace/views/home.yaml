@@ -46,6 +46,7 @@ cards:
     camera_image: camera.front_door
   - !include ../cards/neato.yaml
   - !include ../cards/washer_dryer.yaml
+  - !include ../cards/windows_state.yaml
   - type: entities
     entities:
       - sensor.garbage

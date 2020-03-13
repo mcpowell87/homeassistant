@@ -1,0 +1,119 @@
+---
+path: dashboard
+title: Dashboard
+icon: mdi:home
+panel: true
+cards:
+  - type: vertical-stack
+    cards:
+    - type: horizontal-stack
+      cards:
+        - type: vertical-stack
+          title: Living Room
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.living_room_lamp
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:floor-lamp
+                - type: custom:mini-graph-card
+                  show:
+                    name: false
+                  style: |
+                    :host {
+                      height: auto;
+                    }
+                  entities: 
+                    - entity: sensor.living_room_ecobee_sensor_temperature
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.living_room_lamp
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:floor-lamp
+                - type: custom:mini-graph-card
+                  style: |
+                    :host {
+                      height: auto;
+                    }
+                  entities: 
+                    - entity: sensor.living_room_ecobee_sensor_temperature
+        - type: vertical-stack
+          title: Bedroom
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.bedroom_lamp_left
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:lamp
+                - type: light
+                  entity: light.bedroom_lamp_right
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:lamp
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.living_room_lamp
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:floor-lamp
+                - type: custom:mini-graph-card
+                  show:
+                    name: false
+                  style: |
+                    :host {
+                      height: auto;
+                    }
+                  entities: 
+                    - entity: sensor.bedroom_ecobee_sensor_temperature
+        - type: vertical-stack
+          title: Bedroom
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.bedroom_lamp_left
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:lamp
+                - type: light
+                  entity: light.bedroom_lamp_right
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:lamp
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.living_room_lamp
+                  style: |
+                    ha-card {
+                      height: auto;
+                    }
+                  icon: mdi:floor-lamp
+                - type: custom:mini-graph-card
+                  style: |
+                    :host {
+                      height: auto;
+                    }
+                  entities: 
+                    - entity: sensor.living_room_ecobee_sensor_temperature
