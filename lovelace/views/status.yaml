@@ -32,6 +32,12 @@ cards:
       - type: custom:battery-entity
         entity: sensor.kitchen_window_sensor_battery
         name: Kitchen Window
+      - type: custom:battery-entity
+        entity: sensor.dining_room_window_sensor_battery
+        name: Dining Room Window
+      - type: custom:battery-entity
+        entity: sensor.office_south_window_sensor_battery
+        name: Office South Window
   - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
