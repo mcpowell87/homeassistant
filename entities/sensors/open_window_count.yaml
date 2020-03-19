@@ -2,10 +2,14 @@
 platform: template
 sensors:
   open_window_count:
+    entity_id:
+      - binary_sensor.kitchen_window_sensor
+      - binary_sensor.dining_room_window_sensor
+      - binary_sensor.office_south_window_sensor
     icon_template: >-
       {% set ns = namespace(open=true) %}
       {% for item in states %}
-        {% if item.entity_id.split(".")[1].endswith('windows_sensor') and item.state != 'unknown' and item.state == 'on' %}
+        {% if item.entity_id.split(".")[1].endswith('window_sensor') and item.state != 'unknown' and item.state == 'on' %}
           {% set ns.open = true %}
         {% endif %}
       {% endfor %}
@@ -17,7 +21,7 @@ sensors:
     value_template: >-
       {% set ns = namespace(count=0) %}
       {% for item in states %}
-        {% if item.entity_id.split(".")[1].endswith('windows_sensor') and item.state != 'unknown' and item.state == 'on' %}
+        {% if item.entity_id.split(".")[1].endswith('window_sensor') and item.state != 'unknown' and item.state == 'on' %}
           {% set ns.count = ns.count + 1 %}
         {% endif %}
       {% endfor %}

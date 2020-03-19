@@ -1,2 +1,4 @@
 lovelace:
-        mode: yaml
+  mode: yaml
+  resources: !include_dir_list ../lovelace/resources
+  #dashboards: !include_dir_named ../lovelace/dashboards
