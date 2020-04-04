@@ -1,15 +1,15 @@
 type: custom:vertical-stack-in-card
 title: 
 cards:
-  - entity: sensor.open_window_count
+  - entity: sensor.open_door_count
     scale: 15px
     name: >
       [[[
         if (entity.state == 1) 
-          return "1 window open.";
+          return "1 door open.";
         else if (entity.state > 1)
-          return entity.state + " windows open.";
+          return entity.state + " doors open.";
         else
-          return "All windows closed."
+          return "All doors closed."
       ]]]
     type: 'custom:button-card'

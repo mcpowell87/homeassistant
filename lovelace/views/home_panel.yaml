@@ -6,6 +6,8 @@ panel: true
 cards:
   - type: vertical-stack
     cards:
+    - type: custom:simple-weather-card
+      entity: weather.weather
     - type: horizontal-stack
       cards:
         - type: glance
@@ -17,8 +19,6 @@ cards:
         - type: glance
           entities:
             - person.trish
-    - type: custom:simple-weather-card
-      entity: weather.weather
     - type: horizontal-stack
       cards:
         - type: glance
@@ -51,18 +51,8 @@ cards:
               icon: mdi:table-chair
     - type: horizontal-stack
       cards:
-        - type: glance
-          entities:
-            - entity: binary_sensor.front_door_sensor
-              name: Front
-        - type: glance
-          entities:
-            - entity: binary_sensor.back_door_sensor
-              name: Back
-        - type: glance
-          entities:
-            - entity: binary_sensor.basement_door_sensor
-              name: Basement
+        - !include ../cards/windows_state.yaml
+        - !include ../cards/doors_state.yaml
     - type: horizontal-stack
       cards:
         - entity: light.front_porch_light

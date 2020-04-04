@@ -1,0 +1,29 @@
+---
+platform: template
+sensors:
+  open_door_count:
+    entity_id:
+      - binary_sensor.front_door_sensor
+      - binary_sensor.back_door_sensor
+      - binary_sensor.basement_door_sensor
+    icon_template: >-
+      {% set ns = namespace(open=true) %}
+      {% for item in states %}
+        {% if item.entity_id.split(".")[1].endswith('door_sensor') and item.state != 'unknown' and item.state == 'on' %}
+          {% set ns.open = true %}
+        {% endif %}
+      {% endfor %}
+      {% if ns.open == true %}
+        mdi:door-closed
+      {% else %}
+        mdi:door-open
+      {% endif %}
+    value_template: >-
+      {% set ns = namespace(count=0) %}
+      {% for item in states %}
+        {% if item.entity_id.split(".")[1].endswith('door_sensor') and item.state != 'unknown' and item.state == 'on' %}
+          {% set ns.count = ns.count + 1 %}
+        {% endif %}
+      {% endfor %}
+      {{ns.count}}
+      

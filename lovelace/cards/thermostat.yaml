@@ -1,12 +1,11 @@
 ---
 type: custom:simple-thermostat
-entity: climate.ecobee
-debug_cardmod: true
-style: 
-  |
-    ha-card {
-        --st-mode-background: rgb(0,0,0,0);
-    }
+entity: climate.home
+style: |
+  ha-card {
+    --st-mode-background: #000000;
+    --st-mode-active-color: rgba(255,255,255,.87);
+  }
 icon:
   heat: mdi:fire
   cool: mdi:snowflake
@@ -14,7 +13,7 @@ icon:
 step_size: 1
 decimals: 0
 sensors:
-  - entity: sensor.ecobee_humidity
+  - entity: sensor.home_humidity
     name: Humidity
 control:
   - hvac
