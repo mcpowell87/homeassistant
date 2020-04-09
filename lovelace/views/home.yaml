@@ -3,24 +3,20 @@ path: default_view
 title: Home
 icon: mdi:home
 badges:
-  - entity: sensor.ecobee_temperature
+  - entity: sensor.home_temperature
     name: Temperature
   - alarm_control_panel.alexa_guard 
   - person.mike
   - person.trish
 cards:
+  - type: custom:search-card
   - type: custom:weather-card
     entity: weather.weather
   - !include ../cards/thermostat.yaml
-  - type: custom:search-card
-  - type: glance
-    entities:
-      - entity: binary_sensor.front_door_sensor
-        name: Front Door
-      - entity: binary_sensor.back_door_sensor
-        name: Back Door
-      - entity: binary_sensor.basement_door_sensor
-        name: Basement Door
+  - type: horizontal-stack
+    cards:
+      - !include ../cards/doors_state.yaml
+      - !include ../cards/windows_state.yaml
   - type: glance
     entities:
     - name: Living Room
@@ -46,7 +42,6 @@ cards:
     camera_image: camera.front_door
   - !include ../cards/neato.yaml
   - !include ../cards/washer_dryer.yaml
-  - !include ../cards/windows_state.yaml
   - type: entities
     entities:
       - sensor.garbage

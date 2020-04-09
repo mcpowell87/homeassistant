@@ -3,9 +3,9 @@ path: livingroom
 icon: mdi:sofa
 title: Living Room
 badges:
-  - entity: sensor.living_room_ecobee_sensor_temperature
+  - entity: sensor.living_room_temperature
     name: Temperature
-  - entity: binary_sensor.living_room_ecobee_sensor_occupancy
+  - entity: binary_sensor.living_room_occupancy
     name: Occupancy
 cards:
 #  - type: custom:banner-card
@@ -16,13 +16,13 @@ cards:
 #        name: Lamp
 #        action:
 #          service: light.toggle
-#      - entity: binary_sensor.living_room_ecobee_sensor_occupancy
+#      - entity: binary_sensor.living_room_occupancy
 #        name: Occupancy
 #        image: true
 #        map_state:
 #          "off": mdi:walk
 #          "on": mdi:home-account
-#      - entity: sensor.living_room_ecobee_sensor_temperature
+#      - entity: sensor.living_room_temperature
 #        name: Temperature
   - !include ../cards/roku_living_room.yaml
   - type: conditional

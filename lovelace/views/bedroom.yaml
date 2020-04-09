@@ -3,9 +3,9 @@ path: bedroom
 icon: mdi:hotel
 title: Bedroom
 badges:
-  - entity: sensor.bedroom_ecobee_sensor_temperature
+  - entity: sensor.bedroom_temperature
     name: Temperature
-  - entity: binary_sensor.bedroom_ecobee_sensor_occupancy
+  - entity: binary_sensor.bedroom_occupancy
     name: Occupancy
 cards:
   - type: entities

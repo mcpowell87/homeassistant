@@ -3,7 +3,7 @@ type: custom:simple-thermostat
 entity: climate.home
 style: |
   ha-card {
-    --st-mode-background: #000000;
+    --st-mode-background: rgba(255,255,255,0);
     --st-mode-active-color: rgba(255,255,255,.87);
   }
 icon:

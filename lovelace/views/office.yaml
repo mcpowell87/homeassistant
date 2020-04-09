@@ -3,9 +3,9 @@ path: office
 icon: mdi:desk-lamp
 title: Office
 badges:
-  - entity: sensor.office_ecobee_sensor_temperature
+  - entity: sensor.office_temperature
     name: Temperature
-  - entity: binary_sensor.office_ecobee_sensor_occupancy
+  - entity: binary_sensor.office_occupancy
     name: Occupancy
 cards:
   - type: custom:mini-graph-card

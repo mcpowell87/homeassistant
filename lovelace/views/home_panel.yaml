@@ -31,22 +31,22 @@ cards:
               name: Humidity
         - type: glance
           entities:
-            - entity: sensor.living_room_ecobee_sensor_temperature
+            - entity: sensor.living_room_temperature
               name: Living Room
               icon: mdi:sofa
         - type: glance
           entities:
-            - entity: sensor.bedroom_ecobee_sensor_temperature
+            - entity: sensor.bedroom_temperature
               name: Bedroom
               icon: mdi:bed-king
         - type: glance
           entities:
-            - entity: sensor.office_ecobee_sensor_temperature
+            - entity: sensor.office_temperature
               name: Office
               icon: mdi:desk-lamp
         - type: glance
           entities:
-            - entity: sensor.dining_room_ecobee_sensor_temperature
+            - entity: sensor.dining_room_temperature
               name: Dining Room
               icon: mdi:table-chair
     - type: horizontal-stack
