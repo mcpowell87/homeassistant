@@ -6,83 +6,138 @@ panel: true
 cards:
   - type: vertical-stack
     cards:
-    - type: custom:simple-weather-card
-      entity: weather.weather
     - type: horizontal-stack
       cards:
-        - type: glance
-          entities:
-            - alarm_control_panel.alexa_guard
-        - type: glance
-          entities:
-            - person.mike
-        - type: glance
-          entities:
-            - person.trish
+        - type: custom:vertical-stack-in-card
+          cards:
+            - type: horizontal-stack
+              style: |
+                ha-card {
+                  padding: 20px;
+                }
+              cards:
+                - type: custom:button-card
+                  entity: alarm_control_panel.alexa_guard
+                  show_state: true
+                  show_name: false
+                  color_type: icon
+                  state:
+                    - value: armed_away
+                      color: var(--label-badge-green)
+                    - value: disarmed
+                      color: var(--label-badge-yellow)
+                - !include ../cards/doors_state.yaml
+                - !include ../cards/windows_state.yaml
+        - !include ../cards/whos_home.yaml
     - type: horizontal-stack
       cards:
-        - type: glance
-          entities:
-            - entity: sensor.ecobee_temperature
-              name: Home
-        - type: glance
-          entities:
-            - entity: sensor.ecobee_humidity
-              name: Humidity
-        - type: glance
-          entities:
-            - entity: sensor.living_room_temperature
+        - type: vertical-stack
+          cards:
+            ### Living Room ###
+            - type: custom:button-card
               name: Living Room
-              icon: mdi:sofa
-        - type: glance
-          entities:
-            - entity: sensor.bedroom_temperature
+              styles:
+                name:
+                  - font-weight: bold
+                  - font-size: 14px
+                  - color: white
+                  - align-self: middle
+                  - padding-bottom: 4px
+                card:
+                  - height: 20px
+            - type: horizontal-stack
+              cards:
+                - type: custom:mini-graph-card
+                  show:
+                    icon: false
+                    extrema: true
+                    name: false
+                  entities: 
+                    - entity: sensor.living_room_temperature
+                - type: light
+                  entity: light.living_room_lamp
+                  icon: mdi:floor-lamp
+        ### Bedroom ###
+        - type: vertical-stack
+          cards:
+            - type: custom:button-card
               name: Bedroom
-              icon: mdi:bed-king
-        - type: glance
-          entities:
-            - entity: sensor.office_temperature
-              name: Office
-              icon: mdi:desk-lamp
-        - type: glance
-          entities:
-            - entity: sensor.dining_room_temperature
-              name: Dining Room
-              icon: mdi:table-chair
+              styles:
+                name:
+                  - font-weight: bold
+                  - font-size: 14px
+                  - color: white
+                  - align-self: middle
+                  - padding-bottom: 4px
+                card:
+                  - height: 20px
+            - type: horizontal-stack
+              cards:
+                - type: custom:mini-graph-card
+                  show:
+                    icon: false
+                    extrema: true
+                    name: false
+                  entities: 
+                    - entity: sensor.bedroom_temperature
+                - type: light
+                  entity: light.bedroom
+                  icon: mdi:lamp
+    - type: horizontal-stack
+      cards:
+        - type: vertical-stack
+          cards:
+            ### Other ###
+            - type: custom:button-card
+              name: Other
+              styles:
+                name:
+                  - font-weight: bold
+                  - font-size: 14px
+                  - color: white
+                  - align-self: middle
+                card:
+                  - height: 20px
+            - type: horizontal-stack
+              cards:
+                - type: custom:mini-graph-card
+                  name: Dining Room
+                  show:
+                    icon: false
+                    extrema: true
+                  entities: 
+                    - entity: sensor.dining_room_temperature
+                - type: custom:mini-graph-card
+                  name: Office
+                  show:
+                    icon: false
+                    extrema: true
+                  entities: 
+                    - entity: sensor.office_temperature
+            ### Outside ###
+        - type: vertical-stack
+          cards:
+            - type: custom:button-card
+              name: Outside
+              styles:
+                name:
+                  - font-weight: bold
+                  - font-size: 14px
+                  - color: white
+                  - align-self: middle
+                  - padding-bottom: 4px
+                card:
+                  - height: 20px
+            - type: horizontal-stack
+              cards:
+                - type: light
+                  entity: light.front_porch_light
+                  icon: mdi:coach-lamp
+                - type: light
+                  entity: light.back_patio_light
+                  icon: mdi:coach-lamp
     - type: horizontal-stack
       cards:
         - !include ../cards/windows_state.yaml
         - !include ../cards/doors_state.yaml
-    - type: horizontal-stack
-      cards:
-        - entity: light.front_porch_light
-          name: Front Porch
-          icon: mdi:coach-lamp
-          type: entity-button
-        - entity: light.back_patio_light
-          name: Back Patio
-          icon: mdi:coach-lamp
-          type: entity-button
-        - entity: light.living_room
-          icon: mdi:floor-lamp
-          type: entity-button
-        - entity: light.bedroom
-          icon: mdi:bed-king
-          type: entity-button
-    - type: horizontal-stack
-      cards:
-        - type: custom:slider-entity-row
-          entity: light.front_porch_light
-          full_row: true
-        - type: custom:slider-entity-row
-          entity: light.back_patio_light
-          full_row: true
-        - type: custom:slider-entity-row
-          entity: light.living_room
-          full_row: true
-        - type: custom:slider-entity-row
-          entity: light.bedroom
-          full_row: true
-    - type: horizontal-stack
-      cards:
         - !include ../cards/washer_dryer.yaml

@@ -1,0 +1,7 @@
+---
+path: doors
+icon: mdi:door-open
+title: Open Doors
+badges: []
+cards:
+  - !include ../cards/open_doors.yaml

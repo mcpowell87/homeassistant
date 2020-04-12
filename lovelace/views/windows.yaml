@@ -1,0 +1,7 @@
+---
+path: windows
+icon: mdi:window-open
+title: Open Windows
+badges: []
+cards:
+  - !include ../cards/open_windows.yaml

@@ -1,0 +1,11 @@
+---
+type: entity-filter
+entities:
+  - person.mike
+  - person.trish
+state_filter:
+  - home
+card:
+  type: glance
+  title: Who's Home
+  show_state: false

@@ -2,7 +2,6 @@ type: custom:vertical-stack-in-card
 title: 
 cards:
   - entity: sensor.open_window_count
-    scale: 15px
     name: >
       [[[
         if (entity.state == 1) 
@@ -12,4 +11,7 @@ cards:
         else
           return "All windows closed."
       ]]]
+    tap_action: 
+      action: navigate
+      navigation_path: /lovelace/windows
     type: 'custom:button-card'
