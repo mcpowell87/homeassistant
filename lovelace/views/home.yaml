@@ -1,7 +1,7 @@
 ---
 title: Home
 icon: mdi:home
-path: mobile-dashboard
+path: default_view
 badges:
   - alarm_control_panel.alexa_guard 
   - person.mike
@@ -50,6 +50,14 @@ cards:
             entity: light.living_room_lamp
             name: Lamp
             icon: mdi:floor-lamp
+      - type: conditional
+        conditions:
+          - entity: media_player.plex_roku_ultra
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.plex_roku_ultra
+          name: Plex
   ### Bedroom ###
   - type: vertical-stack
     cards:
