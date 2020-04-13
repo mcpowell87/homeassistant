@@ -5,11 +5,9 @@ title: Status
 badges: []
 cards:
   - type: entities
-    title: Battery Levels
+    title: Doors
     show_header_toggle: false
     entities:
-      - type: section
-        label: Doors
       - type: custom:battery-entity
         entity: sensor.front_door_sensor_battery
         name: Front Door
@@ -19,16 +17,20 @@ cards:
       - type: custom:battery-entity
         entity: sensor.basement_door_sensor_battery
         name: Basement Door
-      - type: section
-        label: Leak Sensors
+  - type: entities
+    title: Leak Sensors
+    show_header_toggle: false
+    entities:
       - type: custom:battery-entity
         entity: sensor.basement_leak_sensor_battery
         name: Basement Leak Sensor
       - type: custom:battery-entity
         entity: sensor.washer_leak_sensor_battery
         name: Washer Leak Sensor
-      - type: section
-        label: Windows
+  - type: entities
+    title: Windows
+    show_header_toggle: false
+    entities:
       - type: custom:battery-entity
         entity: sensor.kitchen_window_sensor_battery
         name: Kitchen Window
@@ -38,6 +40,15 @@ cards:
       - type: custom:battery-entity
         entity: sensor.office_south_window_sensor_battery
         name: Office South Window
+      - type: custom:battery-entity
+        entity: sensor.office_east_window_sensor_battery
+        name: Office East Window
+      - type: custom:battery-entity
+        entity: sensor.living_room_left_window_sensor_battery
+        name: Living Room Left Window
+      - type: custom:battery-entity
+        entity: sensor.living_room_right_window_sensor_battery
+        name: Living Room Right Window
   - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
