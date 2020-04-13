@@ -9,3 +9,4 @@ card:
   type: glance
   title: Who's Home
   show_state: false
+  show_name: false

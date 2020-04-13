@@ -1,7 +1,0 @@
-type: entity-filter
-entities:
-  - binary_sensor.front_door_sensor
-  - binary_sensor.back_door_sensor
-  - binary_sensor.basement_door_sensor
-state_filter:
-  - "on"

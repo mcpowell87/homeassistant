@@ -4,4 +4,12 @@ icon: mdi:door-open
 title: Open Doors
 badges: []
 cards:
-  - !include ../cards/open_doors.yaml
+  - type: entity-filter
+    show_empty: false
+    entities:
+      - binary_sensor.front_door_sensor
+      - binary_sensor.back_door_sensor
+      - binary_sensor.basement_door_sensor
+    state_filter:
+      - "on"
+  # ToDo: Add conditional card to show message when empty.  Optional back button.

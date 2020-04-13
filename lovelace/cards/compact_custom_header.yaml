@@ -11,5 +11,4 @@ exceptions:
     config:
       swipe: true
       options: clock
-      swipe_animate: swipe
-      hide_tabs: 0, 1, 2, 3, 4, 5
+      hide_tabs: 1, 3

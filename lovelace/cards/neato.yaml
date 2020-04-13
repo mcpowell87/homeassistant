@@ -17,66 +17,66 @@ elements:
       transform: initial
       padding: 0 8px
   # Start/Stop
-  - type: icon
-    icon: mdi:play-pause
-    tap_action: 
-      action: call-service
-      service: script.vacuum_toggle
-    style:
-      bottom: 0
-      right: 0
-      transform: initial
-      color: white
-      line-height: 32px
-      padding: 8px
-      margin: 0 110px 0 0
+  #- type: icon
+  #  icon: mdi:play-pause
+  #  tap_action: 
+  #    action: call-service
+  #    service: script.vacuum_toggle
+  #  style:
+  #    bottom: 0
+  #    right: 0
+  #    transform: initial
+  #    color: white
+  #    line-height: 32px
+  #    padding: 8px
+  #    margin: 0 110px 0 0
   # Return Home
-  - type: icon
-    icon: mdi:home
-    tap_action: 
-      action: call-service
-      service: vacuum.return_to_base
-      service_data:
-        entity_id: vacuum.alfred
-    entity: vacuum.alfred
-    style:
-      bottom: 0
-      right: 0
-      transform: initial
-      color: white
-      line-height: 32px
-      padding: 8px
-      margin: 0 80px 0 0
+  #- type: icon
+  #  icon: mdi:home
+  #  tap_action: 
+  #    action: call-service
+  #    service: vacuum.return_to_base
+  #    service_data:
+  #      entity_id: vacuum.alfred
+  #  entity: vacuum.alfred
+  #  style:
+  #    bottom: 0
+  #    right: 0
+  #    transform: initial
+  #    color: white
+  #    line-height: 32px
+  #    padding: 8px
+  #    margin: 0 80px 0 0
   # Find
-  - type: icon
-    icon: mdi:bell-ring
-    entity: vacuum.alfred
-    tap_action: 
-      action: call-service
-      service: vacuum.locate
-      service_data:
-        entity_id: vacuum.alfred
-    style:
-      bottom: 0
-      right: 0
-      transform: initial
-      color: white
-      line-height: 32px
-      padding: 8px
-      margin: 0 50px 0 0
+  #- type: icon
+  #  icon: mdi:bell-ring
+  #  entity: vacuum.alfred
+  #  tap_action: 
+  #    action: call-service
+  #    service: vacuum.locate
+  #    service_data:
+  #      entity_id: vacuum.alfred
+  #  style:
+  #    bottom: 0
+  #    right: 0
+  #    transform: initial
+  #    color: white
+  #    line-height: 32px
+  #    padding: 8px
+  #    margin: 0 50px 0 0
   # Schedule
-  - type: state-icon
-    entity: switch.alfred_schedule
-    tap_action: 
-      action: toggle
-    style:
-      bottom: 0
-      right: 0
-      transform: initial
-      color: white
-      line-height: 32px
-      padding: 8px
-      margin: 0 15px -4px 0
+  #- type: state-icon
+  #  entity: switch.alfred_schedule
+  #  tap_action: 
+  #    action: toggle
+  #  style:
+  #    bottom: 0
+  #    right: 0
+  #    transform: initial
+  #    color: white
+  #    line-height: 32px
+  #    padding: 8px
+  #    margin: 0 15px -4px 0
   # Map
   - type: icon
     icon: mdi:map
