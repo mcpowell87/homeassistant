@@ -1,5 +1,6 @@
 ---
 type: custom:vertical-stack-in-card
+title: Laundry
 cards:
   - type: horizontal-stack
     cards:
