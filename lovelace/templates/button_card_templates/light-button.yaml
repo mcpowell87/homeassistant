@@ -1,4 +1,11 @@
 ---
 aspect_ratio: 1/1
+color_type: card
 hold_action:
   action: more-info
+show_label: true
+label: >
+  [[[
+    var bri = entity.attributes.brightness;
+    return Math.round(bri ? (bri/254)*100 : '0') + '%';
+  ]]]

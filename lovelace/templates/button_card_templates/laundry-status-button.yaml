@@ -1,0 +1,12 @@
+---
+aspect_ratio: 1/1
+show_state: true
+show_name: false
+show_label: true
+tap_action:
+  action: none
+layout: vertical
+styles:
+  label:
+    - text-transform: uppercase
+    - font-size: 75%

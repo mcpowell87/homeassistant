@@ -133,5 +133,8 @@ cards:
       - type: custom:button-card
         template: button-card-headers
         name: Household
-      - !include ../cards/washer_dryer.yaml
+      - type: horizontal-stack
+        cards:
+          - !include ../cards/washer.yaml
+          - !include ../cards/dryer.yaml
       - !include ../cards/neato.yaml
