@@ -1,0 +1,11 @@
+---
+# Sets the home assistant theme on restart.
+- alias: Set Theme
+  trigger:
+    - platform: homeassistant
+      event: start
+  condition: []
+  action:
+    - service: frontend.set_theme
+      data:
+        name: "ios-dark-mode"

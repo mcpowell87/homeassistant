@@ -28,27 +28,21 @@ cards:
     cards:
       - type: custom:button-card
         name: Living Room
-        styles:
-          name:
-            - font-weight: bold
-            - font-size: 14px
-            - color: white
-            - align-self: middle
-            - padding-bottom: 4px
-          card:
-            - height: 20px
+        template: button-card-headers
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
+            aspect_ratio: 1/1
             show:
               icon: false
               extrema: true
               name: false
             entities: 
               - entity: sensor.living_room_temperature
-          - type: light
+          - type: custom:button-card
+            template: light-button
             entity: light.living_room_lamp
-            name: Lamp
+            show_name: false
             icon: mdi:floor-lamp
       - type: conditional
         conditions:
@@ -62,91 +56,82 @@ cards:
   - type: vertical-stack
     cards:
       - type: custom:button-card
+        template: button-card-headers
         name: Bedroom
-        styles:
-          name:
-            - font-weight: bold
-            - font-size: 14px
-            - color: white
-            - align-self: middle
-            - padding-bottom: 4px
-          card:
-            - height: 20px
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
+            aspect_ratio: 1/1
             show:
               icon: false
               extrema: true
               name: false
             entities: 
               - entity: sensor.bedroom_temperature
-          - type: light
+          - type: custom:button-card
+            template: light-button
+            show_name: false
             entity: light.bedroom
             icon: mdi:lamp
+  ### Office ###
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        template: button-card-headers
+        name: Office
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            aspect_ratio: 1/1
+            show:
+              icon: false
+              extrema: true
+              name: false
+            entities: 
+              - entity: sensor.office_temperature
+          - type: custom:button-card
+            template: light-button
+            entity: light.office_lamp
+            show_name: false
+            icon: mdi:desk-lamp
   ### Other ###
   - type: vertical-stack
     cards:
       - type: custom:button-card
+        template: button-card-headers
         name: Other
-        styles:
-          name:
-            - font-weight: bold
-            - font-size: 14px
-            - color: white
-            - align-self: middle
-          card:
-            - height: 20px
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card
+            aspect_ratio: 1/1
             name: Dining Room
             show:
               icon: false
               extrema: true
             entities: 
               - entity: sensor.dining_room_temperature
-          - type: custom:mini-graph-card
-            name: Office
-            show:
-              icon: false
-              extrema: true
-            entities: 
-              - entity: sensor.office_temperature
   ### Outside ###
   - type: vertical-stack
     cards:
       - type: custom:button-card
+        template: button-card-headers
         name: Outside
-        styles:
-          name:
-            - font-weight: bold
-            - font-size: 14px
-            - color: white
-            - align-self: middle
-            - padding-bottom: 4px
-          card:
-            - height: 20px
       - type: horizontal-stack
         cards:
-          - type: light
+          - type: custom:button-card
+            template: light-button
             entity: light.front_porch_light
+            name: Front Porch
             icon: mdi:coach-lamp
-          - type: light
+          - type: custom:button-card
+            template: light-button
             entity: light.back_patio_light
+            name: Back Patio
             icon: mdi:coach-lamp
   - type: vertical-stack
     cards:
       - type: custom:button-card
+        template: button-card-headers
         name: Household
-        styles:
-          name:
-            - font-weight: bold
-            - font-size: 14px
-            - color: white
-            - align-self: middle
-            - padding-bottom: 4px
-          card:
-            - height: 20px
       - !include ../cards/washer_dryer.yaml
       - !include ../cards/neato.yaml

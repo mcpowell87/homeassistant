@@ -11,6 +11,7 @@ alexa:
         - light.bedroom_lamp_right
         - light.living_room_lamp
         - light.front_porch_light
+        - light.office_lamp
       exclude_domains:
         - alert
         - automation

@@ -1,0 +1,7 @@
+styles:
+  card:
+    - text-transform: uppercase
+    - font-size: 125%
+    - font-weight: 100
+    - height: 20px
+    - letter-spacing: 10px
