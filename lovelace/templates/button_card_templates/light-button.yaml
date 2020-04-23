@@ -6,6 +6,8 @@ hold_action:
 show_label: true
 label: >
   [[[
-    var bri = entity.attributes.brightness;
-    return Math.round(bri ? (bri/254)*100 : '0') + '%';
+    if (entity && entity.attributes && entity.attributes.brightness) {
+      return Math.round((entity.attributes.brightness/254)*100) + '%';
+    }
+    return "OFF"
   ]]]
