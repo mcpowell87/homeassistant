@@ -3,5 +3,5 @@ styles:
     - text-transform: uppercase
     - font-size: 125%
     - font-weight: 100
-    - height: 20px
-    - letter-spacing: 10px
+    - height: 25px
+    - letter-spacing: 8px
