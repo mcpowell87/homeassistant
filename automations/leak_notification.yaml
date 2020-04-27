@@ -1,0 +1,14 @@
+---
+- alias: Leak Sensor - Notify when leak detected
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.basement_leak_sensor
+          - binary_sensor.washer_leak_sensor
+        from: "off"
+        to: "on"
+    action:
+      - service: notify.notify
+        data:
+          message: '{{ trigger.to_state.attributes.friendly_name }} detected a water leak.'
+          title: 'Water Leak Detected'

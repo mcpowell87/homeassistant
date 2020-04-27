@@ -1,0 +1,11 @@
+---
+layout: icon_label
+aspect_ratio: 8/1
+show_state: false
+show_name: false
+show_label: true
+styles:
+  card:
+    - font-size: 125%
+    - color: var(--label-badge-text-color)
+    - background: var(--label-badge-red)

@@ -1,0 +1,11 @@
+---
+card:
+  type: conditional
+  conditions:
+    - entity: '[[entity]]'
+      state: '[[active_state]]'
+  card:
+    type: custom:button-card
+    entity: '[[entity]]'
+    label: '[[label]]'
+    template: alert-banner
