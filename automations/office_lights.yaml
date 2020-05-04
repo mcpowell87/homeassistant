@@ -1,0 +1,12 @@
+---
+# Toggle office lights when button is clicked.
+- alias: Office Button - Toggle office lights
+  trigger:
+    platform: event
+    event_type: zha_event
+    event_data:
+      device_ieee: 28:6d:97:00:01:02:1a:ee
+      command: button_single
+  action:
+    service: homeassistant.toggle
+    entity_id: light.office_lamp

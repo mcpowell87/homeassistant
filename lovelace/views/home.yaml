@@ -83,19 +83,60 @@ cards:
             entity: light.office_lamp
             show_name: false
             icon: mdi:desk-lamp
-  ### Other ###
+  ### Dining Room ###
   - type: vertical-stack
     cards:
       - type: custom:button-card
         template: button-card-headers
-        name: Other
+        name: Dining Room
       - type: horizontal-stack
         cards:
           - type: custom:decluttering-card
             template: temp-graph
             variables:
               - entity: sensor.dining_room_temperature
-              - name: Dining Room
+      - type: conditional
+        conditions:
+          - entity: media_player.plex_dining_room_roku
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.plex_dining_room_roku
+          name: Plex
+    ### Basement ###
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        template: button-card-headers
+        name: Basement
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: light-button
+            entity: group.basement_lights
+            show_name: false
+            icon: mdi:ceiling-light
+      - type: conditional
+        conditions:
+          - entity: media_player.plex_basement_tv
+            state_not: "unavailable"
+        card:
+          type: media-control
+          entity: media_player.plex_basement_tv
+          name: Plex
+  ### Upstairs ###
+  - type: vertical-stack
+    cards:
+      - type: custom:button-card
+        template: button-card-headers
+        name: Upstairs
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: temp-graph
+            variables:
+              - entity: sensor.spare_room_temperature
+              - name: Spare Room
           - type: custom:decluttering-card
             template: temp-graph
             variables:

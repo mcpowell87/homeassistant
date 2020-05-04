@@ -27,6 +27,12 @@ cards:
       - type: custom:battery-entity
         entity: sensor.washer_leak_sensor_battery
         name: Washer Leak Sensor
+      - type: custom:battery-entity
+        entity: sensor.kitchen_sink_leak_sensor_battery
+        name: Kitchen Sink Leak Sensor
+      - type: custom:battery-entity
+        entity: sensor.downstairs_bathroom_sink_leak_sensor_battery
+        name: Downstairs Bathroom Leak Sensor
   - type: entities
     title: Windows
     show_header_toggle: false
@@ -49,6 +55,24 @@ cards:
       - type: custom:battery-entity
         entity: sensor.living_room_right_window_sensor_battery
         name: Living Room Right Window
+      - type: custom:battery-entity
+        entity: sensor.spare_room_south_window_sensor_battery
+        name: Spare Room South Window
+      - type: custom:battery-entity
+        entity: sensor.spare_room_north_window_sensor_battery
+        name: Spare Room North Window
+      - type: custom:battery-entity
+        entity: sensor.spare_room_east_window_sensor_battery
+        name: Spare Room East Window
+      - type: custom:battery-entity
+        entity: sensor.spare_bedroom_south_window_sensor_battery
+        name: Spare Bedroom South Window
+      - type: custom:battery-entity
+        entity: sensor.spare_bedroom_north_window_sensor_battery
+        name: Spare Bedoom North Window
+      - type: custom:battery-entity
+        entity: sensor.spare_bedroom_west_window_sensor_battery
+        name: Spare Bedroom West Window
   - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
