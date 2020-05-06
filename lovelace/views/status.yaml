@@ -34,6 +34,22 @@ cards:
         entity: sensor.downstairs_bathroom_sink_leak_sensor_battery
         name: Downstairs Bathroom Leak Sensor
   - type: entities
+    title: Buttons
+    show_header_toggle: false
+    entities:
+      - type: custom:battery-entity
+        entity: sensor.office_button_battery
+        name: Office Button
+      - type: custom:battery-entity
+        entity: sensor.living_room_button_battery
+        name: Living Room Button
+      - type: custom:battery-entity
+        entity: sensor.bedroom_button_battery
+        name: Bedroom Button
+      - type: custom:battery-entity
+        entity: sensor.basement_dimmer_battery
+        name: Basement Dimmer
+  - type: entities
     title: Windows
     show_header_toggle: false
     entities:
@@ -80,11 +96,62 @@ cards:
         entities:
           - entity: sensor.office_pc_power_switch_power
             name: Office PC
-            show_state: true
+            show:
+              state: true
       - type: custom:mini-graph-card
         icon: mdi:server
         entities:
           - entity: sensor.server_rack_power_switch_power
             name: Server Rack
+            show:
+              state: true
+  - type: vertical-stack
+    cards:
+      - type: custom:mini-graph-card
+        icon: mdi:power
+        entities:
+          - entity: sensor.energy_usage
+            name: Energy Usage
+            show:
+              state: true
+      - type: custom:mini-graph-card
+        icon: mdi:power
+        hours_to_show: 168
+        aggregate_func: max
+        group_by: date
+        show:
+          graph: bar
+          state: true
+        entities:
+          - entity: sensor.daily_usage 
+            name: 7-day usage
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            aspect_ratio: 1/1
+            show_icon: false
+            name: Week to date
+            entity: sensor.weekly_usage
             show_state: true
-  - !include ../cards/washer_dryer.yaml
+            styles:
+              state:
+                - font-size: 150%
+          - type: custom:button-card
+            aspect_ratio: 1/1
+            show_icon: false
+            name: Month to date
+            entity: sensor.monthly_usage
+            show_state: true
+            styles:
+              state:
+                - font-size: 150%
+          - type: custom:button-card
+            aspect_ratio: 1/1
+            show_icon: false
+            name: Year to date
+            entity: sensor.yearly_usage
+            show_state: true
+            styles:
+              state:
+                - font-size: 150%
+      

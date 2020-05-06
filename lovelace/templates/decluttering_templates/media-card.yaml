@@ -1,0 +1,26 @@
+---
+card:
+  type: vertical-stack
+  cards:
+    - type: conditional
+      conditions:
+        - entity: '[[plex_entity]]'
+          state_not: "unavailable"
+      card:
+        type: media-control
+        entity: '[[plex_entity]]'
+        name: Plex
+    - type: conditional
+      conditions:
+        - entity: '[[roku_entity]]'
+          state_not: "unavailable"
+        - entity: '[[roku_entity]]'
+          state: "paused"
+        - entity: '[[roku_entity]]'
+          state: "playing"
+        - entity: '[[plex_entity]]'
+          state: "unavailable"
+      card:
+        type: media-control
+        entity: '[[roku_entity]]'
+        name: Roku

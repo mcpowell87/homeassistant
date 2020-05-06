@@ -41,14 +41,11 @@ cards:
             entity: light.living_room_lamp
             show_name: false
             icon: mdi:floor-lamp
-      - type: conditional
-        conditions:
-          - entity: media_player.plex_roku_ultra
-            state_not: "unavailable"
-        card:
-          type: media-control
-          entity: media_player.plex_roku_ultra
-          name: Plex
+      - type: custom:decluttering-card
+        template: media-card
+        variables:
+          - plex_entity: media_player.plex_roku_ultra
+          - roku_entity: media_player.roku_ultra
   ### Bedroom ###
   - type: vertical-stack
     cards:
@@ -66,6 +63,11 @@ cards:
             show_name: false
             entity: light.bedroom
             icon: mdi:lamp
+      - type: custom:decluttering-card
+        template: media-card
+        variables:
+          - plex_entity: media_player.plex_bedroom_roku
+          - roku_entity: media_player.bedroom_roku
   ### Office ###
   - type: vertical-stack
     cards:
@@ -95,14 +97,11 @@ cards:
             template: temp-graph
             variables:
               - entity: sensor.dining_room_temperature
-      - type: conditional
-        conditions:
-          - entity: media_player.plex_dining_room_roku
-            state_not: "unavailable"
-        card:
-          type: media-control
-          entity: media_player.plex_dining_room_roku
-          name: Plex
+      - type: custom:decluttering-card
+        template: media-card
+        variables:
+          - plex_entity: media_player.plex_dining_room_roku
+          - roku_entity: media_player.dining_room_roku
     ### Basement ###
   - type: vertical-stack
     cards:
