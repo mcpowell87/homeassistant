@@ -1,176 +1,71 @@
 ---
 type: picture-elements
-image: /local/image/neato_d4.jpg
+camera_image: /local/image/empty.png
 elements:
-  # Title and Program
-  - type: state-label
-    entity: sensor.vacuum_state
-    style:
-      left: 0
-      bottom: 0
-      pointer-events: none
-      font-size: 13px
-      line-height: 32px
-      color: white
-      background-color: rgba(0, 0, 0, 0.3)
-      width: 100%
-      transform: initial
-      padding: 0 8px
-  # Start/Stop
-  #- type: icon
-  #  icon: mdi:play-pause
-  #  tap_action: 
-  #    action: call-service
-  #    service: script.vacuum_toggle
-  #  style:
-  #    bottom: 0
-  #    right: 0
-  #    transform: initial
-  #    color: white
-  #    line-height: 32px
-  #    padding: 8px
-  #    margin: 0 110px 0 0
-  # Return Home
-  #- type: icon
-  #  icon: mdi:home
-  #  tap_action: 
-  #    action: call-service
-  #    service: vacuum.return_to_base
-  #    service_data:
-  #      entity_id: vacuum.alfred
-  #  entity: vacuum.alfred
-  #  style:
-  #    bottom: 0
-  #    right: 0
-  #    transform: initial
-  #    color: white
-  #    line-height: 32px
-  #    padding: 8px
-  #    margin: 0 80px 0 0
-  # Find
-  #- type: icon
-  #  icon: mdi:bell-ring
-  #  entity: vacuum.alfred
-  #  tap_action: 
-  #    action: call-service
-  #    service: vacuum.locate
-  #    service_data:
-  #      entity_id: vacuum.alfred
-  #  style:
-  #    bottom: 0
-  #    right: 0
-  #    transform: initial
-  #    color: white
-  #    line-height: 32px
-  #    padding: 8px
-  #    margin: 0 50px 0 0
-  # Schedule
-  #- type: state-icon
-  #  entity: switch.alfred_schedule
-  #  tap_action: 
-  #    action: toggle
-  #  style:
-  #    bottom: 0
-  #    right: 0
-  #    transform: initial
-  #    color: white
-  #    line-height: 32px
-  #    padding: 8px
-  #    margin: 0 15px -4px 0
-  # Map
-  - type: icon
-    icon: mdi:map
-    entity: camera.alfred_cleaning_map
-    style:
-      bottom: 0
-      right: 0
-      transform: initial
-      color: white
-      line-height: 32px
-      padding: 8px
-      margin: 0 0 0 0
-    # Translucent panel
-  - type: state-label
-    entity: sensor.alfred_battery
-    style:
-      top: 0
-      right: 0
-      transform: initial
-      pointer-events: none
-      color: rgba(0,0,0,0)
-      font-size: 0px
-      width: 115px
-      height: 105px
-      background-color: rgba(0,0,0,0.3)
-      line-height: 1px
-  # Battery
-  - type: state-label
-    entity: sensor.alfred_battery
-    style:
-      top: 0
-      right: 0
-      pointer-events: none
-      transform: initial
-      font-size: 12px
-      color: rgba(255,255,255,1)
-      text-shadow: rgba(0,0,0,0.8) 0px 0px 2px
-      line-height: 32px
-      margin: 1px 35px
   - type: state-icon
-    entity: sensor.alfred_battery
+    tap_action: toggle
+    entity: switch.alfred_schedule
     style:
-      top: 0
-      right: 0
-      pointer-events: none
-      transform: scale(0.8)
-      color: rgba(255,255,255,1)
-      line-height: 32px
-      margin: 3px 5px 0 0
-      --paper-item-icon-color: rgb(255,255,255)
-  # Last Run Date
+      top: 15%
+      left: 95%
+      "--paper-item-icon-color": rgb(115, 122, 130)
+      z-index: 1
   - type: state-label
-    entity: sensor.vacuum_last_run
+    entity: sensor.neato_battery
     style:
-      top: 0
-      right: 0
+      top: 70%
+      left: 0%
+      color: rgb(115, 122, 130)
+      transform: none
       pointer-events: none
-      transform: initial
-      font-size: 12px
-      color: rgba(255,255,255,1)
-      text-shaddow: rgba(0,0,0,0.8) 0px 0px 2px
-      line-height: 32px
-      margin: 30px 35px
-  - type: icon
-    icon: mdi:calendar-check
+      text-shadow: 1px 1px black
+      font-family: Trebuchet MS
+      font-size: 90%
+      font-weight: bold
+      border-left-style: solid
+      border-color: DeepSkyBlue
+      background-color: rgb(54, 65, 78)
+      z-index: 1
+  - type: image
+    entity: camera.alfred_cleaning_map
+    camera_image: camera.alfred_cleaning_map
+    tap_action: none
     style:
-      top: 0
-      right: 0
-      pointer-events: none
-      transform: scale(0.8)
-      color: rgba(255,255,255,1)
-      line-height: 32px
-      margin: 36px 13px
-  # Last Run Area
+      transform: none
+      top: 0%
+      left: 0%
+      width: 100%
+      height: 100%
+      z-index: 0
   - type: state-label
-    entity: sensor.vacuum_last_qm
+    entity: sensor.neato_status
     style:
-      top: 0
-      right: 0
+      top: 80%
+      left: 0%
+      color: rgb(115, 122, 130)
+      transform: none
       pointer-events: none
-      transform: initial
-      font-size: 12px
-      color: rgba(255,255,255,1)
-      text-shadow: rgba(0,0,0,0.8) 0px 0px 2px
-      line-height: 32px
-      margin: 59px 35px
-  # Floor Plan
-  - type: icon
-    icon: mdi:floor-plan
+      text-shadow: 1px 1px black
+      font-family: Trebuchet MS
+      font-size: 90%
+      font-weight: bold
+      border-left-style: solid
+      border-color: Tomato
+      background-color: rgb(54, 65, 78)
+      z-index: 1
+  - type: state-label
+    entity: sensor.neato_area
     style:
-      top: 0
-      right: 0
+      top: 90%
+      left: 0%
+      color: rgb(115, 122, 130)
+      transform: none
       pointer-events: none
-      transform: scale(0.8)
-      color: rgba(255,255,255,1)
-      line-height: 32px
-      margin: 65px 13px
+      text-shadow: 1px 1px black
+      font-family: Trebuchet MS
+      font-size: 90%
+      font-weight: bold
+      border-left-style: solid
+      border-color: GreenYellow
+      background-color: rgb(54, 65, 78)
+      z-index: 1

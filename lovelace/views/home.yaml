@@ -168,4 +168,3 @@ cards:
         cards:
           - !include ../cards/washer.yaml
           - !include ../cards/dryer.yaml
-      - !include ../cards/neato.yaml

@@ -9,3 +9,14 @@ sensors:
   vacuum_battery:
     value_template: "{{ states.vacuum.alfred.attributes.battery_level }} %"
     icon_template: "{{ states.vacuum.alfred.attributes.battery_icon }}"
+  neato_area:
+    friendly_name: "Neato: Area cleaned on last run"
+    value_template: "Area Cleaned: {{ states.vacuum.alfred.attributes.clean_area * 10.764 | round(1) }}"
+    unit_of_measurement: 'ft²'
+  neato_status:
+    friendly_name: "Neato: Status"
+    value_template: "Status: {{ states.vacuum.alfred.attributes.status }}"
+  neato_battery:
+    friendly_name: "Battery: neato"
+    value_template: "{{ states.vacuum.alfred.attributes.battery_level }}"
+    unit_of_measurement: '%'

@@ -154,4 +154,7 @@ cards:
             styles:
               state:
                 - font-size: 150%
-      
+  - type: custom:button-card
+    entity: camera.alfred_cleaning_map
+    show_entity_picture: true
+    show_name: false

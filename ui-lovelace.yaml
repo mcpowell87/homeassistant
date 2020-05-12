@@ -10,7 +10,5 @@ decluttering_templates: !include_dir_named lovelace/templates/decluttering_templ
 views:
   - !include /config/lovelace/views/home.yaml
   - !include /config/lovelace/views/status.yaml
-#  - !include /config/lovelace/views/log.yaml
-  - !include /config/lovelace/views/home_panel.yaml
   - !include /config/lovelace/views/doors.yaml
   - !include /config/lovelace/views/windows.yaml
