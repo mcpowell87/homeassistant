@@ -7,8 +7,13 @@ background: center / cover no-repeat url("/local/image/background.jpeg") fixed
 button_card_templates: !include_dir_named lovelace/templates/button_card_templates
 decluttering_templates: !include_dir_named lovelace/templates/decluttering_templates
 
+preload_cards:
+  - picture-entity
+  - entity-filter
+
 views:
   - !include /config/lovelace/views/home.yaml
+  - !include /config/lovelace/views/overview.yaml
   - !include /config/lovelace/views/status.yaml
   - !include /config/lovelace/views/doors.yaml
   - !include /config/lovelace/views/windows.yaml

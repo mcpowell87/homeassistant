@@ -23,7 +23,6 @@ cards:
       #      color: var(--label-badge-yellow)
       - !include ../cards/doors_state.yaml
       - !include ../cards/windows_state.yaml
-  #- !include ../cards/whos_home.yaml
   ### Living Room ###
   - type: vertical-stack
     cards:

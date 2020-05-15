@@ -4,6 +4,7 @@ icon: mdi:chart-line
 title: Status
 badges: []
 cards:
+  - !include ../cards/mail_and_packages.yaml
   - type: entities
     title: Doors
     show_header_toggle: false

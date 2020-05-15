@@ -5,4 +5,5 @@ collection_days:
   - mon
   - thu
 verbose_state: true
-#move_country_holidays: US
+move_country_holidays: US
+state: NY

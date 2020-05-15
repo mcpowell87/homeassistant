@@ -1,8 +1,8 @@
 ---
-name: Recycling
+name: Yard Waste
 frequency: weekly
 collection_days:
-  - thu
+  - wed
 verbose_state: true
 move_country_holidays: US
 state: NY
