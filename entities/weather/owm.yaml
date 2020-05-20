@@ -1,0 +1,7 @@
+---
+platform: openweathermap
+api_key: !secret owm_api_key
+name: owm
+mode: freedaily
+latitude: !secret zone_home_latitude
+longitude: !secret zone_home_longitude
