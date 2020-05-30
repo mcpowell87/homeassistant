@@ -1,0 +1,17 @@
+---
+aspect_ratio: 1/1
+hold_action:
+  action: more-info
+show_label: true
+label: >
+  [[[
+    if (entity && entity.attributes && entity.attributes.speed) {
+      return entity.attributes.speed.toUpperCase();
+    }
+    return "OFF"
+  ]]]
+icon: mdi:fan-off
+state:
+  - value: 'on'
+    icon: mdi:fan
+    spin: true

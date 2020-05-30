@@ -59,9 +59,12 @@ cards:
               - entity: sensor.bedroom_temperature
           - type: custom:button-card
             template: light-button
-            show_name: false
             entity: light.bedroom
             icon: mdi:lamp
+          - type: custom:button-card
+            show_name: false
+            entity: fan.bedroom_ceiling_fan
+            template: fan-button
       - type: custom:decluttering-card
         template: media-card
         variables:

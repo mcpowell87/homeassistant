@@ -12,12 +12,12 @@ alexa:
         - light.living_room_lamp
         - light.front_porch_light
         - light.office_lamp
+        - fan.bedroom_ceiling_fan
       exclude_domains:
         - alert
         - automation
         - camera
         - cover
-        - fan
         - group
         - input_boolean
         - light
