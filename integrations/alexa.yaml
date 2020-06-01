@@ -13,6 +13,8 @@ alexa:
         - light.front_porch_light
         - light.office_lamp
         - fan.bedroom_ceiling_fan
+        - fan.living_room_ceiling_fan
+        - light.kitchen_lights
       exclude_domains:
         - alert
         - automation

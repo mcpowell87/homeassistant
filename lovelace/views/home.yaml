@@ -40,6 +40,10 @@ cards:
             entity: light.living_room_lamp
             show_name: false
             icon: mdi:floor-lamp
+          - type: custom:button-card
+            show_name: false
+            entity: fan.living_room_ceiling_fan
+            template: fan-button
       - type: custom:decluttering-card
         template: media-card
         variables:
