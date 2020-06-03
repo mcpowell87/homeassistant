@@ -1,0 +1,13 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Kitchen
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: light-button
+        entity: light.kitchen_lights
+        show_name: false
+        icon: mdi:ceiling-light

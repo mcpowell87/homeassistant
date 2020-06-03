@@ -24,147 +24,19 @@ cards:
       - !include ../cards/doors_state.yaml
       - !include ../cards/windows_state.yaml
   ### Living Room ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        name: Living Room
-        template: button-card-headers
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.living_room_temperature
-          - type: custom:button-card
-            template: light-button
-            entity: light.living_room_lamp
-            show_name: false
-            icon: mdi:floor-lamp
-          - type: custom:button-card
-            show_name: false
-            entity: fan.living_room_ceiling_fan
-            template: fan-button
-      - type: custom:decluttering-card
-        template: media-card
-        variables:
-          - plex_entity: media_player.plex_roku_ultra
-          - roku_entity: media_player.roku_ultra
+  - !include ../cards/home/livingroom.yaml
   ### Bedroom ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Bedroom
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.bedroom_temperature
-          - type: custom:button-card
-            template: light-button
-            entity: light.bedroom
-            icon: mdi:lamp
-          - type: custom:button-card
-            show_name: false
-            entity: fan.bedroom_ceiling_fan
-            template: fan-button
-      - type: custom:decluttering-card
-        template: media-card
-        variables:
-          - plex_entity: media_player.plex_bedroom_roku
-          - roku_entity: media_player.bedroom_roku
+  - !include ../cards/home/bedroom.yaml
   ### Office ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Office
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.office_temperature
-          - type: custom:button-card
-            template: light-button
-            entity: light.office_lamp
-            show_name: false
-            icon: mdi:desk-lamp
+  - !include ../cards/home/office.yaml
   ### Dining Room ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Dining Room
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.dining_room_temperature
-      - type: custom:decluttering-card
-        template: media-card
-        variables:
-          - plex_entity: media_player.plex_dining_room_roku
-          - roku_entity: media_player.dining_room_roku
+  - !include ../cards/home/kitchendiningroom.yaml
     ### Basement ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Basement
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            template: light-button
-            entity: group.basement_lights
-            show_name: false
-            icon: mdi:ceiling-light
-      - type: conditional
-        conditions:
-          - entity: media_player.plex_basement_tv
-            state_not: "unavailable"
-        card:
-          type: media-control
-          entity: media_player.plex_basement_tv
-          name: Plex
+  - !include ../cards/home/basement.yaml
   ### Upstairs ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Upstairs
-      - type: horizontal-stack
-        cards:
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.spare_room_temperature
-              - name: Spare Room
-          - type: custom:decluttering-card
-            template: temp-graph
-            variables:
-              - entity: sensor.spare_bedroom_temperature
-              - name: Spare Bedroom
+  - !include ../cards/home/upstairs.yaml
   ### Outside ###
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Outside
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            template: light-button
-            entity: light.front_porch_light
-            name: Front Porch
-            icon: mdi:coach-lamp
-          - type: custom:button-card
-            template: light-button
-            entity: light.back_patio_light
-            name: Back Patio
-            icon: mdi:coach-lamp
+  - !include ../cards/home/outside.yaml
   - type: vertical-stack
     cards:
       - type: custom:button-card

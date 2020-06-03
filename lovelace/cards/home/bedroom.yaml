@@ -1,0 +1,26 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Bedroom
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temp-graph
+        variables:
+          - entity: sensor.bedroom_temperature
+      - type: custom:button-card
+        template: light-button
+        entity: light.bedroom
+        show_name: false
+        icon: mdi:lamp
+      - type: custom:button-card
+        show_name: false
+        entity: fan.bedroom_ceiling_fan
+        template: fan-button
+  - type: custom:decluttering-card
+    template: media-card
+    variables:
+      - plex_entity: media_player.plex_bedroom_roku
+      - roku_entity: media_player.bedroom_roku

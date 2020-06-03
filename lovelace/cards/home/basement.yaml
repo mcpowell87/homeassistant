@@ -1,0 +1,21 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Basement
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: light-button
+        entity: group.basement_lights
+        show_name: false
+        icon: mdi:ceiling-light
+  - type: conditional
+    conditions:
+      - entity: media_player.plex_basement_tv
+        state_not: "unavailable"
+    card:
+      type: media-control
+      entity: media_player.plex_basement_tv
+      name: Plex

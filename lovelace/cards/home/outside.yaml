@@ -1,0 +1,18 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Outside
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: light-button
+        entity: light.front_porch_light
+        name: Front Porch
+        icon: mdi:coach-lamp
+      - type: custom:button-card
+        template: light-button
+        entity: light.back_patio_light
+        name: Back Patio
+        icon: mdi:coach-lamp

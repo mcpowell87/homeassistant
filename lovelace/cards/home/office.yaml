@@ -1,0 +1,17 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Office
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: temp-graph
+        variables:
+          - entity: sensor.office_temperature
+      - type: custom:button-card
+        template: light-button
+        entity: light.office_lamp
+        show_name: false
+        icon: mdi:desk-lamp

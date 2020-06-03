@@ -1,0 +1,21 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Kitchen/Dining Room
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: light-button
+        entity: light.kitchen_lights
+        icon: mdi:ceiling-light
+      - type: custom:decluttering-card
+        template: temp-graph
+        variables:
+          - entity: sensor.dining_room_temperature
+  - type: custom:decluttering-card
+    template: media-card
+    variables:
+      - plex_entity: media_player.plex_dining_room_roku
+      - roku_entity: media_player.dining_room_roku
