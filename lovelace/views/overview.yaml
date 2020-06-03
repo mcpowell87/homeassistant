@@ -1,8 +1,0 @@
----
-path: overview
-title: Overview
-icon: mdi:home
-cards:
-  - !include ../cards/garbage_collection.yaml
-  - !include ../cards/mail_and_packages.yaml
-    

@@ -12,7 +12,6 @@ preload_cards:
 
 views:
   - !include /config/lovelace/views/home.yaml
-  - !include /config/lovelace/views/overview.yaml
   - !include /config/lovelace/views/status.yaml
   - !include /config/lovelace/views/doors.yaml
   - !include /config/lovelace/views/windows.yaml
