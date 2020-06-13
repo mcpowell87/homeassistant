@@ -1,4 +1,0 @@
----
-mqtt:
-  broker: !secret mqtt_broker
-  client_id: homeassistant
