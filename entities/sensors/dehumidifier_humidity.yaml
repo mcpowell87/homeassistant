@@ -1,0 +1,7 @@
+---
+platform: mqtt
+name: "Dehumidifier Humidity"
+state_topic: "home/sensor/dehumidifier/temp"
+value_template: "{{ value_json.humidity }}"
+device_class: humidity
+unit_of_measurement: '%'

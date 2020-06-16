@@ -1,0 +1,7 @@
+---
+platform: mqtt
+name: "Dehumidifier Bucket"
+payload_on: "full"
+payload_off: "empty"
+state_topic: "home/sensor/dehumidifier/bucket_status"
+value_template: "{{ value }}" 

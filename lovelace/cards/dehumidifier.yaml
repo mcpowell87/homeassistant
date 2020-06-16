@@ -1,0 +1,63 @@
+---
+type: custom:button-card
+entity: 'binary_sensor.dehumidifier'
+icon: 'mdi:air-purifier'
+color_type: card
+aspect_ratio: 1/1
+name: Dehumidifier
+styles:
+  card:
+    - padding: 10%
+    - font-size: 13px
+    - text-transform: capitalize
+  grid:
+    - grid-template-areas: '"i i" "n n" "temp temp" "humidity humidity" "bucket bucket"'
+    - grid-template-columns: 1fr 1fr
+    - grid-template-rows: 1fr min-content min-content min-conteSnt min-content
+  name:
+    - font-weight: bold
+    - font-size: 14px
+    - align-self: middle
+    - justify-self: start
+    - padding-bottom: 4px
+  img_cell:
+    - justify-content: start
+    - align-items: start
+    - margin: none
+  custom_fields:
+    temp:
+      - padding-bottom: 2px
+      - align-self: middle
+      - justify-self: start
+    humidity:
+      - padding-bottom: 2px
+      - align-self: middle
+      - justify-self: start
+      - --text-color-sensor: '[[[ if (states["sensor.dehumidifier_humidity"].state > 65) return "red"; ]]]'
+    bucket:
+      - align-self: middle
+      - justify-self: start
+      - --text-color-sensor: '[[[ if (states["binary_sensor.dehumidifier_bucket"].state == "on") return "red"; ]]]'
+      - animation: '[[[ if (states["binary_sensor.dehumidifier_bucket"].state == "on") return "blink 2s ease infinite"; else return "none"; ]]]'
+custom_fields:
+  temp: >
+    [[[
+      return `<ha-icon
+        icon="mdi:thermometer"
+        style="width: 12px; height: 12px;">
+        </ha-icon><span><span style="color: var(--text-color-sensor);">${states['sensor.dehumidifier_temperature'].state} °F</span></span>`
+    ]]]
+  humidity: >
+    [[[
+      return `<ha-icon
+        icon="mdi:water-percent"
+        style="width: 12px; height: 12px;">
+        </ha-icon><span><span style="color: var(--text-color-sensor);">${states['sensor.dehumidifier_humidity'].state}%</span></span>`
+    ]]]
+  bucket: >
+    [[[
+      return `<ha-icon
+        icon=${(states["binary_sensor.dehumidifier_bucket"].state == "on") ? "mdi:cup-water" : "mdi:cup-outline"}
+        style="width: 12px; height: 12px;">
+        </ha-icon><span><span style="color: var(--text-color-sensor);">${states['binary_sensor.dehumidifier_bucket'].state == "on" ? "Full" : "Empty"}</span></span>`
+    ]]]
