@@ -1,0 +1,7 @@
+---
+    type: custom:decluttering-card
+    template: binary_sensor_alert
+    variables:
+      - entity: binary_sensor.dehumidifier_bucket
+      - label: Dehumidifier Full
+      - active_state: "on"
