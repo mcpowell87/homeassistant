@@ -11,6 +11,7 @@ cards:
         entity: group.basement_lights
         show_name: false
         icon: mdi:ceiling-light
+      - !include ../dehumidifier.yaml
   - type: conditional
     conditions:
       - entity: media_player.plex_basement_tv
