@@ -1,12 +1,14 @@
 ---
 default:
   - name: false
+  - font-size: 100
 card:
   type: custom:mini-graph-card
   hours_to_show: 24
   points_per_hour: .5
   name: '[[name]]'
   aspect_ratio: 1/1
+  font_size: '[[font-size]]'
   show:
     icon: false
     name: '[[name]]'

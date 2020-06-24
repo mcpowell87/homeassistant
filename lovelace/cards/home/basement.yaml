@@ -11,7 +11,28 @@ cards:
         entity: group.basement_lights
         show_name: false
         icon: mdi:ceiling-light
-      - !include ../dehumidifier.yaml
+      - type: custom:decluttering-card
+        template: temp-graph
+        variables:
+          - entity: sensor.dehumidifier_temperature
+          - font-size: 50
+      - type: custom:button-card
+        aspect_ratio: 1/1
+        show_name: false
+        entity: sensor.dehumidifier_humidity
+        show_state: true
+      - type: custom:button-card
+        aspect_ratio: 1/1
+        icon: mdi:air-purifier
+        entity: binary_sensor.dehumidifier
+        color_type: card
+        show_state: false
+        show_name: true
+        name: >
+          [[[
+            return `${states['binary_sensor.dehumidifier_bucket'].state == "on" ? "Full" : "Empty"}`
+          ]]]
+      #- !include ../dehumidifier.yaml
   - type: conditional
     conditions:
       - entity: media_player.plex_basement_tv
