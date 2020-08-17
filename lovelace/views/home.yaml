@@ -9,6 +9,9 @@ badges:
 cards:
   - !include ../cards/alerts.yaml
   - type: custom:search-card
+  - type: picture-entity
+    entity: camera.front_door
+    camera_view: auto
   - type: horizontal-stack
     cards:
       #- type: custom:button-card

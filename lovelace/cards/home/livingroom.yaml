@@ -23,4 +23,3 @@ cards:
     template: media-card
     variables:
       - plex_entity: media_player.plex_roku_ultra
-      - roku_entity: media_player.roku_ultra

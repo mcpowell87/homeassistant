@@ -1,5 +1,0 @@
----
-hue:
-        bridges:
-                - host: 10.0.4.182
-                  allow_unreachable: true
