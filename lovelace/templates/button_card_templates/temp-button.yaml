@@ -6,7 +6,7 @@ show_state: true
 units: <span style="font-size:60%;opacity:.75;font-weight:400;margin-left:-.25rem;">°F</span>
 styles:
   state:
-    - font-size: 200%
+    - font-size: 150%
     - font-weight: 300
   icon:
     - height: 50%
