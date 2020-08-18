@@ -8,6 +8,8 @@ label: >
   [[[
     if (entity && entity.attributes && entity.attributes.brightness) {
       return Math.round((entity.attributes.brightness/254)*100) + '%';
+    } else if (entity && entity.state === "on") {
+      return "ON"
     }
     return "OFF"
   ]]]
