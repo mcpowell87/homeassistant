@@ -11,11 +11,10 @@ cards:
         entity: group.basement_lights
         show_name: false
         icon: mdi:ceiling-light
-      - type: custom:decluttering-card
-        template: temp-graph
-        variables:
-          - entity: sensor.dehumidifier_temperature
-          - font-size: 50
+      - type: custom:button-card
+        template: temp-button
+        entity: sensor.dehumidifier_temperature
+        show_name: false
       - type: custom:button-card
         aspect_ratio: 1/1
         show_name: false

@@ -10,10 +10,10 @@ cards:
         template: light-button
         entity: light.kitchen_lights
         icon: mdi:ceiling-light
-      - type: custom:decluttering-card
-        template: temp-graph
-        variables:
-          - entity: sensor.dining_room_temperature
+      - type: custom:button-card
+        template: temp-button
+        entity: sensor.dining_room_temperature
+        show_name: false
   - type: custom:decluttering-card
     template: media-card
     variables:

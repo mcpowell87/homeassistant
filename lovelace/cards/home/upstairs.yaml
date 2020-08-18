@@ -6,13 +6,11 @@ cards:
     name: Upstairs
   - type: horizontal-stack
     cards:
-      - type: custom:decluttering-card
-        template: temp-graph
-        variables:
-          - entity: sensor.spare_room_temperature
-          - name: Spare Room
-      - type: custom:decluttering-card
-        template: temp-graph
-        variables:
-          - entity: sensor.spare_bedroom_temperature
-          - name: Spare Bedroom
+      - type: custom:button-card
+        template: temp-button
+        entity: sensor.spare_room_temperature
+        name: Spare Room
+      - type: custom:button-card
+        template: temp-button
+        entity: sensor.spare_bedroom_temperature
+        name: Spare Bedroom

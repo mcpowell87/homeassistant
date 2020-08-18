@@ -6,10 +6,10 @@ cards:
     name: Bedroom
   - type: horizontal-stack
     cards:
-      - type: custom:decluttering-card
-        template: temp-graph
-        variables:
-          - entity: sensor.bedroom_temperature
+      - type: custom:button-card
+        template: temp-button
+        entity: sensor.bedroom_temperature
+        show_name: false
       - type: custom:button-card
         template: light-button
         entity: light.bedroom
