@@ -8,7 +8,7 @@ cards:
     cards:
       - type: custom:button-card
         template: light-button
-        entity: light.front_porch_light
+        entity: switch.front_porch_light
         name: Front Porch
         icon: mdi:coach-lamp
       - type: custom:button-card

@@ -6,11 +6,11 @@ alexa:
     client_secret: !secret alexa_client_secret
     filter:
       include_entities:
-        - light.back_patio_light
+        - switch.back_porch_light
         - light.bedroom_lamp_left
         - light.bedroom_lamp_right
         - light.living_room_lamp
-        - light.front_porch_light
+        - switch.front_porch_light
         - light.office_lamp
         - fan.bedroom_ceiling_fan
         - fan.living_room_ceiling_fan
