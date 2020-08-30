@@ -1,2 +1,8 @@
 ---
 history:
+  exclude:
+    domains:
+      - sun
+      - weather
+    entities:
+      - automation.washer_timer
