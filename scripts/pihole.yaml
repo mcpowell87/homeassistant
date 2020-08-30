@@ -1,0 +1,11 @@
+disable_pihole:
+  alias: Disable PiHole (5min)
+  sequence:
+    - service: pi_hole.disable
+      data:
+        entity_id: switch.pi_hole
+        duration: 00:05:00
+    - service: pi_hole.disable
+      data:
+        entity_id: switch.pi_hole_2
+        duration: 00:05:00
