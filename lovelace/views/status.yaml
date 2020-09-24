@@ -4,9 +4,8 @@ icon: mdi:chart-line
 title: Status
 badges: []
 cards:
-  - type: entities
+  - type: custom:battery-state-card
     title: Doors
-    show_header_toggle: false
     entities:
       - type: custom:battery-entity
         entity: sensor.front_door_sensor_battery
@@ -17,9 +16,8 @@ cards:
       - type: custom:battery-entity
         entity: sensor.basement_door_sensor_battery
         name: Basement Door
-  - type: entities
+  - type: custom:battery-state-card
     title: Leak Sensors
-    show_header_toggle: false
     entities:
       - type: custom:battery-entity
         entity: sensor.basement_leak_sensor_battery
@@ -33,9 +31,8 @@ cards:
       - type: custom:battery-entity
         entity: sensor.downstairs_bathroom_sink_leak_sensor_battery
         name: Downstairs Bathroom Leak Sensor
-  - type: entities
+  - type: custom:battery-state-card
     title: Buttons
-    show_header_toggle: false
     entities:
       - type: custom:battery-entity
         entity: sensor.office_button_battery
@@ -49,9 +46,8 @@ cards:
       - type: custom:battery-entity
         entity: sensor.basement_dimmer_battery
         name: Basement Dimmer
-  - type: entities
+  - type: custom:battery-state-card
     title: Windows
-    show_header_toggle: false
     entities:
       - type: custom:battery-entity
         entity: sensor.kitchen_window_sensor_battery

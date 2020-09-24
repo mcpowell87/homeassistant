@@ -2,20 +2,6 @@
 platform: template
 sensors:
   open_window_count:
-    entity_id:
-      - binary_sensor.kitchen_window_sensor
-      - binary_sensor.dining_room_window_sensor
-      - binary_sensor.office_south_window_sensor
-      - binary_sensor.office_east_window_sensor
-      - binary_sensor.living_room_left_window_sensor
-      - binary_sensor.living_room_right_window_sensor
-      - binary_sensor.bedroom_north_window_sensor
-      - binary_sensor.spare_bedroom_north_window_sensor
-      - binary_sensor.spare_bedroom_south_window_sensor
-      - binary_sensor.spare_bedroom_west_window_sensor
-      - binary_sensor.spare_room_north_window_sensor
-      - binary_sensor.spare_room_south_sensor
-      - binary_sensor.spare_room_east_sensor
     icon_template: >-
       {% set ns = namespace(open=true) %}
       {% for item in states %}

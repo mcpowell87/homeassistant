@@ -2,10 +2,6 @@
 platform: template
 sensors:
   open_door_count:
-    entity_id:
-      - binary_sensor.front_door_sensor
-      - binary_sensor.back_door_sensor
-      - binary_sensor.basement_door_sensor
     icon_template: >-
       {% set ns = namespace(open=true) %}
       {% for item in states %}
