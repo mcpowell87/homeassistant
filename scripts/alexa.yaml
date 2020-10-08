@@ -1,0 +1,27 @@
+---
+alexa_good_night:
+  alias: Alexa - Good Night
+  sequence:
+    - service: notify.alexa_media
+      data:
+        data: 
+          type: tts
+        message: >-
+          {% if states('sensor.open_door_count')|int > 0 %}
+            {% if states('sensor.open_door_count')|int > 1 %}
+              There are {{states('sensor.open_door_count')}} doors open
+            {% else %}
+              There is one door open
+            {% endif %}
+          {% endif %}
+          {% if states('sensor.open_window_count')|int > 0 %}
+            {% if states('sensor.open_door_count')|int > 0 %}
+              and
+            {% endif %}
+            {% if states('sensor.open_window_count')|int > 1 %}
+              There are {{states('sensor.open_window_count')}} windows open
+            {% else %}
+              There is one window open
+            {% endif %}
+          {% endif %}
+        target: media_player.master_bedroom_echo_spot

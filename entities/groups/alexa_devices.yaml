@@ -1,0 +1,8 @@
+---
+alexa_devices:
+  name: Alexa Devices
+  entities:
+    - media_player.basement_dot
+    - media_player.kitchen_dot
+    - media_player.living_room_show
+    - media_player.master_bedroom_echo_spot
