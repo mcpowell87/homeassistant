@@ -1,6 +1,5 @@
 title: Home
 
-custom_header: !include /config/lovelace/cards/custom_header.yaml
 background: center / cover no-repeat url("/local/image/background.jpeg") fixed
 
 button_card_templates: !include_dir_named lovelace/templates/button_card_templates
