@@ -1,0 +1,32 @@
+---
+type: entities
+title: NAS
+entities:
+    - entity: sensor.nas_cpu_load
+      type: custom:multiple-entity-row
+      name: System
+      state_header: cpu
+      entities:
+        - entity: sensor.nas_memory
+          name: memory
+    - entity: sensor.nas_pool
+      type: custom:multiple-entity-row
+      name: Pool
+      state_header: used
+      entities:
+        - attribute: Size
+          name: Total Size
+          unit: 'GB'
+        - attribute: Available
+          name: Available
+          unit: 'GB'
+    - entity: sensor.nas_pool
+      icon: mdi:harddisk
+      name: Pool
+      type: custom:bar-card
+      entity_row: true
+      unit_of_measurement: '%'
+      style: |
+        bar-card-currentbar, bar-card-backgroundbar, bar-card-contentbar, bar-card-targetbar, bar-card-animationbar {
+            border-radius: 0px !important;
+        }

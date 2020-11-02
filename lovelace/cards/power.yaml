@@ -1,0 +1,4 @@
+---
+type: custom:power-distribution-card
+entities:
+    - home: sensor.energy_usage
