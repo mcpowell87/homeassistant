@@ -17,6 +17,7 @@ options.xml
 .uuid
 plex.conf
 *.pickle
+.omv_cookies.json
 www/image/mike.jpg
 www/image/trish.jpg
 home-assistant_v2.db-*
