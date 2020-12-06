@@ -1,0 +1,28 @@
+- id: '1606323379512'
+  alias: Notification when wife leaves work
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.trish
+    zone: zone.trish_s_work
+    event: leave
+  condition: []
+  action:
+  - service: notify.mobile_app_mike_s_iphone
+    data:
+      message: Wife is on her way home from work.
+  mode: single
+- id: '1606323478829'
+  alias: Notification when wife arrives home
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.trish
+    zone: zone.home
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_mike_s_iphone
+    data:
+      message: Wife is home.
+  mode: single
