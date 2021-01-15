@@ -1,4 +1,4 @@
 ---
 neato:
-        username: !secret neato_user
-        password: !secret neato_password
+        client_id: !secret neato_client_id
+        client_secret: !secret neato_client_secret

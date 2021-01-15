@@ -1,0 +1,8 @@
+---
+recorder:
+  purge_keep_days: 2
+  exclude:
+    entity_globs:
+      - sensor.weather_*
+    entities:
+      - sun.sun

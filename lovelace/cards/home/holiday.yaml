@@ -1,0 +1,28 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Holiday
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: light-button
+        name: Tree
+        entity: switch.living_room_outlet
+        icon: mdi:pine-tree
+      - type: custom:button-card
+        template: light-button
+        entity: switch.stairway_christmas_lights
+        name: Stairway
+        icon: mdi:string-lights
+      - type: custom:button-card
+        template: light-button
+        entity: switch.spare_bedroom_outlet_switch
+        name: Spare Bedroom
+        icon: mdi:string-lights
+      - type: custom:button-card
+        template: light-button
+        entity: switch.upstairs_room_outlet_switch
+        name: Spare Room
+        icon: mdi:string-lights

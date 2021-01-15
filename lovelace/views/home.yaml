@@ -15,16 +15,6 @@ cards:
     camera_view: auto
   - type: horizontal-stack
     cards:
-      #- type: custom:button-card
-      #  entity: alarm_control_panel.alexa_guard
-      #  show_state: true
-      #  show_name: false
-      #  color_type: icon
-      #  state:
-      #    - value: armed_away
-      #      color: var(--label-badge-green)
-      #    - value: disarmed
-      #      color: var(--label-badge-yellow)
       - !include ../cards/doors_state.yaml
       - !include ../cards/windows_state.yaml
   ### Living Room ###
@@ -50,3 +40,4 @@ cards:
         cards:
           - !include ../cards/washer.yaml
           - !include ../cards/dryer.yaml
+#  - !include ../cards/home/holiday.yaml
