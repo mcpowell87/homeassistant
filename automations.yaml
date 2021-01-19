@@ -26,3 +26,30 @@
     data:
       message: Wife is home.
   mode: single
+- id: '1610953656599'
+  alias: Shut off all lights
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionName: Goodnight
+  condition: []
+  action:
+  - domain: light
+    entity_id: light.bedroom_lamp_left
+    device_id: 4a50679438ce4fcbba908d6ed5acd59d
+    type: turn_off
+  - domain: light
+    entity_id: light.bedroom_lamp_right
+    device_id: 2adff8e7c96a4a7d9867e6fedd4d01b8
+    type: turn_off
+  - type: turn_off
+    device_id: e6b133367549409daa60556885d14b49
+    entity_id: light.living_room_lamp
+    domain: light
+  - type: turn_off
+    device_id: bee413e15980480a9d50889519b55aff
+    entity_id: light.office_lamp
+    domain: light
+  mode: single

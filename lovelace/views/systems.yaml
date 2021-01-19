@@ -5,6 +5,7 @@ title: Systems
 badges: []
 cards:
   - !include ../cards/nas.yaml
+  - !include ../cards/ups.yaml
   - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
