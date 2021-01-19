@@ -1,0 +1,35 @@
+---
+cards:
+  - entities:
+      - entity: sensor.eaton5px_status
+        name: Status
+      - entity: sensor.eaton5px_input_voltage
+        name: Input Voltage
+      - entity: sensor.eaton5px_battery_runtime
+        name: Battery Runtime
+    theme: default
+    title: Eaton 5PX
+    type: glance
+  - cards:
+      - entity: sensor.eaton5px_battery_charge
+        max: 100
+        min: 0
+        name: Battery
+        severity:
+          green: 0
+          red: -80
+          yellow: -30
+        theme: default
+        type: gauge
+      - entity: sensor.eaton5px_load
+        max: 100
+        min: 0
+        name: CP Load
+        severity:
+          green: 0
+          red: 90
+          yellow: 70
+        theme: default
+        type: gauge
+    type: horizontal-stack
+type: custom:vertical-stack-in-card
