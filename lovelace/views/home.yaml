@@ -8,15 +8,24 @@ badges:
   - person.trish
 cards:
   - !include ../cards/alerts.yaml
-  - type: custom:search-card
+  - type: custom:simple-weather-card
+    entity: weather.openweathermap
+    name: Seaford
   - type: picture-entity
     entity: camera.front_door
     aspect_ratio: 4x3
     camera_view: auto
-  - type: horizontal-stack
+  - type: vertical-stack
     cards:
-      - !include ../cards/doors_state.yaml
-      - !include ../cards/windows_state.yaml
+      - type: custom:button-card
+        template: button-card-headers
+        name: Household
+      - type: horizontal-stack
+        cards:
+          - !include ../cards/doors_state.yaml
+          - !include ../cards/windows_state.yaml
+          - !include ../cards/washer.yaml
+          - !include ../cards/dryer.yaml      
   ### Living Room ###
   - !include ../cards/home/livingroom.yaml
   ### Bedroom ###
@@ -31,13 +40,4 @@ cards:
   - !include ../cards/home/upstairs.yaml
   ### Outside ###
   - !include ../cards/home/outside.yaml
-  - type: vertical-stack
-    cards:
-      - type: custom:button-card
-        template: button-card-headers
-        name: Household
-      - type: horizontal-stack
-        cards:
-          - !include ../cards/washer.yaml
-          - !include ../cards/dryer.yaml
 #  - !include ../cards/home/holiday.yaml

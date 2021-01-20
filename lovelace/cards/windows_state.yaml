@@ -1,14 +1,24 @@
+---
 entity: sensor.open_window_count
+show_label: true
+label: Windows
 name: >
   [[[
     if (entity.state == 1) 
-      return "1 window open.";
+      return "1 open.";
     else if (entity.state > 1)
-      return entity.state + " windows open.";
+      return entity.state + " open.";
     else
-      return "All windows closed."
+      return "All closed."
   ]]]
 aspect_ratio: 1/1
+styles:
+  card:
+    - font-size: 12px
+  grid:
+    - grid-template-areas: '"l" "i" "n"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: min-content 1fr min-content
 tap_action: 
   action: navigate
   navigation_path: /lovelace/windows

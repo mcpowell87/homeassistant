@@ -1,0 +1,5 @@
+card:
+  type: 'custom:rpi-monitor-card'
+  entity: '[[entity]]'
+  card_style: glance
+  temp_scale: C

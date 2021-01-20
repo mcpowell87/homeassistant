@@ -5,6 +5,14 @@ title: Systems
 badges: []
 cards:
   - !include ../cards/nas.yaml
+  - type: custom:decluttering-card
+    template: rpi
+    variables:
+      - entity: sensor.rpi_monitor_nameserver2
+  - type: custom:decluttering-card
+    template: rpi
+    variables:
+      - entity: sensor.rpi_monitor_pinut
   - !include ../cards/ups.yaml
   - type: horizontal-stack
     cards:

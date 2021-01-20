@@ -3,3 +3,4 @@ type: custom:button-card
 entity: sensor.dryer_on_time_complete
 template: laundry-status-button
 label: Time elapsed
+name: Dryer

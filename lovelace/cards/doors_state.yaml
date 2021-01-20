@@ -1,14 +1,24 @@
+---
 entity: sensor.open_door_count
+show_label: true
+label: Doors
 name: >
   [[[
     if (entity.state == 1) 
-      return "1 door open.";
+      return "1 open.";
     else if (entity.state > 1)
-      return entity.state + " doors open.";
+      return entity.state + " open.";
     else
-      return "All doors closed."
+      return "All closed."
   ]]]
 aspect_ratio: 1/1
+styles:
+  card:
+    - font-size: 12px
+  grid:
+    - grid-template-areas: '"l" "i" "n"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: min-content 1fr min-content
 tap_action: 
   action: navigate
   navigation_path: /lovelace/doors
