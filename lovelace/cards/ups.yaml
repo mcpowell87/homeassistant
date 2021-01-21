@@ -3,8 +3,8 @@ cards:
   - entities:
       - entity: sensor.eaton5px_status
         name: Status
-      - entity: sensor.eaton5px_input_voltage
-        name: Input Voltage
+      - entity: sensor.eaton5px_current_real_power
+        name: Power Usage
       - entity: sensor.eaton5px_battery_runtime
         name: Battery Runtime
     theme: default
