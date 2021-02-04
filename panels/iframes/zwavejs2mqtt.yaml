@@ -1,0 +1,4 @@
+zwavejs2mqtt:
+  title: Z-Wave
+  url: 'http://homeassistant:8091/'
+  icon: mdi:settings-input-antenna

@@ -3,7 +3,7 @@
   - alias: Dryer - Set to running when power is on
     trigger:
       - platform: numeric_state
-        entity_id: sensor.dryer_power_switch_power
+        entity_id: sensor.dryer_power
         above: 25
     condition:
       - condition: state
@@ -26,7 +26,7 @@
         seconds: '*'
     condition:
       - condition: numeric_state
-        entity_id: sensor.dryer_power_switch_power
+        entity_id: sensor.dryer
         above: 25
     action:
       - service: homeassistant.update_entity
@@ -36,7 +36,7 @@
   - alias: Dryer - Set to idle and send notification after power reduces
     trigger:
       - platform: numeric_state
-        entity_id: sensor.dryer_power_switch_power
+        entity_id: sensor.dryer
         below: 25
         for:
           minutes: 1
