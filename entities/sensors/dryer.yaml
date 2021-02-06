@@ -7,7 +7,7 @@ sensors:
           - state_attr('input_datetime.dryer_start', 'timestamp'))
           |timestamp_custom('%H:%M:%S', false) }}
   dryer_on_time_complete:
-    friendly_name: Washer on Timer
+    friendly_name: Dryer on Timer
     value_template: >
       {% if is_state('input_select.dryer_status', 'Running') %}
         {{ states('sensor.dryer_on_time') }}
