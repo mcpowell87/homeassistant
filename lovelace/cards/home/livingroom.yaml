@@ -12,7 +12,8 @@ cards:
         show_name: false
       - type: custom:button-card
         template: light-button
-        entity: light.living_room_lamp
+        #entity: light.living_room_lamp
+        entity: switch.living_room_outlet
         show_name: false
         icon: mdi:floor-lamp
       - type: custom:button-card
