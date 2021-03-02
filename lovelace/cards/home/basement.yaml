@@ -31,6 +31,9 @@ cards:
           [[[
             return `${states['binary_sensor.dehumidifier_bucket'].state == "on" ? "Full" : "Empty"}`
           ]]]
+        styles:
+          card:
+            - background: var( --ha-card-background, var(--card-background-color, white) )
       #- !include ../dehumidifier.yaml
   - type: conditional
     conditions:

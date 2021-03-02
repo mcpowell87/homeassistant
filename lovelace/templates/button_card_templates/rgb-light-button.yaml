@@ -13,6 +13,9 @@ label: >
     }
     return "OFF"
   ]]]
+styles:
+  card:
+    - background-color: var(--button-card-light-color)
 state:
   - value: 'off'
     styles:
