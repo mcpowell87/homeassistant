@@ -5,6 +5,8 @@
       - platform: numeric_state
         entity_id: sensor.washer_power
         above: 10
+        for:
+          minutes: 2
     condition:
       - condition: state
         entity_id: input_select.washer_status

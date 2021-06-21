@@ -5,6 +5,8 @@
       - platform: numeric_state
         entity_id: sensor.dryer_power
         above: 25
+        for:
+          minutes: 2
     condition:
       - condition: state
         entity_id: input_select.dryer_status
