@@ -19,7 +19,3 @@ cards:
         show_name: false
         entity: fan.living_room_ceiling_fan
         template: fan-button
-  - type: custom:decluttering-card
-    template: media-card
-    variables:
-      - plex_entity: media_player.plex_roku_ultra

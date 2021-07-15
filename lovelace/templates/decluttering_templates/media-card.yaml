@@ -10,17 +10,3 @@ card:
         type: media-control
         entity: '[[plex_entity]]'
         name: Plex
-#    - type: conditional
-#      conditions:
-#        - entity: '[[roku_entity]]'
-#          state_not: "unavailable"
-#        - entity: '[[roku_entity]]'
-#          state_not: "home"
-#        - entity: '[[roku_entity]]'
-#          state_not: "idle"
-#        - entity: '[[plex_entity]]'
-#          state: "unavailable"
-#      card:
-#        type: media-control
-#        entity: '[[roku_entity]]'
-#        name: Roku
