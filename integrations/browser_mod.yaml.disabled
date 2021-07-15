@@ -1,3 +1,0 @@
----
-browser_mod:
-  devices: !include_dir_named ../entities/browsers/

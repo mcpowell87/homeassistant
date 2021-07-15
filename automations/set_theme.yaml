@@ -9,3 +9,4 @@
     - service: frontend.set_theme
       data:
         name: "ios-dark-mode"
+        mode: "dark"

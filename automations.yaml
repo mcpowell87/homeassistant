@@ -53,3 +53,19 @@
     entity_id: light.office_lamp
     domain: light
   mode: single
+- id: '1626362442938'
+  alias: Light Button - Toggle Living Room Lamp
+  description: ''
+  trigger:
+  - device_id: d2f42206556c48aeaa2004cfbf737c24
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - type: toggle
+    device_id: 97a81863e6dbd575534d5522ccd7034e
+    entity_id: light.living_room_lamp
+    domain: light
+  mode: single
