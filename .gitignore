@@ -29,3 +29,5 @@ deps
 custom_components
 
 www/image/mail_and_packages
+
+FLUME_TOKEN_FILE*
