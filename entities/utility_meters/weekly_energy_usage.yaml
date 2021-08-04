@@ -1,0 +1,4 @@
+---
+source: sensor.weekly_usage
+name: Weekly Energy Usage
+cycle: weekly

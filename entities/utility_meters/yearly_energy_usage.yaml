@@ -1,0 +1,4 @@
+---
+source: sensor.yearly_usage
+name: Yearly Energy Usage
+cycle: yearly

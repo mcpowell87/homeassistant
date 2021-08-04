@@ -1,0 +1,4 @@
+---
+source: sensor.monthly_usage
+name: Monthly Energy Usage
+cycle: monthly
