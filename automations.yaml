@@ -20,7 +20,14 @@
     entity_id: person.trish
     zone: zone.home
     event: enter
-  condition: []
+  condition:
+  - condition: state
+    entity_id: person.mike
+    state: home
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
   action:
   - service: notify.mobile_app_mike_s_iphone
     data:
