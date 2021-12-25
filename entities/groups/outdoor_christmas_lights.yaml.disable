@@ -1,6 +1,0 @@
----
-outdoor_christmas_lights:
-  name: Outdoor Christmas Light
-  entities:
-    - switch.spare_bedroom_outlet_switch
-    - switch.upstairs_room_outlet_switch

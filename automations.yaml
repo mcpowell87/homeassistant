@@ -45,13 +45,29 @@
     device_id: 2adff8e7c96a4a7d9867e6fedd4d01b8
     type: turn_off
   - type: turn_off
-    device_id: e6b133367549409daa60556885d14b49
+    device_id: 97a81863e6dbd575534d5522ccd7034e
     entity_id: light.living_room_lamp
     domain: light
   - type: turn_off
     device_id: bee413e15980480a9d50889519b55aff
     entity_id: light.office_lamp
     domain: light
+  - type: turn_off
+    device_id: bec2d42db3c544709390bdb2870e0f98
+    entity_id: light.kitchen_lights
+    domain: light
+  - type: turn_off
+    device_id: 794ca41f8f5941ac9cccbfd4cf66ecbb
+    entity_id: light.office_bookshelf_bloom
+    domain: light
+  - type: turn_off
+    device_id: 5df6e8e94f57437498f57fedd091b127
+    entity_id: switch.smart_outlet_01_switch
+    domain: switch
+  - type: turn_off
+    device_id: 739e6b15044345985c552c3192f108bd
+    entity_id: switch.smart_outlet_02_switch
+    domain: switch
   mode: single
 - id: '1626362442938'
   alias: Light Button - Toggle Living Room Lamp

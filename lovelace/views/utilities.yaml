@@ -1,0 +1,39 @@
+---
+path: utilities
+icon: mdi:transmission-tower
+title: utilities
+badges: []
+cards:
+  - type: energy-distribution
+  - type: gauge
+    entity: sensor.energy_usage
+    max: 5000
+    needle: false
+    theme: gauge
+    severity:
+      green: 0
+      yellow: 1500
+      red: 3000
+  - type: energy-devices-graph
+  - type: custom:mini-graph-card
+    icon: mdi:power
+    hours_to_show: 168
+    aggregate_func: max
+    group_by: date
+    show:
+      graph: bar
+      state: true
+    entities:
+      - entity: sensor.daily_usage 
+        name: 7-day power usage
+  - type: custom:mini-graph-card
+    icon: mdi:water
+    hours_to_show: 168
+    aggregate_func: max
+    group_by: date
+    show:
+      graph: bar
+      state: true
+    entities:
+      - entity: sensor.flume_sensor_home_current_day
+        name: 7-day water usage

@@ -1,0 +1,5 @@
+gauge:
+  label-badge-blue: "#55acee"
+  label-badge-green: "#9bc53d"
+  label-badge-yellow: "#fde74c"
+  label-badge-red: "#c3423f"

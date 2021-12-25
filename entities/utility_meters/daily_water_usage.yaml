@@ -1,0 +1,4 @@
+---
+source: sensor.flume_sensor_home_current_day
+name: Daily Water Usage
+cycle: daily

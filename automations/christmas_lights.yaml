@@ -14,11 +14,10 @@
       entity_id: group.outdoor_christmas_lights
 
 # Turn off the christmas lights 8 hours after sunset.
-- alias: 'Christmas Lights - Turn off 8 hours after sunset'
+- alias: 'Christmas Lights - Turn off at 1am'
   trigger:
-    - platform: sun
-      event: sunset
-      offset: '08:00:00'
+    - platform: time
+      at: '01:00:00'
   action:
     - service: homeassistant.turn_off
       entity_id: group.outdoor_christmas_lights

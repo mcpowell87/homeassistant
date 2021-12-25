@@ -5,14 +5,6 @@ title: Systems
 badges: []
 cards:
   - !include ../cards/nas.yaml
-  - type: custom:decluttering-card
-    template: rpi
-    variables:
-      - entity: sensor.rpi_monitor_nameserver2
-  - type: custom:decluttering-card
-    template: rpi
-    variables:
-      - entity: sensor.rpi_monitor_pinut
   - !include ../cards/ups.yaml
   - type: entities
     show_header_toggle: true
@@ -40,7 +32,6 @@ cards:
               state: true
   - type: vertical-stack
     cards:
-      #- !include ../cards/power.yaml
       - type: custom:mini-graph-card
         icon: mdi:power
         entities:
@@ -48,43 +39,3 @@ cards:
             name: Energy Usage
             show:
               state: true
-      - type: custom:mini-graph-card
-        icon: mdi:power
-        hours_to_show: 168
-        aggregate_func: max
-        group_by: date
-        show:
-          graph: bar
-          state: true
-        entities:
-          - entity: sensor.daily_usage 
-            name: 7-day usage
-      - type: horizontal-stack
-        cards:
-          - type: custom:button-card
-            aspect_ratio: 1/1
-            show_icon: false
-            name: Week to date
-            entity: sensor.weekly_usage
-            show_state: true
-            styles:
-              state:
-                - font-size: 150%
-          - type: custom:button-card
-            aspect_ratio: 1/1
-            show_icon: false
-            name: Month to date
-            entity: sensor.monthly_usage
-            show_state: true
-            styles:
-              state:
-                - font-size: 150%
-          - type: custom:button-card
-            aspect_ratio: 1/1
-            show_icon: false
-            name: Year to date
-            entity: sensor.yearly_usage
-            show_state: true
-            styles:
-              state:
-                - font-size: 150%

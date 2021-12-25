@@ -1,5 +1,5 @@
 ---
 nodered:
   title: Node-Red
-  icon: mdi:sitemap
+  icon: 'bha:matter'
   url: !secret node_red_url

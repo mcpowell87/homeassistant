@@ -2,5 +2,5 @@
 indoor_christmas_lights:
   name: Indoor Christmas Lights
   entities:
-    - switch.living_room_outlet_switch
-    - switch.smart_outlet_switch
+    - switch.smart_outlet_01_switch
+    - switch.smart_outlet_02_switch

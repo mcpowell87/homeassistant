@@ -19,4 +19,4 @@ cards:
         template: rgb-light-button
         entity: light.office_bookshelf_bloom
         show_name: false
-        icon: mdi:desk-lamp
+        icon: hue:bloom

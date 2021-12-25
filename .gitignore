@@ -1,5 +1,6 @@
 *.db
 *.log
+*.log.*
 *.swp
 
 secrets.yaml
