@@ -12,7 +12,7 @@ cards:
     entity: weather.openweathermap
     name: Seaford
   - type: picture-entity
-    entity: camera.front_door
+    entity: camera.front_door_high
     aspect_ratio: 4x3
     camera_view: auto
   - type: vertical-stack

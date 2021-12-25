@@ -1,5 +1,5 @@
 ---
 nodered:
   title: Node-Red
-  icon: 'bha:matter'
+  icon: mdi:graph
   url: !secret node_red_url
