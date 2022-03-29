@@ -42,4 +42,4 @@ cards:
   - !include ../cards/home/upstairs.yaml
   ### Outside ###
   - !include ../cards/home/outside.yaml
-  - !include ../cards/home/holiday.yaml
+  #- !include ../cards/home/holiday.yaml

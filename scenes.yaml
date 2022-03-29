@@ -1,0 +1,49 @@
+- id: '1641199529875'
+  name: Bedtime
+  entities:
+    light.living_room_lamp:
+      supported_color_modes:
+      - brightness
+      mode: normal
+      dynamics: none
+      friendly_name: Living Room Lamp
+      supported_features: 40
+      state: 'off'
+    light.office_lamp:
+      supported_color_modes:
+      - brightness
+      mode: normal
+      dynamics: none
+      friendly_name: Office Lamp
+      supported_features: 40
+      state: 'off'
+    light.kitchen_lights:
+      supported_color_modes:
+      - brightness
+      device_id: '3'
+      zone_id: '2'
+      friendly_name: Kitchen Lights
+      supported_features: 33
+      state: 'off'
+    light.bedroom_lamp_left:
+      supported_color_modes:
+      - brightness
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom Lamp (Left)
+      supported_features: 40
+      state: 'off'
+    light.bedroom_lamp_right:
+      supported_color_modes:
+      - brightness
+      mode: normal
+      dynamics: none
+      friendly_name: Bedroom Lamp (Right)
+      supported_features: 40
+      state: 'off'
+    switch.back_porch_light:
+      device_id: '7'
+      zone_id: '4'
+      friendly_name: Back Porch Light Switch
+      state: 'off'
+  icon: mdi:sleep
