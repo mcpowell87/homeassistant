@@ -12,7 +12,7 @@ cards:
         show_name: false
       - type: custom:button-card
         template: light-button
-        entity: group.bedroom_lights
+        entity: light.bedroom_lamps
         show_name: false
         icon: mdi:lamp
       - type: custom:button-card

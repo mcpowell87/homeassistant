@@ -1,9 +1,10 @@
 ---
 title: Home
 icon: mdi:home
-path: default_view
+path: home
 badges:
   - alarm_control_panel.alexa_guard 
+  - lock.front_door
   - person.mike
   - person.trish
 cards:

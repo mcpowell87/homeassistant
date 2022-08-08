@@ -15,8 +15,3 @@ cards:
         entity: light.office_lamp
         show_name: false
         icon: mdi:floor-lamp
-      - type: custom:button-card
-        template: rgb-light-button
-        entity: light.office_bookshelf_bloom
-        show_name: false
-        icon: hue:bloom

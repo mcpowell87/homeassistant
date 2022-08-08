@@ -1,5 +1,0 @@
----
-nodered:
-  title: Node-Red
-  icon: bha:node-red
-  url: !secret node_red_url

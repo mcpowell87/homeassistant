@@ -14,8 +14,8 @@
         entity_id: sun.sun
         state: below_horizon
     action:
-      - service: light.turn_on
-        entity_id: light.back_patio_light
+      - service: switch.turn_on
+        entity_id: switch.back_porch_light
 
   # Turns off the back patio light after the back door has been closed for 5 minutes.
   - alias: 'Back Patio Light - Turn off when back door closes'
@@ -26,5 +26,5 @@
         for:
           minutes: 5
     action:
-      - service: light.turn_off
-        entity_id: light.back_patio_light
+      - service: switch.turn_off
+        entity_id: switch.back_porch_light

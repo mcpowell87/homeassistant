@@ -92,3 +92,29 @@
     entity_id: light.living_room_lamp
     domain: light
   mode: single
+- id: '1649734825274'
+  alias: Dehumidifier - Send notification when full
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.dehumidifier_bucket
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.alexa_media
+    data:
+      message: The dehumidifier is full.
+      data:
+        type: announce
+        method: all
+      target:
+      - media_player.living_room_show
+      - media_player.kitchen_dot
+      - media_player.master_bedroom_echo_spot
+    enabled: false
+  - service: notify.notify
+    data:
+      message: The dehumidifier is full.
+      title: Dehumidifier
+  mode: single
