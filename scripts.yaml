@@ -1,0 +1,15 @@
+turn_off_all_lights:
+  alias: Turn off all lights
+  sequence:
+  - service: light.turn_off
+    data: {}
+    target:
+      area_id:
+      - 6bc249e1512a48498ceb511c99fd348c
+      - 414d334b5ddb494ebe7e952defdc9402
+      - acecbaf335e34c3abb782f64fc40c5a8
+      - 063dbfbcddf14c169fc4df395bd24554
+      - 5b03bd28eb6e46c99f43af2ed7ac6649
+      - 6633b301df22488db83b70b5b7573bfc
+  mode: single
+  icon: mdi:lightbulb-group-off

@@ -7,6 +7,9 @@ alexa_good_night:
         data: 
           type: tts
         message: >-
+          {% if states('lock.front_door') == 'unlocked' %}
+            The front door is unlocked.
+          {% endif %}
           {% if states('sensor.open_door_count')|int > 0 %}
             {% if states('sensor.open_door_count')|int > 1 %}
               There are {{states('sensor.open_door_count')}} doors open
