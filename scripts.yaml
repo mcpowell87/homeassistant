@@ -13,3 +13,33 @@ turn_off_all_lights:
       - 6633b301df22488db83b70b5b7573bfc
   mode: single
   icon: mdi:lightbulb-group-off
+away_camera_start_recording:
+  alias: Camera - Start Recording
+  sequence:
+  - device_id: c8c40615ea66b65d13ada655ef526f63
+    domain: select
+    entity_id: select.kitchen_recording_mode
+    type: select_option
+    option: Always
+  - device_id: 413cb0980788c8e11e612108294bdd4f
+    domain: select
+    entity_id: select.bedroom_recording_mode
+    type: select_option
+    option: Always
+  mode: single
+  icon: mdi:camcorder
+home_camera_stop_recording:
+  alias: Camera - Stop Recording
+  sequence:
+  - device_id: c8c40615ea66b65d13ada655ef526f63
+    domain: select
+    entity_id: select.kitchen_recording_mode
+    type: select_option
+    option: Detections
+  - device_id: 413cb0980788c8e11e612108294bdd4f
+    domain: select
+    entity_id: select.bedroom_recording_mode
+    type: select_option
+    option: Detections
+  mode: single
+  icon: mdi:camcorder-off

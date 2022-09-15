@@ -8,9 +8,10 @@
     event: leave
   condition: []
   action:
-  - service: notify.mobile_app_mike_s_iphone
+  - service: notify.mobile_app_iphone
     data:
       message: Wife is on her way home from work.
+      title: Wife
   mode: single
 - id: '1606323478829'
   alias: Notification when wife arrives home
@@ -29,9 +30,10 @@
       minutes: 5
       seconds: 0
   action:
-  - service: notify.mobile_app_mike_s_iphone
+  - service: notify.mobile_app_iphone
     data:
       message: Wife is home.
+      title: Wife
   mode: single
 - id: '1610953656599'
   alias: Shut off all lights
@@ -117,4 +119,38 @@
     data:
       message: The dehumidifier is full.
       title: Dehumidifier
+  mode: single
+- id: '1662251793455'
+  alias: Away - Performs action when everyone leaves home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.household
+    to: '"not_home"'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition: []
+  action:
+  - service: script.away_camera_start_recording
+    data: {}
+  mode: single
+- id: '1662251855162'
+  alias: Home - Performs action when someone comes home
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - group.household
+    to: '"home"'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition: []
+  action:
+  - service: script.home_camera_stop_recording
+    data: {}
   mode: single
