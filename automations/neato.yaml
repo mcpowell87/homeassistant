@@ -6,7 +6,7 @@
       entity_id: sensor.vacuum_state
       to: "Alfred: Please empty dust bin"
   action:
-    - service: notify.ios_mikes_iphone
+    - service: notify.mobile_app_mikes_iphone
       data_template:
         message: "{{ states('sensor.vacuum_state') }}"
     - service: persistent_notification.create

@@ -26,6 +26,16 @@ away_camera_start_recording:
     entity_id: select.bedroom_recording_mode
     type: select_option
     option: Always
+  - device_id: b326a7931822b2f8d23afbd210d256b6
+    domain: select
+    entity_id: select.spare_bedroom_recording_mode
+    type: select_option
+    option: Always
+  - device_id: 282e753a751a993ae0f914577529dc17
+    domain: select
+    entity_id: select.spare_room_recording_mode
+    type: select_option
+    option: Always
   mode: single
   icon: mdi:camcorder
 home_camera_stop_recording:
@@ -39,6 +49,16 @@ home_camera_stop_recording:
   - device_id: 413cb0980788c8e11e612108294bdd4f
     domain: select
     entity_id: select.bedroom_recording_mode
+    type: select_option
+    option: Detections
+  - device_id: b326a7931822b2f8d23afbd210d256b6
+    domain: select
+    entity_id: select.spare_bedroom_recording_mode
+    type: select_option
+    option: Detections
+  - device_id: 282e753a751a993ae0f914577529dc17
+    domain: select
+    entity_id: select.spare_room_recording_mode
     type: select_option
     option: Detections
   mode: single

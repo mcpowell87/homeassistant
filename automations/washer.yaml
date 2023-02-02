@@ -59,9 +59,6 @@
             method: all
           target:
             - media_player.living_room_show
-            - media_player.kitchen_dot
-            - media_player.master_bedroom_echo_spot
-            - media_player.basement_dot
       - service: notify.notify
         data:
           message: 'The wash is finished.'

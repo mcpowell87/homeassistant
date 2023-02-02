@@ -8,7 +8,7 @@
     event: leave
   condition: []
   action:
-  - service: notify.mobile_app_iphone
+  - service: notify.mobile_app_mikes_iphone
     data:
       message: Wife is on her way home from work.
       title: Wife
@@ -30,7 +30,7 @@
       minutes: 5
       seconds: 0
   action:
-  - service: notify.mobile_app_iphone
+  - service: notify.mobile_app_mikes_iphone
     data:
       message: Wife is home.
       title: Wife
@@ -127,7 +127,7 @@
   - platform: state
     entity_id:
     - group.household
-    to: '"not_home"'
+    to: not_home
     for:
       hours: 0
       minutes: 10
@@ -144,7 +144,7 @@
   - platform: state
     entity_id:
     - group.household
-    to: '"home"'
+    to: home
     for:
       hours: 0
       minutes: 0
@@ -153,4 +153,56 @@
   action:
   - service: script.home_camera_stop_recording
     data: {}
+  mode: single
+- id: '1667955153429'
+  alias: Sprinklers - Pause If Back Door Opens
+  description: Pause the sprinklers for 15 minutes if they are on when the back door
+    opens
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.back_door_sensor
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: switch.backyard
+      state: 'on'
+    - condition: state
+      entity_id: switch.backyard_patio
+      state: 'on'
+  action:
+  - service: rachio.pause_watering
+    data:
+      duration: 15
+  mode: single
+- id: '1669497816229'
+  alias: Christmas Lights - Turn on at night
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:15:00
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    target:
+      entity_id:
+      - switch.exterior_outdoor_smart_plug
+  mode: single
+- id: '1669497868697'
+  alias: Christmas Lights - Turn off at 12am
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00:00
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    data: {}
+    target:
+      entity_id: switch.exterior_outdoor_smart_plug
   mode: single
