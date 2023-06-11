@@ -1,9 +1,0 @@
----
-name: Yard Waste
-frequency: weekly
-collection_days:
-  - wed
-verbose_state: true
-move_country_holidays: US
-state: NY
-expire_after: '12:00'
