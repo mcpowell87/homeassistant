@@ -1,6 +1,0 @@
----
-all_christmas_lights:
-  name: All Christmas Lights
-  entities:
-    - group.indoor_christmas_lights
-    - group.outdoor_christmas_lights

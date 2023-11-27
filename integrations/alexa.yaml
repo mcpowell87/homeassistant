@@ -17,7 +17,6 @@ alexa:
         - light.kitchen_lights
         - script.alexa_good_night
         - switch.living_room_outlet
-        - switch.stairway_christmas_lights
       exclude_domains:
         - alert
         - automation

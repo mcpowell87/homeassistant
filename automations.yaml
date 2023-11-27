@@ -54,20 +54,16 @@
     device_id: 2adff8e7c96a4a7d9867e6fedd4d01b8
     type: turn_off
   - type: turn_off
-    device_id: 97a81863e6dbd575534d5522ccd7034e
-    entity_id: light.living_room_lamp
+    device_id: 11219fe9c3294acd2502a8abe0cac72c
+    entity_id: ec12ade7c240de5ac1e3bc43d41577dc
     domain: light
   - type: turn_off
-    device_id: bee413e15980480a9d50889519b55aff
-    entity_id: light.office_lamp
+    device_id: a79b842b4137b12d144a6fd377abd704
+    entity_id: 1848f38c479266833fe079e6077703dd
     domain: light
   - type: turn_off
     device_id: bec2d42db3c544709390bdb2870e0f98
     entity_id: light.kitchen_lights
-    domain: light
-  - type: turn_off
-    device_id: 794ca41f8f5941ac9cccbfd4cf66ecbb
-    entity_id: light.office_bookshelf_bloom
     domain: light
   - type: turn_off
     device_id: 5df6e8e94f57437498f57fedd091b127
@@ -90,8 +86,8 @@
   condition: []
   action:
   - type: toggle
-    device_id: 97a81863e6dbd575534d5522ccd7034e
-    entity_id: light.living_room_lamp
+    device_id: 11219fe9c3294acd2502a8abe0cac72c
+    entity_id: ec12ade7c240de5ac1e3bc43d41577dc
     domain: light
   mode: single
 - id: '1649734825274'
@@ -99,7 +95,8 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: binary_sensor.dehumidifier_bucket
+    entity_id:
+    - binary_sensor.finished_basement_tank_full
     from: 'off'
     to: 'on'
   condition: []
@@ -190,8 +187,7 @@
   - service: homeassistant.turn_on
     data: {}
     target:
-      entity_id:
-      - switch.exterior_outdoor_smart_plug
+      entity_id: switch.exterior_christmas_lights
   mode: single
 - id: '1669497868697'
   alias: Christmas Lights - Turn off at 12am
@@ -204,5 +200,101 @@
   - service: homeassistant.turn_off
     data: {}
     target:
-      entity_id: switch.exterior_outdoor_smart_plug
+      entity_id: switch.exterior_christmas_lights
+  mode: single
+- id: '1689447603826'
+  alias: Dehumidifier - Turn On
+  description: Turns on dehumidifier when it reaches target temperature.
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.basement_wave_plus_humidity
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    above: 57
+  condition:
+  - condition: state
+    entity_id: binary_sensor.finished_basement_tank_full
+    state: 'off'
+  action:
+  - service: humidifier.turn_on
+    data: {}
+    target:
+      entity_id: humidifier.finished_basement
+  mode: single
+- id: '1689447830700'
+  alias: Dehumidifier - Turn Off
+  description: Turns off dehumidifier when it gets to target humidity.
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.basement_wave_plus_humidity
+    below: 55
+  condition: []
+  action:
+  - service: humidifier.turn_off
+    data: {}
+    target:
+      entity_id: humidifier.finished_basement
+  mode: single
+- id: '1697431247538'
+  alias: Car Charger - Send Notification when done charging
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.tesla_wall_connector_contactor_closed
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: binary_sensor.tesla_wall_connector_vehicle_connected
+    state: 'on'
+  action:
+  - service: notify.notify
+    data:
+      message: Car finished charging in {{ now() - states('input_datetime.car_charger_start_time')
+        | as_datetime | as_local }}
+      title: Car Charging
+  mode: single
+- id: '1697431620883'
+  alias: Car Charger - Log when charging starts
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.tesla_wall_connector_contactor_closed
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+    from:
+  condition: []
+  action:
+  - service: input_datetime.set_datetime
+    target:
+      entity_id: input_datetime.car_charger_start_time
+    data:
+      datetime: '{{ now() }}'
+  mode: single
+- id: '1701058348236'
+  alias: Button - Trigger Goodnight Scene
+  description: ''
+  trigger:
+  - device_id: e43b79c42f7d42bc87e0df241bda781d
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.bedtime
+    metadata: {}
   mode: single

@@ -1,6 +1,0 @@
----
-platform: generic
-stream_source: !secret eufy_dog_camera_url
-name: Dog Camera
-authentication: basic
-still_image_url: https://goodnewsforpets.com/wp-content/uploads/2017/01/5548053540_a313a167cd_o-300x231@2x.jpg

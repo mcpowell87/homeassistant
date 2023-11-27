@@ -1,7 +1,0 @@
----
-outdoor_christmas_lights:
-  name: Outdoor Christmas Light
-  entities:
-    - switch.exterior_outdoor_smart_plug
-    - switch.smart_outlet_03_switch
-    - switch.smart_outlet_04_switch
