@@ -1,18 +1,1 @@
 mqtt:
-  binary_sensor:
-    - name: "Dehumidifier Bucket"
-      payload_on: "full"
-      payload_off: "empty"
-      state_topic: "home/sensor/dehumidifier/bucket_status"
-      value_template: "{{ value }}" 
-  sensor:
-    - name: "Dehumidifier Humidity"
-      state_topic: "home/sensor/dehumidifier/temp"
-      value_template: "{{ value_json.humidity }}"
-      device_class: humidity
-      unit_of_measurement: '%'
-    - name: "Dehumidifier Temperature"
-      state_topic: "home/sensor/dehumidifier/temp"
-      value_template: "{{ value_json.temperature }}"
-      device_class: temperature
-      unit_of_measurement: '°F'

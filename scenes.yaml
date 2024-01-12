@@ -2,48 +2,82 @@
   name: Bedtime
   entities:
     light.living_room_lamp:
+      effect_list:
+      - None
+      - candle
       supported_color_modes:
       - brightness
+      color_mode:
+      brightness:
+      effect:
       mode: normal
       dynamics: none
       friendly_name: Living Room Lamp
-      supported_features: 40
+      supported_features: 44
       state: 'off'
     light.office_lamp:
+      effect_list:
+      - None
+      - candle
       supported_color_modes:
       - brightness
+      color_mode:
+      brightness:
+      effect:
       mode: normal
       dynamics: none
       friendly_name: Office Lamp
-      supported_features: 40
+      supported_features: 44
       state: 'off'
     light.kitchen_lights:
       supported_color_modes:
       - brightness
+      color_mode:
+      brightness:
       device_id: '3'
       zone_id: '2'
       friendly_name: Kitchen Lights
-      supported_features: 33
+      supported_features: 32
       state: 'off'
     light.bedroom_lamp_left:
+      effect_list:
+      - None
+      - candle
       supported_color_modes:
       - brightness
+      color_mode:
+      brightness:
+      effect:
       mode: normal
       dynamics: none
       friendly_name: Bedroom Lamp (Left)
-      supported_features: 40
+      supported_features: 44
       state: 'off'
     light.bedroom_lamp_right:
+      effect_list:
+      - None
+      - candle
       supported_color_modes:
       - brightness
+      color_mode:
+      brightness:
+      effect:
       mode: normal
       dynamics: none
       friendly_name: Bedroom Lamp (Right)
-      supported_features: 40
+      supported_features: 44
       state: 'off'
     switch.back_porch_light:
       device_id: '7'
       zone_id: '4'
-      friendly_name: Back Porch Light Switch
+      friendly_name: Back Porch Light
+      state: 'off'
+    switch.interior_christmas_lights:
+      entity_id:
+      - switch.smart_outlet_01_switch
+      friendly_name: Interior Christmas Lights
       state: 'off'
   icon: mdi:sleep
+  metadata:
+    switch.interior_christmas_lights:
+      entity_only: true

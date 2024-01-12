@@ -78,11 +78,12 @@
   alias: Light Button - Toggle Living Room Lamp
   description: ''
   trigger:
-  - device_id: d2f42206556c48aeaa2004cfbf737c24
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: remote_button_short_press
+  - platform: device
+    domain: mqtt
+    device_id: 6793e66057e2677f386d017157af701e
+    type: action
+    subtype: single
+    discovery_id: 0x286d9700010df23d action_single
   condition: []
   action:
   - type: toggle
@@ -127,12 +128,16 @@
     to: not_home
     for:
       hours: 0
-      minutes: 10
+      minutes: 5
       seconds: 0
   condition: []
   action:
   - service: script.away_camera_start_recording
     data: {}
+  - device_id: 049a897f1005af31c9a8eb0725fda744
+    domain: alarm_control_panel
+    entity_id: c9d9b464bdbd8c1fd71f06c5534fbeaf
+    type: arm_away
   mode: single
 - id: '1662251855162'
   alias: Home - Performs action when someone comes home
@@ -150,6 +155,10 @@
   action:
   - service: script.home_camera_stop_recording
     data: {}
+  - device_id: 049a897f1005af31c9a8eb0725fda744
+    domain: alarm_control_panel
+    entity_id: c9d9b464bdbd8c1fd71f06c5534fbeaf
+    type: arm_away
   mode: single
 - id: '1667955153429'
   alias: Sprinklers - Pause If Back Door Opens
@@ -248,7 +257,7 @@
     to: 'off'
     for:
       hours: 0
-      minutes: 0
+      minutes: 5
       seconds: 0
   condition:
   - condition: state
@@ -286,11 +295,12 @@
   alias: Button - Trigger Goodnight Scene
   description: ''
   trigger:
-  - device_id: e43b79c42f7d42bc87e0df241bda781d
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: remote_button_short_press
+  - platform: device
+    domain: mqtt
+    device_id: 4bef945ee6b1d8fe513a0be60895894f
+    type: action
+    subtype: single
+    discovery_id: 0x286d9700010d0502 action_single
   condition: []
   action:
   - service: scene.turn_on

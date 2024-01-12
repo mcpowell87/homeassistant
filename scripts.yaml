@@ -36,6 +36,11 @@ away_camera_start_recording:
     entity_id: select.spare_room_recording_mode
     type: select_option
     option: Always
+  - device_id: 50eed9c561a061c970f8f2113f716337
+    domain: select
+    entity_id: a19709895154a2571516d647050c7c5c
+    type: select_option
+    option: Always
   mode: single
   icon: mdi:camcorder
 home_camera_stop_recording:
@@ -61,5 +66,28 @@ home_camera_stop_recording:
     entity_id: select.spare_room_recording_mode
     type: select_option
     option: Detections
+  - device_id: 50eed9c561a061c970f8f2113f716337
+    domain: select
+    entity_id: a19709895154a2571516d647050c7c5c
+    type: select_option
+    option: Never
   mode: single
   icon: mdi:camcorder-off
+power_cycle_ap:
+  alias: Power Cycle AP
+  sequence:
+  - type: turn_off
+    device_id: cd1912d61969fc3d537c2bc222fb64bb
+    entity_id: 691b7ea805a06b8fe67a587e59f505ce
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - type: turn_off
+    device_id: cd1912d61969fc3d537c2bc222fb64bb
+    entity_id: 691b7ea805a06b8fe67a587e59f505ce
+    domain: switch
+  mode: single
+  icon: mdi:wifi-refresh

@@ -29,6 +29,7 @@ deps
 .cloud
 .storage
 custom_components
+backups
 
 www/image/mail_and_packages
 
