@@ -29,16 +29,6 @@
       friendly_name: Office Lamp
       supported_features: 44
       state: 'off'
-    light.kitchen_lights:
-      supported_color_modes:
-      - brightness
-      color_mode:
-      brightness:
-      device_id: '3'
-      zone_id: '2'
-      friendly_name: Kitchen Lights
-      supported_features: 32
-      state: 'off'
     light.bedroom_lamp_left:
       effect_list:
       - None
@@ -67,15 +57,23 @@
       friendly_name: Bedroom Lamp (Right)
       supported_features: 44
       state: 'off'
-    switch.back_porch_light:
+    switch.interior_christmas_lights:
+      friendly_name: Interior Christmas Lights
+      state: unavailable
+    switch.back_porch_lights:
       device_id: '7'
       zone_id: '4'
-      friendly_name: Back Porch Light
+      friendly_name: Back Porch Lights
       state: 'off'
-    switch.interior_christmas_lights:
-      entity_id:
-      - switch.smart_outlet_01_switch
-      friendly_name: Interior Christmas Lights
+    light.kitchen_main_lights:
+      supported_color_modes:
+      - brightness
+      color_mode:
+      brightness:
+      device_id: '3'
+      zone_id: '2'
+      friendly_name: Kitchen Main Lights
+      supported_features: 32
       state: 'off'
   icon: mdi:sleep
   metadata:

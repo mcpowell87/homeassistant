@@ -15,7 +15,7 @@
         state: below_horizon
     action:
       - service: switch.turn_on
-        entity_id: switch.back_porch_light
+        entity_id: switch.back_porch_lights
 
   # Turns off the back patio light after the back door has been closed for 5 minutes.
   - alias: 'Back Patio Light - Turn off when back door closes'
@@ -27,4 +27,4 @@
           minutes: 5
     action:
       - service: switch.turn_off
-        entity_id: switch.back_porch_light
+        entity_id: switch.back_porch_lights

@@ -1,4 +1,16 @@
 lovelace: 
   mode: storage
   #resources: !include_dir_list /config/lovelace/resources
-  #dashboards: !include_dir_named /config/lovelace/dashboards
+  dashboards:
+    overview-yaml:
+      mode: yaml
+      title: Home
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      filename: /config/lovelace/dashboards/overview-yaml.yaml
+    mobile-yaml:
+      mode: yaml
+      title: Mobile Dashboard
+      icon: mdi:cellphone
+      show_in_sidebar: true
+      filename: /config/lovelace/dashboards/mobile-yaml.yaml

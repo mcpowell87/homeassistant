@@ -1,0 +1,16 @@
+- type: conditional
+  conditions:
+    - entity: lock.front_door
+      state_not: locked
+  card:
+    color: amber
+    type: tile
+    entity: lock.front_door
+    icon: mdi:lock-open
+    name: Door Unlocked
+    hide_state: true
+    icon_tap_action:
+      action: call-service
+      service: lock.lock
+      data: {}
+      target: {}

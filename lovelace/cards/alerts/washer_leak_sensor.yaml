@@ -1,7 +1,0 @@
----
-type: custom:decluttering-card
-template: binary_sensor_alert
-variables:
-  - entity: binary_sensor.washer_leak_sensor
-  - label: Leak detected near washer
-  - active_state: "on"

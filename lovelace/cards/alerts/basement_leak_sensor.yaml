@@ -1,7 +1,12 @@
 ---
-type: custom:decluttering-card
-template: binary_sensor_alert
-variables:
-  - entity: binary_sensor.basement_leak_sensor
-  - label: Leak detected in basement
-  - active_state: "on"
+- type: conditional
+  conditions:
+    - condition: state
+      entity: binary_sensor.finished_basement_leak_sensor_water_leak
+      state: 'on'
+  card:
+    color: amber
+    type: tile
+    hide_state: true
+    entity: binary_sensor.finished_basement_leak_sensor_water_leak
+    name: Basement Leak Detected

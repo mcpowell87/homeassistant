@@ -158,7 +158,7 @@
   - device_id: 049a897f1005af31c9a8eb0725fda744
     domain: alarm_control_panel
     entity_id: c9d9b464bdbd8c1fd71f06c5534fbeaf
-    type: arm_away
+    type: disarm
   mode: single
 - id: '1667955153429'
   alias: Sprinklers - Pause If Back Door Opens

@@ -13,6 +13,6 @@ cards:
         icon: mdi:coach-lamp
       - type: custom:button-card
         template: light-button
-        entity: switch.back_porch_light
+        entity: switch.back_porch_lights
         name: Back Porch
         icon: mdi:coach-lamp

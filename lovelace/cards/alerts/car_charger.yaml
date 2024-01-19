@@ -1,0 +1,21 @@
+---
+- type: conditional
+  conditions:
+    - entity: binary_sensor.tesla_wall_connector_contactor_closed
+      state: 'on'
+  card:
+    type: tile
+    entity: binary_sensor.tesla_wall_connector_contactor_closed
+    name: Car Charger
+    show_entity_picture: false
+- type: conditional
+  conditions:
+    - entity: binary_sensor.tesla_wall_connector_contactor_closed
+      state: 'off'
+    - entity: binary_sensor.tesla_wall_connector_vehicle_connected
+      state: 'on'
+  card:
+    type: tile
+    entity: binary_sensor.tesla_wall_connector_contactor_closed
+    name: Car Charging Finished
+    hide_state: true

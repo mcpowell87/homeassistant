@@ -1,0 +1,10 @@
+---
+- type: conditional
+  conditions:
+    - entity: alarm_control_panel.alarmo
+      state_not: disarmed
+  card:
+    color: amber
+    type: tile
+    entity: alarm_control_panel.alarmo
+    name: Alarm Armed

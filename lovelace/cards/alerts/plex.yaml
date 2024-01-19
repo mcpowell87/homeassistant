@@ -1,0 +1,10 @@
+---
+- type: conditional
+  conditions:
+    - condition: state
+      entity: sensor.tautulli_watching
+      state_not: '0'
+  card:
+    type: tile
+    entity: sensor.tautulli_watching
+    name: Active Plex Streams

@@ -1,0 +1,19 @@
+---
+- type: conditional
+  conditions:
+    - entity: input_select.washer_status
+      state_not: Idle
+  card:
+    type: tile
+    entity: sensor.washer_on_time
+    name: Washer Elapsed Time
+    icon: mdi:washing-machine
+- type: conditional
+  conditions:
+    - entity: input_select.dryer_status
+      state_not: Idle
+  card:
+    type: tile
+    entity: sensor.dryer_on_time
+    name: Dryer Elapsed Time
+    icon: mdi:tumble-dryer

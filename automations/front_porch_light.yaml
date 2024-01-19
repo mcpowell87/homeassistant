@@ -15,7 +15,7 @@
         state: below_horizon
     action:
       - service: switch.turn_on
-        entity_id: switch.front_porch_light
+        entity_id: switch.front_porch_lights
 
 # Turn off the front porch light at midnight.
   - alias: 'Front Porch Light - Turn off at midnight'
@@ -24,7 +24,7 @@
         at: '00:00:00'
     action:
       - service: switch.turn_off
-        entity_id: switch.front_porch_light
+        entity_id: switch.front_porch_lights
 
 # Turn on the light when doorbell detects motion.  
   - alias: 'Front Porch Light - Turn on when doorbell detects motion'
@@ -43,7 +43,7 @@
             after: '00:00:00'
     action:
       - service: switch.turn_on
-        entity_id: switch.front_porch_light
+        entity_id: switch.front_porch_lights
 
 # Turn off the light after 5 minutes of no motion
   - alias: 'Front Porch Light - Turn off when motion ends'
@@ -60,4 +60,4 @@
         before: '08:00:00'
     action:
       - service: switch.turn_off
-        entity_id: switch.front_porch_light
+        entity_id: switch.front_porch_lights

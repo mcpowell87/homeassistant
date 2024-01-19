@@ -1,7 +1,0 @@
----
-type: custom:decluttering-card
-template: binary_sensor_alert
-variables:
-  - entity: binary_sensor.kitchen_sink_leak_sensor
-  - label: Leak detected under kitchen sink
-  - active_state: "on"

@@ -1,0 +1,16 @@
+---
+type: horizontal-stack
+cards:
+  - type: tile
+    name: Front Door
+    entity: lock.front_door
+    show_name: false
+  - type: tile
+    show_name: false
+    entity: alarm_control_panel.alarmo
+    name: Alarm
+    features:
+      - type: "alarm-modes"
+        modes:
+          - armed_away
+          - disarmed

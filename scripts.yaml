@@ -50,22 +50,22 @@ home_camera_stop_recording:
     domain: select
     entity_id: select.kitchen_recording_mode
     type: select_option
-    option: Detections
+    option: Never
   - device_id: 413cb0980788c8e11e612108294bdd4f
     domain: select
     entity_id: select.bedroom_recording_mode
     type: select_option
-    option: Detections
+    option: Never
   - device_id: b326a7931822b2f8d23afbd210d256b6
     domain: select
     entity_id: select.spare_bedroom_recording_mode
     type: select_option
-    option: Detections
+    option: Never
   - device_id: 282e753a751a993ae0f914577529dc17
     domain: select
     entity_id: select.spare_room_recording_mode
     type: select_option
-    option: Detections
+    option: Never
   - device_id: 50eed9c561a061c970f8f2113f716337
     domain: select
     entity_id: a19709895154a2571516d647050c7c5c

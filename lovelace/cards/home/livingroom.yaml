@@ -6,16 +6,16 @@ cards:
     template: button-card-headers
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
-        template: temp-button
-        entity: sensor.living_room_temperature
-        show_name: false
-      - type: custom:button-card
-        template: light-button
+      - type: tile
+        name: Lamp
         entity: light.living_room_lamp
         show_name: false
         icon: mdi:floor-lamp
-      - type: custom:button-card
+        features:
+          - type: "light-brightness"
+      - type: tile
+        name: Fan
         show_name: false
         entity: fan.living_room_ceiling_fan
-        template: fan-button
+        features:
+          - type: "fan-speed"

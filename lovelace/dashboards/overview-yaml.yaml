@@ -1,0 +1,22 @@
+title: Home
+button_card_templates: !include_dir_named /config/lovelace/templates/button_card_templates
+decluttering_templates: !include_dir_named /config/lovelace/templates/decluttering_templates
+views:
+  - theme: ios-dark-mode
+    title: Home
+    path: home
+    icon: mdi:home
+    badges:
+      - entity: person.trish
+      - entity: person.mike
+      - entity: alarm_control_panel.alarmo
+    cards:
+      - !include /config/lovelace/cards/alerts.yaml
+      - !include /config/lovelace/cards/home/security.yaml
+      - !include /config/lovelace/cards/plex_sessions.yaml
+      - type: custom:clock-weather-card
+        entity: weather.home
+        locale: en-US
+        time_format: 12
+      - !include /config/lovelace/cards/air_quality.yaml
+      - !include /config/lovelace/cards/home/livingroom.yaml

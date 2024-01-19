@@ -6,7 +6,7 @@ alexa:
     client_secret: !secret alexa_client_secret
     filter:
       include_entities:
-        - switch.back_porch_light
+        - switch.back_porch_lights
         - light.bedroom_lamp_left
         - light.bedroom_lamp_right
         - light.living_room_lamp
