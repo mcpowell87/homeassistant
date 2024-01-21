@@ -3,7 +3,7 @@ type: horizontal-stack
 cards:
   - type: tile
     name: Front Door
-    entity: lock.front_door
+    entity: lock.front_door_lock
     show_name: false
   - type: tile
     show_name: false

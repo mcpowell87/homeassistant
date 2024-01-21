@@ -4,7 +4,7 @@ icon: mdi:home
 path: home
 badges:
   - alarm_control_panel.alexa_guard 
-  - lock.front_door
+  - lock.front_door_lock
   - person.mike
   - person.trish
 cards:

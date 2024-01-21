@@ -91,3 +91,8 @@ power_cycle_ap:
     domain: switch
   mode: single
   icon: mdi:wifi-refresh
+clean_kitchen:
+  alias: Clean Kitchen
+  sequence: []
+  mode: single
+  icon: mdi:stove

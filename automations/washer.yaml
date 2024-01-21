@@ -3,7 +3,7 @@
   - alias: Washer - Set to running when power is on
     trigger:
       - platform: numeric_state
-        entity_id: sensor.washer_power
+        entity_id: sensor.washer_electric_consumption_w
         above: 10
         for:
           minutes: 2
@@ -28,7 +28,7 @@
         seconds: '*'
     condition:
       - condition: numeric_state
-        entity_id: sensor.washer_power
+        entity_id: sensor.washer_electric_consumption_w
         above: 10
     action:
       - service: homeassistant.update_entity
@@ -38,7 +38,7 @@
   - alias: Washer - Set to idle and send notification after power reduces
     trigger:
       - platform: numeric_state
-        entity_id: sensor.washer_power
+        entity_id: sensor.washer_electric_consumption_w
         below: 3
         for:
           minutes: 5

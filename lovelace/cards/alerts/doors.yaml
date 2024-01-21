@@ -1,11 +1,11 @@
 - type: conditional
   conditions:
-    - entity: lock.front_door
+    - entity: lock.front_door_lock
       state_not: locked
   card:
     color: amber
     type: tile
-    entity: lock.front_door
+    entity: lock.front_door_lock
     icon: mdi:lock-open
     name: Door Unlocked
     hide_state: true

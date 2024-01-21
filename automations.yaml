@@ -308,3 +308,23 @@
       entity_id: scene.bedtime
     metadata: {}
   mode: single
+- id: '1705850483652'
+  alias: Notify when server power turned off
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 50cae035aaae343107f99e909fe04d0c
+    entity_id: 66b6198b408cfa590a68f7b76a1dfd46
+    domain: switch
+  - platform: device
+    type: turned_off
+    device_id: 8cc20e25511369c52238e53a8679cc41
+    entity_id: de9b94cf363962cf761ce474a313bec2
+    domain: switch
+  condition: []
+  action:
+  - service: notify.mobile_app_mikes_iphone
+    data:
+      message: Server or Office PC turned off
+  mode: single

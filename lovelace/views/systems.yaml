@@ -19,14 +19,14 @@ cards:
       - type: custom:mini-graph-card
         icon: mdi:desktop-tower-monitor
         entities:
-          - entity: sensor.office_pc_power
+          - entity: sensor.office_pc_electric_consumption_w
             name: Office PC
             show:
               state: true
       - type: custom:mini-graph-card
         icon: mdi:server
         entities:
-          - entity: sensor.server_rack_power
+          - entity: sensor.server_rack_electric_consumption_w
             name: Server Rack
             show:
               state: true
