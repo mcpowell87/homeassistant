@@ -1,5 +1,7 @@
 ---
 type: horizontal-stack
+view_layout:
+  grid-area: security
 cards:
   - type: tile
     name: Front Door

@@ -3,6 +3,8 @@ show_name: true
 show_icon: true
 show_state: true
 type: glance
+view_layout:
+  grid-area: airquality
 entities:
   - entity: sensor.view_plus_temperature
     name: Temperature

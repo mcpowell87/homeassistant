@@ -1,0 +1,22 @@
+---
+aspect_ratio: 1/1
+color_type: card
+hold_action:
+  action: more-info
+tap_action:
+  action: toggle
+show_label: true
+label: >
+  [[[
+    if (entity && entity.attributes && entity.attributes.brightness) {
+      return Math.round((entity.attributes.brightness/254)*100) + '%';
+    } else if (entity && entity.state === "on") {
+      return "ON"
+    }
+    return "OFF"
+  ]]]
+state:
+  - value: 'off'
+    styles:
+      card:
+        - background: var( --ha-card-background, var(--card-background-color, white) )

@@ -1,0 +1,154 @@
+aspect_ratio: 1/1
+show_entity_picture: true
+show_name: false
+state:
+  - value: not_home
+    styles:
+      card:
+        - background-color: '#404040'
+      custom_fields:
+        icon:
+          - border-color: '#B0B0B0'
+          - opacity: 30%
+styles:
+  card:
+    - border-radius: 5%
+    - padding: 5%
+    - color: lightgray
+    - font-size: 11px
+  grid:
+    - grid-template-areas: '"icon status" "battery time" "network proximity"'
+    - grid-template-columns: 1fr 1fr
+    - grid-template-rows: 1fr min-content min-content min-content min-content
+  name:
+    - font-size: 16px
+    - justify-self: left
+    - padding-bottom: 5px
+    - justify-self: left
+  custom_fields:
+    icon:
+      - width: 120%
+      - pointer-events: none
+      - display: grid
+      - border-radius: 100px
+      - margin: 0 0 0 0
+      - justify-self: left
+      - opacity: 1
+    status:
+      - align-self: start
+      - justify-self: end
+      - text-transform: capitalize
+      - color: lightgray
+      - font-size: 12px
+    battery:
+      - justify-self: left
+      - font-size: 12px
+      - color: lightgray
+      - '--icon-color': |
+          [[[ var l = states[variables.battery_sensor].state;
+            if (l < 10) return "#e45649";
+            if (l < 20) return "#ff9050";
+            if (l < 30) return "#ffb040";
+          else return "#77c66e"
+          ]]]
+    network:
+      - justify-self: left
+      - font-size: 12px
+      - color: lightgray
+      - '--icon-color': |
+          [[[ var n = states[variables.network_sensor].state;
+            if ((n=='cellular')|(n=='wifi')) return "#77c66e";
+          else return "grey"
+          ]]]
+    proximity:
+      - justify-self: right
+      - font-size: 12px
+      - color: lightgray
+      - '--icon-color': |
+          [[[ var p = states[variables.proximity_sensor].state;
+            if (p > 1) return "#ffb040";
+            if (p > 20) return "#ff9050";
+            if (p > 100) return "#e45649";
+          else return "#77c66e"
+          ]]]
+    time:
+      - justify-self: right
+      - font-size: 12px
+      - color: lightgray
+      - '--icon-color': |
+          [[[ var p = states[variables.time_sensor].state;
+            if (p > 10) return "#ffb040";
+            if (p > 30) return "#ff9050";
+            if (p > 100) return "#e45649";
+          else return "#77c66e"
+          ]]]
+custom_fields:
+  icon: >
+    [[[ return entity === undefined ? null : `<img
+    src="${states[variables.person_entity].attributes.entity_picture}" width="100%">`;
+    ]]]
+  status: |
+    [[[ var state = states[variables.person_entity].state;
+        var home = `<ha-icon icon="mdi:home" style="color: #77c66e; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
+        var office = `<ha-icon icon="mdi:office-building" style="color: deepskyblue; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
+        var family = `<ha-icon icon="mdi:home-group" style="color: red; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
+        var away = `<span> Awayč</span><ha-icon icon="mdi:home-export-outline" style="color: lightgray;margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
+        var text = `<span>${entity.state}</span>`
+      if (state=='home') { 
+        return text+home
+      }
+      if ((state=='Work')) { 
+        return text+office
+      } 
+      if ((state=='Parents Powell')|(state=='Parents Errera')) { 
+        return text+family
+      } else {
+        return away
+      }
+    ]]]
+  battery: |
+    [[[
+      var i = states[variables.battery_sensor].attributes.icon;
+      var b = states[variables.battery_sensor].state;
+      return `<ha-icon icon='${i}' style='width:20px; height: 20px; margin: 1px; vertical-align:2px; color: var(--icon-color);'></ha-icon>${b}%`
+    ]]] 
+  network: |
+    [[[
+      if (states[variables.wifi_sensor].state =='<not connected>') { 
+        return `<ha-icon icon="mdi:wifi" 
+        style="width: 20px; height: 20px; vertical-align: 1px; margin: 1px;"> 
+        </ha-icon> 
+        <span>Off</span>`; 
+      } else {
+        return `<ha-icon icon="mdi:wifi" 
+        style="width: 20px; height: 20px; vertical-align: 1px; margin: 1px; color: var(--icon-color);"> 
+        </ha-icon>  ${states[variables.wifi_sensor].state}</span></span> 
+        `;
+      }
+    ]]]
+  proximity: |
+    [[[
+      var state=states[variables.person_entity].state;
+      if (state=='home') { 
+        return `<span>0 miles</span>
+        <ha-icon icon="mdi:map-marker-distance" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
+        </ha-icon> `;
+      } else {
+        return `<span>\<span>${states[variables.proximity_sensor].state} miles</span></span>
+        <ha-icon icon="mdi:map-marker-distance" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
+        </ha-icon> `;
+      }
+    ]]]
+  time: |
+    [[[
+      var state=states[variables.person_entity].state;
+      if (state=='home') { 
+        return `<span>0 minutes</span>
+        <ha-icon icon="mdi:car-clock" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
+        </ha-icon> `;
+      } else {
+        return `<span>\<span>${states[variables.time_sensor].state} minutes</span></span>
+        <ha-icon icon="mdi:car-clock" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
+        </ha-icon> `;
+      }
+    ]]]

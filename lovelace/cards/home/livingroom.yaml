@@ -19,3 +19,5 @@ cards:
         entity: fan.living_room_ceiling_fan
         features:
           - type: "fan-speed"
+view_layout:
+  grid-area: livingroom

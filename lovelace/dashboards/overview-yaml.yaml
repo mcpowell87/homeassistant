@@ -6,17 +6,56 @@ views:
     title: Home
     path: home
     icon: mdi:home
+    type: masonry
     badges:
       - entity: person.trish
       - entity: person.mike
       - entity: alarm_control_panel.alarmo
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 33% 33% 33%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "alerts plex gap"
+        "airquality weather thermostat"
+        "people security security"
+        "livingroom hallway office"
+      mediaquery:
+        "(max-width: 600px)":
+          grid-template-columns: 100%
+          grid-template-areas: |
+            "alerts"
+            "plex"
+            "security"
+            "weather"
+            "thermostat"
+            "livingroom"
+            "hallway"
+            "office"
+        "(max-width: 800px)":
+          grid-template-columns: 50% 50%
+          grid-template-areas: |
+            "alerts plex"
+            "security security"
+            "weather thermostat"
+            "livingroom hallway"
+            "office ."
     cards:
+      - type: custom:gap-card
+        view_layout:
+          grid-area: gap
+      - !include /config/lovelace/cards/people.yaml
       - !include /config/lovelace/cards/alerts.yaml
+      - !include /config/lovelace/cards/thermostat.yaml
       - !include /config/lovelace/cards/home/security.yaml
       - !include /config/lovelace/cards/plex_sessions.yaml
       - type: custom:clock-weather-card
         entity: weather.home
         locale: en-US
         time_format: 12
+        view_layout:
+          grid-area: weather
       - !include /config/lovelace/cards/air_quality.yaml
       - !include /config/lovelace/cards/home/livingroom.yaml
+      - !include /config/lovelace/cards/home/hallway.yaml
+      - !include /config/lovelace/cards/home/office.yaml

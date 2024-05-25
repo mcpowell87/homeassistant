@@ -1,5 +1,7 @@
 ---
 type: entity-filter
+view_layout:
+  grid-area: whoshome
 entities:
   - person.mike
   - person.trish

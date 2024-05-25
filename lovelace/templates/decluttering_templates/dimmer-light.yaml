@@ -1,0 +1,15 @@
+---
+default:
+  name: ' '
+  icon:
+card:
+  type: tile
+  entity: '[[entity]]'
+  name: '[[name]]'
+  icon: '[[icon]]'
+  features:
+    - type: "light-brightness"
+  tap_action:
+    action: toggle
+  hold_action:
+    action: more-info

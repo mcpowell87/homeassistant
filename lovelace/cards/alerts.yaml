@@ -1,3 +1,5 @@
 ---
 type: vertical-stack
 cards: !include_dir_merge_list alerts/
+view_layout:
+  grid-area: alerts

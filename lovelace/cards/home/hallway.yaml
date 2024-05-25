@@ -1,0 +1,16 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: Hallway
+    template: button-card-headers
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        name: Lights
+        entity: switch.hallway_light
+        show_name: false
+        features:
+          - type: "light-brightness"
+view_layout:
+  grid-area: hallway

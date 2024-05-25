@@ -23,8 +23,8 @@
       - platform: state
         entity_id: binary_sensor.back_door_sensor_contact
         to: 'off'
-        for:
-          minutes: 5
+#        for:
+#          minutes: 5
     action:
       - service: switch.turn_off
         entity_id: switch.back_porch_lights

@@ -1,0 +1,11 @@
+---
+platform: template
+sensors:
+  waze_mike_to_home:
+    value_template: '{{ state_attr("sensor.mike_to_home","distance") | float(0) | round(2)  }}'
+    friendly_name: 'Mike to Home Distance'
+    icon_template: mdi:map-marker-distance
+  waze_trish_to_home:
+    value_template: '{{ state_attr("sensor.trish_to_home","distance") | float(0) | round(2)  }}'
+    friendly_name: 'Trish to Home Distance'
+    icon_template: mdi:map-marker-distance

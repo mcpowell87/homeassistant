@@ -1,0 +1,25 @@
+---
+type: horizontal-stack
+cards:
+  - type: custom:button-card
+    template: person
+    entity: person.mike
+    variables:
+      person_entity: person.mike
+      battery_sensor: sensor.mikes_iphone_battery_level
+      network_sensor: sensor.mikes_iphone_connection_type
+      wifi_sensor: sensor.mikes_iphone_ssid
+      proximity_sensor: sensor.waze_mike_to_home
+      time_sensor: sensor.mike_to_home
+  - type: custom:button-card
+    template: person
+    entity: person.trish
+    variables:
+      person_entity: person.trish
+      battery_sensor: sensor.trishs_iphone_battery_level
+      network_sensor: sensor.trishs_iphone_connection_type
+      wifi_sensor: sensor.trishs_iphone_ssid
+      proximity_sensor: sensor.waze_trish_to_home
+      time_sensor: sensor.trish_to_home
+view_layout:
+  grid-area: people

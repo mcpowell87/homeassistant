@@ -1,19 +1,19 @@
 ---
-type: custom:simple-thermostat
+type: tile
 entity: climate.home
-style: |
-  ha-card {
-    --st-mode-background: rgba(255,255,255,0);
-    --st-mode-active-color: rgba(255,255,255,.87);
-  }
-icon:
-  heat: mdi:fire
-  cool: mdi:snowflake
-  idle: mdi:power
-step_size: 1
-decimals: 0
-sensors:
-  - entity: sensor.home_humidity
-    name: Humidity
-control:
-  - hvac
+view_layout:
+  grid-area: thermostat
+features:
+  - type: climate-hvac-modes
+    operation_modes:
+      - heat
+      - heat_cool
+      - cool
+      - "off"
+  - type: climate-preset-modes
+    style: "icons"
+    preset_modes:
+      - home
+      - away
+      - sleep
+  - type: target-temperature
