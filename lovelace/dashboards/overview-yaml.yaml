@@ -71,3 +71,10 @@ views:
     icon: mdi:multimedia
     cards:
       - !include /config/lovelace/cards/plex_sessions.yaml
+  - theme: ios-dark-mode
+    title: Surveillance
+    path: surveillance
+    icon: mdi:cctv
+    cards:
+      - !include /config/lovelace/cards/surveillance.yaml
+    type: panel
