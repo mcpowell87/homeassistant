@@ -1,21 +1,22 @@
 ---
 type: vertical-stack
+view_layout:
+  grid-area: bedroom
 cards:
   - type: custom:button-card
     template: button-card-headers
     name: Bedroom
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
-        template: temp-button
-        entity: sensor.bedroom_temperature
-        show_name: false
-      - type: custom:button-card
-        template: light-button
-        entity: light.bedroom_lamps
-        show_name: false
-        icon: mdi:lamp
-      - type: custom:button-card
+      - type: custom:decluttering-card
+        template: dimmer-light
+        variables:
+          - entity: light.bedroom_lamps
+          - icon: mdi:lamp
+          - name: Lamps
+      - type: tile
+        name: Fan
         show_name: false
         entity: fan.bedroom_ceiling_fan
-        template: fan-button
+        features:
+          - type: "fan-speed"

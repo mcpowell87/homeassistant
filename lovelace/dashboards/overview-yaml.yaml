@@ -6,40 +6,43 @@ views:
     title: Home
     path: home
     icon: mdi:home
-    type: masonry
-    badges:
-      - entity: person.trish
-      - entity: person.mike
-      - entity: alarm_control_panel.alarmo
     type: custom:grid-layout
+    reflow: true
     layout:
       grid-template-columns: 33% 33% 33%
       grid-template-rows: auto
       grid-template-areas: |
-        "alerts plex gap"
+        "alerts alerts alerts"
         "airquality weather thermostat"
         "people security security"
-        "livingroom hallway office"
+        "livingroom hallway bedroom"
+        "office sparebedroom basement"
       mediaquery:
         "(max-width: 600px)":
           grid-template-columns: 100%
           grid-template-areas: |
             "alerts"
-            "plex"
             "security"
+            "people"
+            "airquality"
             "weather"
             "thermostat"
             "livingroom"
             "hallway"
+            "bedroom"
             "office"
-        "(max-width: 800px)":
+            "sparebedroom"
+            "basement"
+        "(max-width: 1200px)":
           grid-template-columns: 50% 50%
           grid-template-areas: |
-            "alerts plex"
-            "security security"
-            "weather thermostat"
-            "livingroom hallway"
-            "office ."
+            "alerts alerts"
+            "people security"
+            "airquality weather"
+            "thermostat livingroom"
+            "hallway bedroom"
+            "office sparebedroom"
+            "basement ."
     cards:
       - type: custom:gap-card
         view_layout:
@@ -48,14 +51,23 @@ views:
       - !include /config/lovelace/cards/alerts.yaml
       - !include /config/lovelace/cards/thermostat.yaml
       - !include /config/lovelace/cards/home/security.yaml
-      - !include /config/lovelace/cards/plex_sessions.yaml
       - type: custom:clock-weather-card
         entity: weather.home
         locale: en-US
         time_format: 12
+        forecast_rows: 3
         view_layout:
           grid-area: weather
       - !include /config/lovelace/cards/air_quality.yaml
       - !include /config/lovelace/cards/home/livingroom.yaml
       - !include /config/lovelace/cards/home/hallway.yaml
+      - !include /config/lovelace/cards/home/bedroom.yaml
       - !include /config/lovelace/cards/home/office.yaml
+      - !include /config/lovelace/cards/home/sparebedroom.yaml
+      - !include /config/lovelace/cards/home/basement.yaml
+  - theme: ios-dark-mode
+    title: Media
+    path: media
+    icon: mdi:multimedia
+    cards:
+      - !include /config/lovelace/cards/plex_sessions.yaml

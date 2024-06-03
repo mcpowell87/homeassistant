@@ -215,13 +215,9 @@
   alias: Dehumidifier - Turn On
   description: Turns on dehumidifier when it reaches target temperature.
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.basement_wave_plus_humidity
-    for:
-      hours: 0
-      minutes: 1
-      seconds: 0
-    above: 57
+  - platform: template
+    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float >=
+      states(''input_number.basement_humidity_target'') | float + 5.0 }}"'
   condition:
   - condition: state
     entity_id: binary_sensor.finished_basement_tank_full
@@ -236,9 +232,9 @@
   alias: Dehumidifier - Turn Off
   description: Turns off dehumidifier when it gets to target humidity.
   trigger:
-  - platform: numeric_state
-    entity_id: sensor.basement_wave_plus_humidity
-    below: 55
+  - platform: template
+    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float <=
+      states(''input_number.basement_humidity_target'') | float }}"'
   condition: []
   action:
   - service: humidifier.turn_off
@@ -327,4 +323,29 @@
   - service: notify.mobile_app_mikes_iphone
     data:
       message: Server or Office PC turned off
+  mode: single
+- id: '1716868591290'
+  alias: Dehumidifier - Failsafe
+  description: Turns off the dehumidifier if it has been running for an hour and is
+    below the target humidity.
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 5699bfac3d624082eb1296bb5abea4ae
+    entity_id: b4f5a80eff42e1e6836bd0fa3f76c9a1
+    domain: humidifier
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: template
+    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float <=
+      states(''input_number.basement_humidity_target'') | float }}"'
+  action:
+  - service: humidifier.turn_off
+    metadata: {}
+    data: {}
+    target:
+      device_id: 5699bfac3d624082eb1296bb5abea4ae
   mode: single

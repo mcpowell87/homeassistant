@@ -1,0 +1,5 @@
+---
+type: Recycling
+frequency: WEEKLY
+weekdays: { TH: 1 }
+excludes: !include ../config/holidays.yaml

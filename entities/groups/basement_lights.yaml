@@ -1,8 +1,0 @@
----
-basement_lights:
-  name: Basement Lights
-  entities:
-    - light.basement_northeast
-    - light.basement_northwest
-    - light.basement_southeast
-    - light.basement_southwest

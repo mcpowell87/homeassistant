@@ -219,6 +219,4 @@ filter:
             - grid-gap: 5px 10px
 card:
   type: vertical-stack
-  view_layout:
-    grid-area: plex
 card_param: cards

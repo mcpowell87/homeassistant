@@ -1,0 +1,22 @@
+---
+- type: conditional
+  conditions:
+    - entity: sensor.next_garbage_collection
+      state: '1'
+  card:
+    color: amber
+    type: tile
+    entity: sensor.next_garbage_collection
+    hide_state: true
+    name: Garbage Tomorrow
+- type: conditional
+  conditions:
+    - entity: sensor.next_recycling_collection
+      state: '1'
+  card:
+    color: amber
+    type: tile
+    entity: sensor.next_recycling_collection
+    hide_state: true
+    icon: mdi:recycle
+    name: Recycling Tomorrow

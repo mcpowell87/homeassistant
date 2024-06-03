@@ -1,0 +1,6 @@
+---
+platform: waste_collection_schedule
+name: Next Garbage Collection
+types:
+  - Garbage
+value_template: "{{ value.daysTo }}"

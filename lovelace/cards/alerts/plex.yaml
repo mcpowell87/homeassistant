@@ -8,3 +8,6 @@
     type: tile
     entity: sensor.tautulli_watching
     name: Active Plex Streams
+    tap_action:
+      action: navigate
+      navigation_path: /overview-yaml/media

@@ -1,0 +1,6 @@
+---
+waste_collection_schedule:
+  sources:
+    - name: multiple
+      args:
+        static: !include_dir_list ../entities/waste/types

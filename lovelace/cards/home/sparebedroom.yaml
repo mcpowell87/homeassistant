@@ -1,0 +1,42 @@
+---
+type: vertical-stack
+view_layout:
+  grid-area: sparebedroom
+cards:
+  - type: custom:button-card
+    template: button-card-headers
+    name: Spare Bedroom
+  - type: tile
+    entity: climate.spare_bedroom_ac
+    view_layout:
+      grid-area: thermostat
+    features:
+      - type: climate-hvac-modes
+        operation_modes:
+          - auto
+          - cool
+          - dry
+          - fan_only
+          - "off"
+      - type: climate-preset-modes
+        style: "icons"
+        preset_modes:
+          - none
+          - eco
+          - sleep
+          - boost
+      - type: target-temperature
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: dimmer-light
+        variables:
+          - entity: light.spare_bedroom_bedside_lamps
+          - icon: mdi:lamp
+          - name: Bedside Lamps
+      - type: custom:decluttering-card
+        template: dimmer-light
+        variables:
+          - entity: light.spare_bedroom_lamp
+          - icon: mdi:floor-lamp
+          - name: Lamp

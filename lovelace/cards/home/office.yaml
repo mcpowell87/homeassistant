@@ -39,4 +39,4 @@ cards:
           - icon: mdi:floor-lamp
           - name: Lamp
 view_layout:
-  grid-layout: "office"
+  grid-area: office
