@@ -16,7 +16,7 @@ cards:
         ha-tile-info$: |
           .secondary:after {
             visibility: visible;
-            content: " ⸱ (Current: {{ states('sensor.basement_wave_plus_humidity') }}%)";
+            content: " ⸱ (Current: {{ states('sensor.basement_wave_plus_humidity') }}%) ⸱ {{ states('humidifier.finished_basement') }}";
           }
     features:
       - type: "numeric-input"

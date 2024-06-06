@@ -216,8 +216,8 @@
   description: Turns on dehumidifier when it reaches target temperature.
   trigger:
   - platform: template
-    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float >=
-      states(''input_number.basement_humidity_target'') | float + 5.0 }}"'
+    value_template: '{{ states(''sensor.basement_wave_plus_humidity'') | float >=
+      (states(''input_number.basement_humidity_target'') | float + 5.0) }}'
   condition:
   - condition: state
     entity_id: binary_sensor.finished_basement_tank_full
@@ -233,8 +233,8 @@
   description: Turns off dehumidifier when it gets to target humidity.
   trigger:
   - platform: template
-    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float <=
-      states(''input_number.basement_humidity_target'') | float }}"'
+    value_template: '{{ states(''sensor.basement_wave_plus_humidity'') | float <=
+      states(''input_number.basement_humidity_target'') | float }}'
   condition: []
   action:
   - service: humidifier.turn_off
@@ -340,8 +340,8 @@
       seconds: 0
   condition:
   - condition: template
-    value_template: '"{{ states(''sensor.basement_wave_plus_humidity'') | float <=
-      states(''input_number.basement_humidity_target'') | float }}"'
+    value_template: '{{ states(''sensor.basement_wave_plus_humidity'') | float <=
+      states(''input_number.basement_humidity_target'') | float }}'
   action:
   - service: humidifier.turn_off
     metadata: {}
