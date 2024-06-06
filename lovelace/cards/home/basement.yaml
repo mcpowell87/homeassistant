@@ -9,6 +9,11 @@ cards:
   - type: tile
     name: Target Humidity
     entity: input_number.basement_humidity_target
+    tap_action:
+      action: call-service
+      service: humidifier.toggle 
+      data:
+        entity_id: humidifier.finished_basement
     state_content:
       - ''
     card_mod:
