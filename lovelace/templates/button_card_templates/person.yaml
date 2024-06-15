@@ -96,7 +96,7 @@ custom_fields:
         var home = `<ha-icon icon="mdi:home" style="color: #77c66e; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
         var office = `<ha-icon icon="mdi:office-building" style="color: deepskyblue; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
         var family = `<ha-icon icon="mdi:home-group" style="color: red; margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
-        var away = `<span> Awayč</span><ha-icon icon="mdi:home-export-outline" style="color: lightgray;margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
+        var away = `<span> Away</span><ha-icon icon="mdi:home-export-outline" style="color: lightgray;margin: 1px; vertical-align: 1px; width: 20px; height: 20px;"></ha-icon>`
         var text = `<span>${entity.state}</span>`
       if (state=='home') { 
         return text+home

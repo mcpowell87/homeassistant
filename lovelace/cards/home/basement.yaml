@@ -6,26 +6,39 @@ cards:
   - type: custom:button-card
     template: button-card-headers
     name: Basement
-  - type: tile
-    name: Target Humidity
-    entity: input_number.basement_humidity_target
-    tap_action:
-      action: call-service
-      service: humidifier.toggle 
-      data:
-        entity_id: humidifier.finished_basement
-    state_content:
-      - ''
-    card_mod:
-      style:
-        ha-tile-info$: |
-          .secondary:after {
-            visibility: visible;
-            content: " ⸱ (Current: {{ states('sensor.basement_wave_plus_humidity') }}%) ⸱ {{ states('humidifier.finished_basement') }}";
-          }
-    features:
-      - type: "numeric-input"
-        style: "buttons"
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        icon: mdi:water-percent
+        entities:
+          - entity: sensor.basement_wave_plus_humidity
+            name: Humidity
+            show_state: true
+          - entity: sensor.basement_wave_plus_temperature
+            name: Temperature
+            show_state: true
+            show_graph: false
+      - type: tile
+        name: Target Humidity
+        icon: mdi:air-humidifier
+        entity: input_number.basement_humidity_target
+        tap_action:
+          action: call-service
+          service: humidifier.toggle 
+          data:
+            entity_id: humidifier.finished_basement
+        state_content:
+          - ''
+        card_mod:
+          style:
+            ha-tile-info$: |
+              .secondary:after {
+                visibility: visible;
+                content: " ⸱ {{ states('humidifier.finished_basement') }}";
+              }
+        features:
+          - type: "numeric-input"
+            style: "buttons"
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card

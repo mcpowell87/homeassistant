@@ -5,12 +5,6 @@ lovelace:
     overview-yaml:
       mode: yaml
       title: Home
-      icon: mdi:cellphone
+      icon: mdi:home-assistant
       show_in_sidebar: true
       filename: /config/lovelace/dashboards/overview-yaml.yaml
-    mobile-yaml:
-      mode: yaml
-      title: Mobile Dashboard
-      icon: mdi:cellphone
-      show_in_sidebar: true
-      filename: /config/lovelace/dashboards/mobile-yaml.yaml
