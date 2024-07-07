@@ -1,0 +1,16 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: Foyer
+    template: button-card-headers
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        name: Lights
+        entity: light.front_foyer_lights
+        show_name: false
+        features:
+          - type: "light-brightness"
+view_layout:
+  grid-area: foyer

@@ -66,15 +66,15 @@ views:
       - !include /config/lovelace/cards/home/sparebedroom.yaml
       - !include /config/lovelace/cards/home/basement.yaml
   - theme: ios-dark-mode
-    title: Media
-    path: media
-    icon: mdi:multimedia
-    cards:
-      - !include /config/lovelace/cards/plex_sessions.yaml
-  - theme: ios-dark-mode
     title: Surveillance
     path: surveillance
     icon: mdi:cctv
     cards:
       - !include /config/lovelace/cards/surveillance.yaml
     type: panel
+  - theme: ios-dark-mode
+    title: Media
+    path: media
+    icon: mdi:multimedia
+    cards:
+      - !include /config/lovelace/cards/plex_sessions.yaml

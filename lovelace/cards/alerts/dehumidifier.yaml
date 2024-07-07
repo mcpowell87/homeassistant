@@ -1,11 +1,11 @@
 ---
-type: conditional
-conditions:
-  - entity: binary_sensor.finished_basement_tank_full
-    state: 'on'
-card:
-  type: tile
-  entity: binary_sensor.finished_basement_tank_full
-  name: Finished Basement Humidifier Full
-  hide_state: true
-  icon: mdi:water-alert
+- type: conditional
+  conditions:
+    - entity: binary_sensor.finished_basement_tank_full
+      state: 'on'
+  card:
+    type: tile
+    entity: binary_sensor.finished_basement_tank_full
+    name: Finished Basement Humidifier Full
+    hide_state: true
+    icon: mdi:water-alert

@@ -7,6 +7,12 @@ cards:
   - type: horizontal-stack
     cards:
       - type: tile
+        name: Lights
+        entity: light.living_room_lights
+        show_name: false
+        features:
+          - type: "light-brightness"
+      - type: tile
         name: Lamp
         entity: light.living_room_lamp
         show_name: false
