@@ -1,16 +1,64 @@
 ---
 type: vertical-stack
+view_layout:
+  grid-area: upstairs
 cards:
   - type: custom:button-card
     template: button-card-headers
     name: Upstairs
+  - type: tile
+    entity: climate.spare_bedroom_ac
+    view_layout:
+      grid-area: thermostat
+    features:
+      - type: climate-hvac-modes
+        operation_modes:
+          - auto
+          - cool
+          - dry
+          - fan_only
+          - "off"
+      - type: climate-preset-modes
+        style: "icons"
+        preset_modes:
+          - none
+          - eco
+          - sleep
+          - boost
+      - type: target-temperature
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
-        template: temp-button
-        entity: sensor.spare_room_temperature
-        name: Spare Room
-      - type: custom:button-card
-        template: temp-button
-        entity: sensor.spare_bedroom_temperature
+      - type: custom:mini-graph-card
+        icon: mdi:water-percent
+        name: Bathroom
+        entities:
+          - entity: sensor.upstairs_bathroom_temphumi_sensor_humidity
+            name: Humidity
+            show_state: true
+          - entity: sensor.upstairs_bathroom_temphumi_sensor_air_temperature
+            name: Temperature
+            show_state: true
+      - type: custom:mini-graph-card
+        icon: mdi:water-percent
         name: Spare Bedroom
+        entities:
+          - entity: sensor.spare_bedroom_temphumi_sensor_humidity
+            name: Humidity
+            show_state: true
+          - entity: sensor.spare_bedroom_temphumi_sensor_air_temperature
+            name: Temperature
+            show_state: true
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: dimmer-light
+        variables:
+          - entity: light.spare_bedroom_bedside_lamps
+          - icon: mdi:lamp
+          - name: Bedside Lamps
+      - type: custom:decluttering-card
+        template: dimmer-light
+        variables:
+          - entity: light.spare_bedroom_lamp
+          - icon: mdi:floor-lamp
+          - name: Lamp

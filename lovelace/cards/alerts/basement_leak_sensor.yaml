@@ -2,11 +2,22 @@
 - type: conditional
   conditions:
     - condition: state
-      entity: binary_sensor.finished_basement_leak_sensor_water_leak
+      entity: binary_sensor.boiler_leak_sensor_water_leak_detected
       state: 'on'
   card:
     color: amber
     type: tile
     hide_state: true
-    entity: binary_sensor.finished_basement_leak_sensor_water_leak
-    name: Basement Leak Detected
+    entity: binary_sensor.boiler_leak_sensor_water_leak_detected
+    name: Boiler Leak Detected
+- type: conditional
+  conditions:
+    - condition: state
+      entity: binary_sensor.basement_window_leak_sensor_water_leak_detected
+      state: 'on'
+  card:
+    color: amber
+    type: tile
+    hide_state: true
+    entity: binary_sensor.basement_window_leak_sensor_water_leak_detected
+    name: Basement Window Leak Detected

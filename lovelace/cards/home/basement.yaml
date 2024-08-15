@@ -17,7 +17,6 @@ cards:
           - entity: sensor.basement_wave_plus_temperature
             name: Temperature
             show_state: true
-            show_graph: false
       - type: tile
         name: Target Humidity
         icon: mdi:air-humidifier

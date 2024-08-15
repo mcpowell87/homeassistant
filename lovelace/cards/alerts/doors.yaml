@@ -7,7 +7,39 @@
     type: tile
     entity: lock.front_door_lock
     icon: mdi:lock-open
-    name: Door Unlocked
+    name: Front Door Unlocked
+    hide_state: true
+    icon_tap_action:
+      action: call-service
+      service: lock.lock
+      data: {}
+      target: {}
+- type: conditional
+  conditions:
+    - entity: binary_sensor.basement_door_sensor_window_door_is_open
+      state: "on"
+  card:
+    color: amber
+    type: tile
+    entity: binary_sensor.basement_door_sensor_window_door_is_open
+    icon: mdi:door-open
+    name: Basement Door Open
+    hide_state: true
+    icon_tap_action:
+      action: call-service
+      service: lock.lock
+      data: {}
+      target: {}
+- type: conditional
+  conditions:
+    - entity: lock.basement_door_lock
+      state_not: locked
+  card:
+    color: amber
+    type: tile
+    entity: lock.basement_door_lock
+    icon: mdi:lock-open
+    name: Basement Door Unlocked
     hide_state: true
     icon_tap_action:
       action: call-service

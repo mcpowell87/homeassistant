@@ -1,0 +1,48 @@
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    name: Main Area
+    template: button-card-headers
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        name: Foyer
+        hide_state: true
+        entity: light.front_foyer_lights
+        features:
+          - type: "light-brightness"
+      - type: tile
+        name: Living Room
+        hide_state: true
+        entity: light.living_room_lights
+        features:
+          - type: "light-brightness"
+      - type: tile
+        name: Fan
+        hide_state: true
+        entity: fan.living_room_ceiling_fan
+        features:
+          - type: "fan-speed"
+      - type: tile
+        name: Hall
+        hide_state: true
+        entity: switch.hallway_light
+        features:
+          - type: "light-brightness"
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        name: Bar
+        hide_state: true
+        entity: light.bar_lights
+        features:
+          - type: "light-brightness"
+      - type: tile
+        name: Dining Room
+        hide_state: true
+        entity: light.dining_room_lights
+        features:
+          - type: "light-brightness"
+view_layout:
+  grid-area: mainarea

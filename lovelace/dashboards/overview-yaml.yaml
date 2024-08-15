@@ -15,8 +15,8 @@ views:
         "alerts alerts alerts"
         "airquality weather thermostat"
         "people security security"
-        "livingroom hallway bedroom"
-        "office sparebedroom basement"
+        "mainarea mainarea bedroom"
+        "upstairs basement ."
       mediaquery:
         "(max-width: 600px)":
           grid-template-columns: 100%
@@ -27,11 +27,9 @@ views:
             "airquality"
             "weather"
             "thermostat"
-            "livingroom"
-            "hallway"
+            "mainarea"
             "bedroom"
-            "office"
-            "sparebedroom"
+            "upstairs"
             "basement"
         "(max-width: 1200px)":
           grid-template-columns: 50% 50%
@@ -39,9 +37,8 @@ views:
             "alerts alerts"
             "people security"
             "airquality weather"
-            "thermostat livingroom"
-            "hallway bedroom"
-            "office sparebedroom"
+            "thermostat mainarea"
+            "bedroom upstairs"
             "basement ."
     cards:
       - type: custom:gap-card
@@ -59,11 +56,9 @@ views:
         view_layout:
           grid-area: weather
       - !include /config/lovelace/cards/air_quality.yaml
-      - !include /config/lovelace/cards/home/livingroom.yaml
-      - !include /config/lovelace/cards/home/hallway.yaml
+      - !include /config/lovelace/cards/home/mainarea.yaml
       - !include /config/lovelace/cards/home/bedroom.yaml
-      - !include /config/lovelace/cards/home/office.yaml
-      - !include /config/lovelace/cards/home/sparebedroom.yaml
+      - !include /config/lovelace/cards/home/upstairs.yaml
       - !include /config/lovelace/cards/home/basement.yaml
   - theme: ios-dark-mode
     title: Surveillance

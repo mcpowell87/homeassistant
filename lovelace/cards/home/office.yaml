@@ -6,37 +6,17 @@ cards:
     name: Office
   - type: horizontal-stack
     cards:
-      # - type: custom:button-card
-      #   template: temp-button
-      #   entity: sensor.office_temperature
-      #   show_name: false
-      # - type: tile
+      # - type: custom:decluttering-card
       #   template: dimmer-light
-      #   entity: light.office_lights
-      #   name: Lights
-      #   features:
-      #     - type: "light-brightness"
-      #   tap_action:
-      #     action: toggle
-      # - type: tile
+      #   variables:
+      #     - entity: light.office_lights
+      #     - icon: mdi:light-recessed
+      #     - name: Lights
+      # - type: custom:decluttering-card
       #   template: dimmer-light
-      #   entity: light.office_lamp
-      #   name: Lamp
-      #   features:
-      #     - type: "light-brightness"
-      #   tap_action:
-      #     action: toggle
-      - type: custom:decluttering-card
-        template: dimmer-light
-        variables:
-          - entity: light.office_lights
-          - icon: mdi:light-recessed
-          - name: Lights
-      - type: custom:decluttering-card
-        template: dimmer-light
-        variables:
-          - entity: light.office_lamp
-          - icon: mdi:floor-lamp
-          - name: Lamp
+      #   variables:
+      #     - entity: light.office_lamp
+      #     - icon: mdi:floor-lamp
+      #     - name: Lamp
 view_layout:
   grid-area: office
