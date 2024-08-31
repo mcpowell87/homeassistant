@@ -4,6 +4,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Main Area
+    icon: hue:room-living
     sub_button:
       - entity: sensor.home_temperature
         show_name: false

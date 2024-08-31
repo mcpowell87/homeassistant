@@ -1,6 +1,10 @@
 ---
 type: vertical-stack
 cards:
+  - type: custom:bubble-card
+    card_type: separator
+    name: Household
+    icon: mdi:home-account
   - type: horizontal-stack
     cards:
       - type: custom:button-card

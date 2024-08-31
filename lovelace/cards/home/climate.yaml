@@ -6,6 +6,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Climate
+    icon: mdi:weather-partly-cloudy
     sub_button:
       - show_name: false
         show_state: true

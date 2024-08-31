@@ -6,6 +6,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Bedroom
+    icon: mdi:bed
   - type: custom:decluttering-card
     template: bubble-fan
     variables:

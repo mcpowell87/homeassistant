@@ -6,6 +6,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Kitchen
+    icon: hue:room-kitchen
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card

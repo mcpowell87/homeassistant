@@ -6,6 +6,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Upstairs
+    icon: hue:upstairs
     sub_button:
       - show_name: false
         show_state: true

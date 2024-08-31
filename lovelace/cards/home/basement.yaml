@@ -6,6 +6,7 @@ cards:
   - type: custom:bubble-card
     card_type: separator
     name: Basement
+    icon: mdi:home-floor-b
     sub_button:
       - entity: sensor.basement_wave_plus_temperature
         show_name: false
