@@ -1,0 +1,60 @@
+---
+type: vertical-stack
+view_layout:
+  grid-area: climate
+cards:
+  - type: custom:bubble-card
+    card_type: separator
+    name: Climate
+    sub_button:
+      - show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:home-thermometer
+        button_action:
+        tap_action:
+          action: navigate
+          navigation_path: '#climate'
+  - type: custom:clock-weather-card
+    entity: weather.home
+    locale: en-US
+    time_format: 12
+    forecast_rows: 3
+  - type: vertical-stack
+    cards:
+      - !include /config/lovelace/cards/air_quality.yaml
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: '#climate'
+        name: Climate
+        icon: mdi:home-thermometer
+      - type: tile
+        entity: climate.home
+        features:
+          - type: climate-hvac-modes
+            operation_modes:
+              - heat
+              - heat_cool
+              - cool
+              - "off"
+          - type: climate-preset-modes
+            style: "icons"
+            preset_modes:
+              - home
+              - away
+              - sleep
+          - type: target-temperature
+      - type: tile
+        entity: climate.home_heat
+        features:
+          - type: climate-hvac-modes
+            operation_modes:
+              - heat
+              - "off"
+          - type: climate-preset-modes
+            style: "icons"
+            preset_modes:
+              - home
+              - away
+              - sleep
+          - type: target-temperature

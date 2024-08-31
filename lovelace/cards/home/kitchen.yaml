@@ -1,13 +1,36 @@
 ---
 type: vertical-stack
+view_layout:
+  grid-area: kitchen
 cards:
-  - type: custom:button-card
-    template: button-card-headers
+  - type: custom:bubble-card
+    card_type: separator
     name: Kitchen
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
-        template: light-button
-        entity: light.kitchen_lights
-        show_name: false
-        icon: mdi:ceiling-light
+      - type: custom:decluttering-card
+        template: bubble-dimmer
+        variables:
+          - name: Kitchen
+          - icon: hue:room-kitchen
+          - entity: light.kitchen_lights
+      - type: custom:decluttering-card
+        template: bubble-dimmer
+        variables:
+          - name: Island
+          - icon: hue:ensis
+          - entity: light.kitchen_island
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Pantry
+          - icon: hue:room-closet
+          - entity: switch.pantry_light
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Back Entry
+          - icon: mdi:globe-light
+          - entity: switch.back_entry_light

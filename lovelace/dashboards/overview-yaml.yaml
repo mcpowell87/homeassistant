@@ -13,9 +13,8 @@ views:
       grid-template-rows: auto
       grid-template-areas: |
         "alerts alerts alerts"
-        "airquality weather thermostat"
-        "people security security"
-        "mainarea mainarea bedroom"
+        "climate people security"
+        "mainarea kitchen bedroom"
         "upstairs basement ."
       mediaquery:
         "(max-width: 600px)":
@@ -24,10 +23,9 @@ views:
             "alerts"
             "security"
             "people"
-            "airquality"
-            "weather"
-            "thermostat"
+            "climate"
             "mainarea"
+            "kitchen"
             "bedroom"
             "upstairs"
             "basement"
@@ -35,17 +33,19 @@ views:
           grid-template-columns: 50% 50%
           grid-template-areas: |
             "alerts alerts"
+            "climate climate"
             "people security"
             "airquality weather"
             "thermostat mainarea"
-            "bedroom upstairs"
-            "basement ."
+            "kitchen bedroom"
+            "upstairs basement"
     cards:
       - type: custom:gap-card
         view_layout:
           grid-area: gap
       - !include /config/lovelace/cards/people.yaml
       - !include /config/lovelace/cards/alerts.yaml
+      - !include /config/lovelace/cards/home/climate.yaml
       - !include /config/lovelace/cards/thermostat.yaml
       - !include /config/lovelace/cards/home/security.yaml
       - type: custom:clock-weather-card
@@ -60,6 +60,7 @@ views:
       - !include /config/lovelace/cards/home/bedroom.yaml
       - !include /config/lovelace/cards/home/upstairs.yaml
       - !include /config/lovelace/cards/home/basement.yaml
+      - !include /config/lovelace/cards/home/kitchen.yaml
   - theme: ios-dark-mode
     title: Surveillance
     path: surveillance
@@ -67,9 +68,3 @@ views:
     cards:
       - !include /config/lovelace/cards/surveillance.yaml
     type: panel
-  - theme: ios-dark-mode
-    title: Media
-    path: media
-    icon: mdi:multimedia
-    cards:
-      - !include /config/lovelace/cards/plex_sessions.yaml

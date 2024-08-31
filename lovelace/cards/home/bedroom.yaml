@@ -3,20 +3,37 @@ type: vertical-stack
 view_layout:
   grid-area: bedroom
 cards:
-  - type: custom:button-card
-    template: button-card-headers
+  - type: custom:bubble-card
+    card_type: separator
     name: Bedroom
+  - type: custom:decluttering-card
+    template: bubble-fan
+    variables:
+      - entity: fan.bedroom_ceiling_fan
+      - name: Fan
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card
-        template: dimmer-light
+        template: bubble-dimmer
         variables:
-          - entity: light.bedroom_lamps
-          - icon: mdi:lamp
+          - name: Lights
+          - icon: mdi:light-recessed
+          - entity: light.master_bedroom_lights
+      - type: custom:decluttering-card
+        template: bubble-dimmer
+        variables:
           - name: Lamps
-      - type: tile
-        name: Fan
-        show_name: false
-        entity: fan.bedroom_ceiling_fan
-        features:
-          - type: "fan-speed"
+          - icon: mdi:lamp
+          - entity: light.bedroom_lamps
+      # - type: custom:decluttering-card
+      #   template: dimmer-light
+      #   variables:
+      #     - entity: light.bedroom_lamps
+      #     - icon: mdi:lamp
+      #     - name: Lamps
+      # - type: tile
+      #   name: Fan
+      #   show_name: false
+      #   entity: fan.bedroom_ceiling_fan
+      #   features:
+      #     - type: "fan-speed"

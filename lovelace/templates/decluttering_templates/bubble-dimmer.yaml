@@ -1,0 +1,67 @@
+---
+default:
+  - name: ' '
+  - show_last_changed: false
+card:
+  type: custom:bubble-card
+  card_type: button
+  button_type: slider
+  entity: '[[entity]]'
+  name: '[[name]]'
+  show_attribute: true
+  attribute: brightness
+  show_last_changed: '[[show_last_changed]]'
+  icon: '[[icon]]'
+  tap_action:
+    action: more-info
+  sub_button:
+    - show_state: false
+      show_name: false
+      icon: mdi:power
+      show_background: false
+      tap_action:
+        action: toggle
+# This config below creates a popup for each dimmer
+# ---
+# default:
+#   - name: ' '
+#   - show_last_changed: false
+# card:
+#   type: vertical-stack
+#   cards:
+#     - type: custom:bubble-card
+#       card_type: button
+#       button_type: slider
+#       entity: '[[entity]]'
+#       name: '[[name]]'
+#       show_attribute: true
+#       attribute: brightness
+#       show_last_changed: '[[show_last_changed]]'
+#       icon: '[[icon]]'
+#       button_action:
+#         tap_action:
+#           action: navigate
+#           navigation_path: '#[[id]]'
+#       tap_action:
+#           action: navigate
+#           navigation_path: '#[[id]]'
+#       sub_button:
+#         - show_state: false
+#           show_name: false
+#           icon: mdi:power
+#           show_background: false
+#           tap_action:
+#             action: toggle
+#     - type: vertical-stack
+#       cards:
+#         - type: custom:bubble-card
+#           card_type: pop-up
+#           hash: '#[[id]]'
+#           name: '[[name]]'
+#           icon: '[[icon]]'
+#         - type: custom:decluttering-card
+#           template: dimmer-light
+#           variables:
+#             - name: '[[name]]'
+#             - icon: '[[icon]]'
+#             - entity: '[[entity]]'

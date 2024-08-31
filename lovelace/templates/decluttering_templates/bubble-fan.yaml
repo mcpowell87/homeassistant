@@ -1,0 +1,80 @@
+---
+default:
+  - name: ' '
+  - show_last_changed: false
+card:
+  type: custom:bubble-card
+  card_type: button
+  name: '[[name]]'
+  entity: '[[entity]]'
+  show_attribute: true
+  attribute: percentage
+  show_last_changed: '[[show_last_changed]]'
+  card_mod:
+    style: |
+      ha-card {
+        --bubble-icon-animation: 
+          {% if is_state('[[entity]]', 'on') %}
+            slow-rotate 2s linear infinite;
+          {% else %}
+            none;
+          {% endif %}
+      }
+  styles: |
+    .bubble-icon {
+      animation: var(--bubble-icon-animation);
+    }
+    @keyframes slow-rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  button_action:
+    tap_action:
+      action: toggle
+  tap_action:
+    action: toggle
+  sub_button:
+    - name: Low
+      show_name: true
+      show_icon: false
+      show_background: false
+      tap_action:
+        action: call-service
+        service: fan.set_percentage
+        target:
+          entity_id: '[[entity]]'
+        data:
+          percentage: 25
+    - name: Medium
+      show_name: true
+      show_icon: false
+      show_background: false
+      tap_action:
+        action: call-service
+        service: fan.set_percentage
+        target:
+          entity_id: '[[entity]]'
+        data:
+          percentage: 50
+    - name: Med High
+      show_name: true
+      show_icon: false
+      show_background: false
+      tap_action:
+        action: call-service
+        service: fan.set_percentage
+        target:
+          entity_id: '[[entity]]'
+        data:
+          percentage: 75
+    - name: High
+      show_name: true
+      show_icon: false
+      show_background: false
+      tap_action:
+        action: call-service
+        service: fan.set_percentage
+        target:
+          entity_id: '[[entity]]'
+        data:
+          percentage: 100

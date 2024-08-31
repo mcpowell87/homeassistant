@@ -3,52 +3,136 @@ type: vertical-stack
 view_layout:
   grid-area: basement
 cards:
-  - type: custom:button-card
-    template: button-card-headers
+  - type: custom:bubble-card
+    card_type: separator
     name: Basement
-  - type: horizontal-stack
-    cards:
-      - type: custom:mini-graph-card
+    sub_button:
+      - entity: sensor.basement_wave_plus_temperature
+        show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:thermometer
+      - entity: sensor.basement_wave_plus_humidity
+        show_name: false
+        show_state: true
+        show_background: false
         icon: mdi:water-percent
-        entities:
-          - entity: sensor.basement_wave_plus_humidity
-            name: Humidity
-            show_state: true
-          - entity: sensor.basement_wave_plus_temperature
-            name: Temperature
-            show_state: true
-      - type: tile
-        name: Target Humidity
-        icon: mdi:air-humidifier
-        entity: input_number.basement_humidity_target
+  # - type: horizontal-stack
+  #   cards:
+  #     - type: tile
+  #       name: Target Humidity
+  #       icon: mdi:air-humidifier
+  #       entity: input_number.basement_humidity_target
+  #       tap_action:
+  #         action: call-service
+  #         service: humidifier.toggle 
+  #         data:
+  #           entity_id: humidifier.finished_basement
+  #       state_content:
+  #         - ''
+  #       card_mod:
+  #         style:
+  #           ha-tile-info$: |
+  #             .secondary:after {
+  #               visibility: visible;
+  #               content: " ⸱ {{ states('humidifier.finished_basement') }}";
+  #             }
+  #       features:
+  #         - type: "numeric-input"
+  #           style: "buttons"
+  - type: custom:bubble-card
+    card_type: button
+    icon: mdi:air-humidifier
+    entity: humidifier.finished_basement
+    name: Dehumidifier
+    show_last_updated: true
+    styles: |
+      .bubble-sub-button {
+        padding: 0px !important;
+      }
+    sub_button:
+      - icon: mdi:minus
+        show_background: false
         tap_action:
           action: call-service
-          service: humidifier.toggle 
-          data:
-            entity_id: humidifier.finished_basement
-        state_content:
-          - ''
-        card_mod:
-          style:
-            ha-tile-info$: |
-              .secondary:after {
-                visibility: visible;
-                content: " ⸱ {{ states('humidifier.finished_basement') }}";
-              }
-        features:
-          - type: "numeric-input"
-            style: "buttons"
+          service: input_number.decrement
+          target:
+            entity_id: input_number.basement_humidity_target
+      - entity: input_number.basement_humidity_target
+        show_state: true
+        show_background: false
+        show_icon: false
+      - icon: mdi:plus
+        show_background: false
+        tap_action:
+          action: call-service
+          service: input_number.increment
+          target:
+            entity_id: input_number.basement_humidity_target
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card
-        template: dimmer-light
+        template: bubble-dimmer
         variables:
-          - entity: light.basement_lights
-          - icon: mdi:recessed_ceiling
           - name: Lights
+          - icon: mdi:light-recessed
+          - entity: light.basement_lights
       - type: custom:decluttering-card
-        template: dimmer-light
+        template: bubble-dimmer
         variables:
-          - entity: light.basement_stairs_light
-          - icon: mdi:recessed_ceiling
+          - id: basement_stairs
           - name: Stairs
+          - icon: mdi:stairs
+          - entity: light.basement_stairs_light
+      # - type: custom:bubble-card
+      #   card_type: button
+      #   button_type: slider
+      #   entity: light.basement_lights
+      #   name: Lights
+      #   show_attribute: true
+      #   attribute: brightness
+      #   icon: mdi:light-recessed
+      #   button_action:
+      #     tap_action:
+      #       action: toggle
+      #   tap_action:
+      #     action: toggle
+      #   sub_button:
+      #     - show_state: false
+      #       show_name: false
+      #       icon: mdi:menu
+      #       show_background: false
+      #       tap_action:
+      #         action: more-info
+      # - type: custom:bubble-card
+      #   card_type: button
+      #   button_type: slider
+      #   entity: light.basement_stairs_light
+      #   name: Stairs
+      #   show_attribute: true
+      #   attribute: brightness
+      #   icon: mdi:light-recessed
+      #   button_action:
+      #     tap_action:
+      #       action: toggle
+      #   tap_action:
+      #     action: toggle
+      #   sub_button:
+      #     - show_state: false
+      #       show_name: false
+      #       icon: mdi:menu
+      #       show_background: false
+      #       tap_action:
+      #         action: more-info
+      # - type: custom:decluttering-card
+      #   template: dimmer-light
+      #   variables:
+      #     - entity: light.basement_lights
+      #     - icon: mdi:recessed_ceiling
+      #     - name: Lights
+      # - type: custom:decluttering-card
+      #   template: dimmer-light
+      #   variables:
+      #     - entity: light.basement_stairs_light
+      #     - icon: mdi:recessed_ceiling
+      #     - name: Stairs

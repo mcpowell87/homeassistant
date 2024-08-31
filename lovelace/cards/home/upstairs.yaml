@@ -3,29 +3,44 @@ type: vertical-stack
 view_layout:
   grid-area: upstairs
 cards:
-  - type: custom:button-card
-    template: button-card-headers
+  - type: custom:bubble-card
+    card_type: separator
     name: Upstairs
-  - type: tile
-    entity: climate.spare_bedroom_ac
-    view_layout:
-      grid-area: thermostat
-    features:
-      - type: climate-hvac-modes
-        operation_modes:
-          - auto
-          - cool
-          - dry
-          - fan_only
-          - "off"
-      - type: climate-preset-modes
-        style: "icons"
-        preset_modes:
-          - none
-          - eco
-          - sleep
-          - boost
-      - type: target-temperature
+    sub_button:
+      - show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:air-conditioner
+        tap_action:
+          action: navigate
+          navigation_path: '#spareac'
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: '#spareac'
+        name: Air Conditioner
+        icon: mdi:air-conditioner
+      - type: tile
+        entity: climate.spare_bedroom_ac
+        view_layout:
+          grid-area: thermostat
+        features:
+          - type: climate-hvac-modes
+            operation_modes:
+              - auto
+              - cool
+              - dry
+              - fan_only
+              - "off"
+          - type: climate-preset-modes
+            style: "icons"
+            preset_modes:
+              - none
+              - eco
+              - sleep
+              - boost
+          - type: target-temperature
   - type: horizontal-stack
     cards:
       - type: custom:mini-graph-card
@@ -51,13 +66,15 @@ cards:
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card
-        template: dimmer-light
+        #template: dimmer-light
+        template: bubble-dimmer
         variables:
           - entity: light.spare_bedroom_bedside_lamps
           - icon: mdi:lamp
-          - name: Bedside Lamps
+          - name: Bedside
       - type: custom:decluttering-card
-        template: dimmer-light
+        #template: dimmer-light
+        template: bubble-dimmer
         variables:
           - entity: light.spare_bedroom_lamp
           - icon: mdi:floor-lamp

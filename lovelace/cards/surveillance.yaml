@@ -9,3 +9,11 @@ cameras:
     motion_entity: binary_sensor.spare_bedroom_motion
   - entity: camera.spare_room_high
     motion_entity: binary_sensor.spare_room_motion
+  - entity: camera.backyard_left_high
+    motion_entity: binary_sensor.backyard_left_motion
+  - entity: camera.backyard_right_high
+    motion_entity: binary_sensor.backyard_right_motion
+  - entity: camera.driveway_high
+    motion_entity: binary_sensor.driveway_motion
+  - entity: camera.basement_high
+    motion_entity: binary_sensor.basement_motion

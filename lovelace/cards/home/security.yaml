@@ -3,16 +3,18 @@ type: horizontal-stack
 view_layout:
   grid-area: security
 cards:
-  - type: tile
-    name: Front
-    entity: lock.front_door_lock
-    features:
-    - type: "lock-commands"
-  - type: tile
-    name: Basement
-    entity: lock.basement_door_lock
-    features:
-    - type: "lock-commands"
+  - type: vertical-stack
+    cards:
+      - type: tile
+        name: Front
+        entity: lock.front_door_lock
+        features:
+        - type: "lock-commands"
+      - type: tile
+        name: Basement
+        entity: lock.basement_door_lock
+        features:
+        - type: "lock-commands"
   - type: tile
     show_name: false
     entity: alarm_control_panel.alarmo

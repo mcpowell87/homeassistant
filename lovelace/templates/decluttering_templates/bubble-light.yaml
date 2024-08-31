@@ -1,0 +1,23 @@
+---
+default:
+  - name: ' '
+  - show_last_changed: false
+card:
+  type: custom:bubble-card
+  card_type: button
+  entity: '[[entity]]'
+  name: '[[name]]'
+  show_last_changed: '[[show_last_changed]]'
+  icon: '[[icon]]'
+  button_action:
+    tap_action:
+      action: toggle
+  tap_action:
+    action: toggle
+  sub_button:
+    - show_state: false
+      show_name: false
+      icon: mdi:power
+      show_background: false
+      tap_action:
+        action: toggle

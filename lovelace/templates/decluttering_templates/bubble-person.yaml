@@ -1,0 +1,28 @@
+---
+card:
+  type: custom:bubble-card
+  card_type: button
+  card_layout: large-2-rows
+  button_type: state
+  show_state: true
+  entity: '[[person_entity]]'
+  show_last_changed: true
+  sub_button:
+    - entity: '[[battery_sensor]]'
+      show_state: true
+      show_background: false
+    - entity: '[[wifi_sensor]]'
+      show_state: true
+      show_name: false
+      icon: mdi:wifi
+      show_background: false
+    - entity: '[[proximity_sensor]]'
+      show_state: true
+      show_name: false
+      icon: mdi:map-marker-distance
+      show_background: false
+    - entity: '[[time_sensor]]'
+      show_state: true
+      show_name: false
+      icon: mdi:car-clock
+      show_background: false
