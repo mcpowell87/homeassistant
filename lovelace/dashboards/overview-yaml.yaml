@@ -15,7 +15,7 @@ views:
         "alerts alerts alerts"
         "climate people security"
         "mainarea kitchen bedroom"
-        "upstairs basement ."
+        "upstairs basement outside"
       mediaquery:
         "(max-width: 600px)":
           grid-template-columns: 100%
@@ -29,6 +29,7 @@ views:
             "bedroom"
             "upstairs"
             "basement"
+            "outside"
         "(max-width: 1200px)":
           grid-template-columns: 50% 50%
           grid-template-areas: |
@@ -39,6 +40,7 @@ views:
             "thermostat mainarea"
             "kitchen bedroom"
             "upstairs basement"
+            "outside ."
     cards:
       - type: custom:gap-card
         view_layout:
@@ -61,6 +63,7 @@ views:
       - !include /config/lovelace/cards/home/upstairs.yaml
       - !include /config/lovelace/cards/home/basement.yaml
       - !include /config/lovelace/cards/home/kitchen.yaml
+      - !include /config/lovelace/cards/home/outside.yaml
   - theme: ios-dark-mode
     title: Surveillance
     path: surveillance

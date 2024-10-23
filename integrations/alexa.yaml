@@ -6,15 +6,25 @@ alexa:
     client_secret: !secret alexa_client_secret
     filter:
       include_entities:
-        - switch.back_porch_lights
+        - camera.front_door_high
+        - lock.front_door_lock
+        - lock.basement_door_lock
+        - switch.back_entry_light
+        - switch.back_porch_sconces
+        - light.bar_lights
+        - light.dining_room_lights
+        - light.front_foyer_lights
+        - switch.hallway_light
+        - light.kitchen_island
+        - light.kitchen_lights
+        - switch.pantry_light
         - light.bedroom_lamp_left
         - light.bedroom_lamp_right
-        - light.living_room_lamp
-        - switch.front_porch_light
-        - light.office_lamp
+        - switch.front_porch_lights
+        - light.office_lights
+        - light.master_bedroom_lights
         - fan.bedroom_ceiling_fan
         - fan.living_room_ceiling_fan
-        - light.kitchen_lights
         - script.alexa_good_night
         - switch.christmas_tree
       exclude_domains:
@@ -34,4 +44,5 @@ alexa:
         - zwave
         - climate
         - binary_sensor
+        - number
 

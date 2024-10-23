@@ -1,18 +1,23 @@
 ---
 type: vertical-stack
+view_layout:
+  grid-area: outside
 cards:
-  - type: custom:button-card
-    template: button-card-headers
-    name: Outside
+  - type: custom:bubble-card
+    card_type: separator
+    name: Exterior
+    icon: hue:room-outdoors
   - type: horizontal-stack
     cards:
-      - type: custom:button-card
-        template: light-button
-        entity: switch.front_porch_light
-        name: Front Porch
-        icon: mdi:coach-lamp
-      - type: custom:button-card
-        template: light-button
-        entity: switch.back_porch_lights
-        name: Back Porch
-        icon: mdi:coach-lamp
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Front Porch
+          - icon: mdi:coach-lamp
+          - entity: switch.front_porch_lights
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Back Porch
+          - icon: mdi:coach-lamp
+          - entity: switch.back_porch_sconces

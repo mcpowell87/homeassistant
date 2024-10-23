@@ -1,0 +1,16 @@
+---
+default:
+  - name: ' '
+card:
+  type: custom:bubble-card
+  card_type: button
+  button_type: name
+  entity: '[[entity]]'
+  name: '[[name]]'
+  show_last_changed: false
+  icon: '[[icon]]'
+  button_action:
+    tap_action:
+      action: toggle
+  tap_action:
+    action: toggle

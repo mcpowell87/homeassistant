@@ -16,6 +16,55 @@ cards:
         show_state: true
         show_background: false
         icon: mdi:water-percent
+      - show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:tune
+        tap_action:
+          action: navigate
+          navigation_path: '#mainarea'
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: '#mainarea'
+        name: Main Area
+        icon: mdi:thermometer
+      - type: custom:bubble-card
+        card_type: separator
+        name: Scenes
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: bubble-button
+            variables:
+              - name: Bright
+              - icon: hue:scene_bright
+              - entity: scene.office_bright
+          - type: custom:decluttering-card
+            template: bubble-button
+            variables:
+              - name: TV
+              - icon: mdi:television-classic
+              - entity: scene.office_tv
+          - type: custom:decluttering-card
+            template: bubble-light
+            variables:
+              - name: Lamp
+              - icon: hue:signe-gradient-floor
+              - entity: light.office_lamp
+      - type: custom:mini-graph-card
+        icon: mdi:water-percent
+        name: Bathroom
+        hours_to_show: 12
+        points_per_hour: 1
+        entities:
+          - entity: sensor.bathroom_temphumi_sensor_humidity
+            name: Humidity
+            show_state: true
+          - entity: sensor.bathroom_temphumi_sensor_air_temperature
+            name: Temperature
+            show_state: true
   - type: custom:decluttering-card
     template: bubble-fan
     variables:
