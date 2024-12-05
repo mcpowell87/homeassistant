@@ -4,50 +4,165 @@ sensor:
     name: Plex Session {{ session_index }} (Tautulli)
     icon: mdi:plex
     state: >
-          {% if (state_attr('sensor.tautulli_activity','sessions')|length >= {{ session_index }})%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].state }}{%else%}off{%endif %}
+      {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if sessions is not none and sessions | length >= session_index %}
+        {{ sessions[session_index - 1].state | default('off') }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].user }}{%endif%}
+      user: >
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].user | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].progress_percent }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].progress_percent | default(0) }}
+        {% else %}
+          0
+        {% endif %}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].media_type }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].media_type | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].full_title }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].full_title | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].grandparent_thumb }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].grandparent_thumb | default('') }}
+        {% else %}
+          ''
+        {% endif %}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].thumb }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].thumb | default('') }}
+        {% else %}
+          ''
+        {% endif %}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].parent_media_index }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].parent_media_index | default(0) }}
+        {% else %}
+          0
+        {% endif %}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].media_index }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].media_index | default(0) }}
+        {% else %}
+          0
+        {% endif %}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].year }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].year | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].product }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].product | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].player }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].player | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].device }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].device | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].platform }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].platform | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].location }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].location | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].ip_address }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].ip_address | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].ip_address_public }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].ip_address_public | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].local }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].local | default(false) }}
+        {% else %}
+          false
+        {% endif %}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].relayed }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].relayed | default(false) }}
+        {% else %}
+          false
+        {% endif %}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].bandwidth }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].bandwidth | default(0) }}
+        {% else %}
+          0
+        {% endif %}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].video_resolution }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].video_resolution | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].stream_video_resolution }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].stream_video_resolution | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[{{ session_index - 1 }}].transcode_decision }}{%endif%}
+        {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {% if sessions is not none and sessions | length >= session_index %}
+          {{ sessions[session_index - 1].transcode_decision | default('Unknown') }}
+        {% else %}
+          Unknown
+        {% endif %}
 {% endmacro %}

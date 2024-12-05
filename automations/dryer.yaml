@@ -58,7 +58,7 @@
             type: announce
             method: all
           target:
-            - media_player.living_room_show
+            - media_player.mike_s_echo_spot
       - service: notify.notify
         data:
           message: 'The dryer is finished.'

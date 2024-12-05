@@ -3,6 +3,28 @@ type: vertical-stack
 cards:
   - type: custom:button-card
     template: button-card-headers
+    name: Office
+  - type: horizontal-stack
+    cards:
+      # - type: custom:decluttering-card
+      #   template: dimmer-light
+      #   variables:
+      #     - entity: light.office_lights
+      #     - icon: mdi:light-recessed
+      #     - name: Lights
+      # - type: custom:decluttering-card
+      #   template: dimmer-light
+      #   variables:
+      #     - entity: light.office_lamp
+      #     - icon: mdi:floor-lamp
+      #     - name: Lamp
+view_layout:
+  grid-area: holiday
+---
+type: vertical-stack
+cards:
+  - type: custom:button-card
+    template: button-card-headers
     name: Holiday
   - type: horizontal-stack
     cards:

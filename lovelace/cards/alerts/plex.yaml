@@ -5,7 +5,6 @@
       entity: sensor.tautulli_watching
       state_not: '0'
   card:
-    type: vertical-stack
     type: tile
     entity: sensor.tautulli_watching
     name: Active Plex Streams

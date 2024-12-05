@@ -40,19 +40,13 @@ cards:
             variables:
               - name: Bright
               - icon: hue:scene_bright
-              - entity: scene.office_bright
+              - entity: scene.living_room_bright
           - type: custom:decluttering-card
             template: bubble-button
             variables:
               - name: TV
               - icon: mdi:television-classic
-              - entity: scene.office_tv
-          - type: custom:decluttering-card
-            template: bubble-light
-            variables:
-              - name: Lamp
-              - icon: hue:signe-gradient-floor
-              - entity: light.office_lamp
+              - entity: scene.living_room_dimmed
       - type: custom:mini-graph-card
         icon: mdi:water-percent
         name: Bathroom
@@ -65,11 +59,31 @@ cards:
           - entity: sensor.bathroom_temphumi_sensor_air_temperature
             name: Temperature
             show_state: true
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: input_select.holiday
+        state: "christmas"
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:decluttering-card
+          template: bubble-light
+          variables:
+            - name: Christmas Tree
+            - icon: mdi:pine-tree
+            - entity: switch.christmas_tree
   - type: custom:decluttering-card
     template: bubble-fan
     variables:
       - entity: fan.living_room_ceiling_fan
       - name: Fan
+  - type: custom:decluttering-card
+    template: bubble-light
+    variables:
+      - name: Lamp
+      - icon: hue:signe-gradient-floor
+      - entity: light.living_room_lamp
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card

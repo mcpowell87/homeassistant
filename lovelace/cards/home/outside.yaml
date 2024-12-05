@@ -7,6 +7,20 @@ cards:
     card_type: separator
     name: Exterior
     icon: hue:room-outdoors
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: input_select.holiday
+        state: "christmas"
+    card:
+      type: horizontal-stack
+      cards:
+        - type: custom:decluttering-card
+          template: bubble-light
+          variables:
+            - name: Christmas Lights
+            - icon: mdi:string-lights
+            - entity: switch.exterior_christmas_lights
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card
