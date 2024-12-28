@@ -59,6 +59,18 @@ cards:
           - entity: sensor.bathroom_temphumi_sensor_air_temperature
             name: Temperature
             show_state: true
+      - type: custom:mini-graph-card
+        icon: mdi:thermometer
+        name: Pantry
+        hours_to_show: 12
+        points_per_hour: 1
+        entities:
+          - entity: sensor.pantry_temphumi_sensor_humidity
+            name: Humidity
+            show_state: true
+          - entity: sensor.pantry_temphumi_sensor_air_temperature
+            name: Temperature
+            show_state: true
   - type: conditional
     conditions:
       - condition: state
@@ -112,12 +124,20 @@ cards:
           - name: Dining
           - icon: hue:room-dining
           - entity: light.dining_room_lights
-  - type: custom:decluttering-card
-    template: bubble-light
-    variables:
-      - name: Hall
-      - icon: mdi:dome-light
-      - entity: switch.hallway_light
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Espresso
+          - icon: mdi:coffee-maker
+          - entity: switch.espresso_machine
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - name: Hall
+          - icon: mdi:dome-light
+          - entity: switch.hallway_light
   # - type: horizontal-stack
   #   cards:
   #     - type: tile

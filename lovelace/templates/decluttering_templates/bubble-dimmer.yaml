@@ -5,7 +5,8 @@ default:
 card:
   type: custom:bubble-card
   card_type: button
-  button_type: slider
+  button_type: switch
+  state_background: true
   entity: '[[entity]]'
   name: '[[name]]'
   show_attribute: true

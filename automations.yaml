@@ -368,3 +368,113 @@
       message: '{{ trigger.to_state.attributes.friendly_name }}'
       title: Water leak detected!
   mode: single
+- id: '1733375681429'
+  alias: Unlock Front Door Doorbell Fingerprint Scan
+  description: ''
+  triggers:
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+    webhook_id: -C0WkpGeL02Mj6DMGpUhBib-H
+  conditions: []
+  actions:
+  - device_id: 5a50bf00a9315164b2ecd994eb4ae5a3
+    domain: lock
+    entity_id: 2f52706b20d9b688d266c929ff0abbed
+    type: unlock
+  mode: single
+- id: '1735199383943'
+  alias: Ecobee - Switch to aux heat
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.upstairs_bathroom_temphumi_sensor_air_temperature
+    for:
+      hours: 0
+      minutes: 1
+      seconds: 0
+    below: 60
+  conditions:
+  - condition: device
+    device_id: d8051410a12924ca3c9525cbf65a3931
+    domain: climate
+    entity_id: c939ced0e85b2a06f0361dd6aa982add
+    type: is_hvac_mode
+    hvac_mode: 'off'
+  - condition: not
+    conditions:
+    - condition: device
+      device_id: 050d5c841a24c29630ba3b324e85d264
+      domain: climate
+      entity_id: 4a99efe78e3766b9e0cbe5786988d84c
+      type: is_hvac_mode
+      hvac_mode: cool
+  actions:
+  - action: climate.set_hvac_mode
+    metadata: {}
+    data:
+      hvac_mode: heat
+    target:
+      device_id: d8051410a12924ca3c9525cbf65a3931
+  - device_id: 050d5c841a24c29630ba3b324e85d264
+    domain: climate
+    entity_id: 4a99efe78e3766b9e0cbe5786988d84c
+    type: set_hvac_mode
+    hvac_mode: 'off'
+  mode: single
+- id: '1735199552338'
+  alias: Ecobee - Switch to primary heat
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.upstairs_bathroom_temphumi_sensor_air_temperature
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+    above: 65
+  conditions:
+  - condition: device
+    device_id: d8051410a12924ca3c9525cbf65a3931
+    domain: climate
+    entity_id: c939ced0e85b2a06f0361dd6aa982add
+    type: is_hvac_mode
+    hvac_mode: heat
+  actions:
+  - action: climate.set_hvac_mode
+    metadata: {}
+    data:
+      hvac_mode: heat
+    target:
+      device_id: 050d5c841a24c29630ba3b324e85d264
+  - action: climate.set_hvac_mode
+    metadata: {}
+    data:
+      hvac_mode: 'off'
+    target:
+      device_id: d8051410a12924ca3c9525cbf65a3931
+  mode: single
+- id: '1735283343009'
+  alias: Espresso Machine - Notify when on too long
+  description: ''
+  triggers:
+  - type: turned_on
+    device_id: 6b6441025166bcafa9493d26e6b7b885
+    entity_id: 47b207e21c8a6ecbf5a6a0e8775cc22e
+    domain: switch
+    trigger: device
+    for:
+      hours: 2
+      minutes: 0
+      seconds: 0
+  conditions: []
+  actions:
+  - data:
+      message: Espresso Machine has been on for 2 hours.
+      title: Espresso Machine
+    action: notify.mobile_app_mikes_iphone
+  mode: single

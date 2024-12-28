@@ -27,6 +27,7 @@ alexa:
         - fan.living_room_ceiling_fan
         - script.alexa_good_night
         - switch.christmas_tree
+        - switch.espresso_machine
       exclude_domains:
         - alert
         - automation

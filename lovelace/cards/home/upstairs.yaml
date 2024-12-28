@@ -5,76 +5,86 @@ view_layout:
 cards:
   - type: custom:bubble-card
     card_type: separator
-    name: Upstairs
+    name: Upstairs Climate
     icon: hue:upstairs
     sub_button:
       - show_name: false
         show_state: true
         show_background: false
-        icon: mdi:air-conditioner
+        icon: mdi:home-thermometer
         tap_action:
           action: navigate
-          navigation_path: '#spareac'
+          navigation_path: '#upstairsclimate'
   - type: vertical-stack
     cards:
       - type: custom:bubble-card
         card_type: pop-up
-        hash: '#spareac'
+        hash: '#upstairsclimate'
         name: Air Conditioner
         icon: mdi:air-conditioner
-      - type: tile
+      # - type: tile
+      #   entity: climate.spare_bedroom_ac
+      #   view_layout:
+      #     grid-area: thermostat
+      #   features:
+      #     - type: climate-hvac-modes
+      #       operation_modes:
+      #         - auto
+      #         - cool
+      #         - dry
+      #         - fan_only
+      #         - "off"
+      #     - type: climate-preset-modes
+      #       style: "icons"
+      #       preset_modes:
+      #         - none
+      #         - eco
+      #         - sleep
+      #         - boost
+      #     - type: target-temperature
+      - type: custom:bubble-card
+        card_type: climate
         entity: climate.spare_bedroom_ac
-        view_layout:
-          grid-area: thermostat
-        features:
-          - type: climate-hvac-modes
-            operation_modes:
-              - auto
-              - cool
-              - dry
-              - fan_only
-              - "off"
-          - type: climate-preset-modes
-            style: "icons"
-            preset_modes:
-              - none
-              - eco
-              - sleep
-              - boost
-          - type: target-temperature
-  - type: horizontal-stack
-    cards:
-      - type: custom:mini-graph-card
-        icon: mdi:water-percent
-        name: Bathroom
-        entities:
-          - entity: sensor.upstairs_bathroom_temphumi_sensor_humidity
-            name: Humidity
-            show_state: true
-          - entity: sensor.upstairs_bathroom_temphumi_sensor_air_temperature
-            name: Temperature
-            show_state: true
-      - type: custom:mini-graph-card
-        icon: mdi:water-percent
-        name: Spare Bedroom
-        entities:
-          - entity: sensor.spare_bedroom_temphumi_sensor_humidity
-            name: Humidity
-            show_state: true
-          - entity: sensor.spare_bedroom_temphumi_sensor_air_temperature
-            name: Temperature
-            show_state: true
+        sub_button:
+          - name: HVAC Modes
+            select_attribute: hvac_modes
+            show_arrow: false
+            state_background: false
+          - name: Preset Modes
+            select_attribute: preset_modes
+            show_arrow: false
+            state_background: false
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            icon: mdi:water-percent
+            name: Bathroom
+            entities:
+              - entity: sensor.upstairs_bathroom_temphumi_sensor_humidity
+                name: Humidity
+                show_state: true
+              - entity: sensor.upstairs_bathroom_temphumi_sensor_air_temperature
+                name: Temperature
+                show_state: true
+          - type: custom:mini-graph-card
+            icon: mdi:water-percent
+            name: Spare Bedroom
+            entities:
+              - entity: sensor.spare_bedroom_temphumi_sensor_humidity
+                name: Humidity
+                show_state: true
+              - entity: sensor.spare_bedroom_temphumi_sensor_air_temperature
+                name: Temperature
+                show_state: true
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card
-        #template: dimmer-light
         template: bubble-dimmer
         variables:
           - entity: light.spare_bedroom_bedside_lamps
           - icon: mdi:lamp
           - name: Bedside
       - type: custom:decluttering-card
-        #template: dimmer-light
         template: bubble-dimmer
         variables:
           - entity: light.spare_bedroom_lamp
