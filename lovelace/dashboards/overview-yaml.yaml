@@ -9,7 +9,7 @@ views:
     type: custom:grid-layout
     reflow: true
     layout:
-      grid-template-columns: 33% 33% 33%
+      grid-template-columns: 1fr 1fr 1fr
       grid-template-rows: auto
       grid-template-areas: |
         "alerts alerts alerts"
@@ -18,12 +18,12 @@ views:
         "upstairs basement outside"
       mediaquery:
         "(max-width: 600px)":
-          grid-template-columns: 100%
+          grid-template-columns: 1fr
           grid-template-areas: |
             "alerts"
+            "climate"
             "security"
             "people"
-            "climate"
             "mainarea"
             "kitchen"
             "bedroom"
@@ -31,14 +31,13 @@ views:
             "basement"
             "outside"
         "(max-width: 1200px)":
-          grid-template-columns: 50% 50%
+          grid-template-columns: 1fr 1fr
           grid-template-areas: |
             "alerts alerts"
             "climate climate"
             "people security"
-            "airquality weather"
-            "thermostat mainarea"
-            "kitchen bedroom"
+            "mainarea kitchen"
+            "bedroom ."
             "upstairs basement"
             "outside ."
     cards:
@@ -48,16 +47,7 @@ views:
       - !include /config/lovelace/cards/people.yaml
       - !include /config/lovelace/cards/alerts.yaml
       - !include /config/lovelace/cards/home/climate.yaml
-      - !include /config/lovelace/cards/thermostat.yaml
       - !include /config/lovelace/cards/home/security.yaml
-      - type: custom:clock-weather-card
-        entity: weather.home
-        locale: en-US
-        time_format: 12
-        forecast_rows: 3
-        view_layout:
-          grid-area: weather
-      - !include /config/lovelace/cards/air_quality.yaml
       - !include /config/lovelace/cards/home/mainarea.yaml
       - !include /config/lovelace/cards/home/bedroom.yaml
       - !include /config/lovelace/cards/home/upstairs.yaml

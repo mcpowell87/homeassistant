@@ -7,26 +7,38 @@ cards:
     card_type: separator
     name: Security
     icon: mdi:security
-  - type: horizontal-stack
+  - type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 1fr 1fr
+      grid-template-areas: |
+        "frontlock alarmo"
+        "basementlock ."
     cards:
-      - type: vertical-stack
-        cards:
-          - type: tile
-            name: Front
-            entity: lock.front_door_lock
-            features:
-            - type: "lock-commands"
-          - type: tile
-            name: Basement
-            entity: lock.basement_door_lock
-            features:
-            - type: "lock-commands"
       - type: tile
-        show_name: false
-        entity: alarm_control_panel.alarmo
+        name: Front
+        entity: lock.front_door_lock
+        features:
+          - type: "lock-commands"
+        view_layout:
+          grid-area: frontlock
+
+      - type: tile
         name: Alarm
+        entity: alarm_control_panel.alarmo
         features:
           - type: "alarm-modes"
             modes:
               - armed_away
               - disarmed
+        view_layout:
+          grid-area: alarmo
+
+      - type: tile
+        name: Basement
+        entity: lock.basement_door_lock
+        features:
+          - type: "lock-commands"
+        view_layout:
+          grid-area: basementlock

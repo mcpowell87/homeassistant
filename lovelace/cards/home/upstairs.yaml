@@ -5,7 +5,7 @@ view_layout:
 cards:
   - type: custom:bubble-card
     card_type: separator
-    name: Upstairs Climate
+    name: Upstairs
     icon: hue:upstairs
     sub_button:
       - show_name: false
@@ -20,8 +20,8 @@ cards:
       - type: custom:bubble-card
         card_type: pop-up
         hash: '#upstairsclimate'
-        name: Air Conditioner
-        icon: mdi:air-conditioner
+        name: Upstairs Climate
+        icon: mdi:home-thermometer
       # - type: tile
       #   entity: climate.spare_bedroom_ac
       #   view_layout:
