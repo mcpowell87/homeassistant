@@ -1,22 +1,48 @@
 ---
 type: vertical-stack
 cards:
-  - type: custom:button-card
-    template: button-card-headers
+  - type: custom:bubble-card
+    card_type: separator
     name: Office
+    icon: hue:room_office
+    sub_button:
+      - entity: sensor.office_airgradient_temperature
+        show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:thermometer
+      - entity: sensor.office_airgradient_humidity
+        show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:water-percent
   - type: horizontal-stack
     cards:
-      # - type: custom:decluttering-card
-      #   template: dimmer-light
-      #   variables:
-      #     - entity: light.office_lights
-      #     - icon: mdi:light-recessed
-      #     - name: Lights
-      # - type: custom:decluttering-card
-      #   template: dimmer-light
-      #   variables:
-      #     - entity: light.office_lamp
-      #     - icon: mdi:floor-lamp
-      #     - name: Lamp
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - entity: light.office_lights
+          - icon: mdi:light-recessed
+          - name: Lights
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - entity: light.office_desk_lights
+          - icon: bha:ceiling-downlight
+          - name: Pin
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - entity: light.office_lamp_bulb
+          - icon: mdi:floor-lamp
+          - name: Lamp
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - entity: fan.office_air_purifier
+          - icon: mdi:air-purifier
+          - name: Purifier
 view_layout:
   grid-area: office

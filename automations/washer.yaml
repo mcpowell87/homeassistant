@@ -58,7 +58,7 @@
             type: announce
             method: all
           target:
-            - media_player.mike_s_echo_spot
+            - media_player.kitchen_echo_show
       - service: notify.notify
         data:
           message: 'The wash is finished.'

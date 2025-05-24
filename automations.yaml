@@ -187,29 +187,35 @@
 - id: '1669497816229'
   alias: Christmas Lights - Turn on at night
   description: ''
-  trigger:
-  - platform: sun
-    event: sunset
+  triggers:
+  - event: sunset
     offset: 00:15:00
-  condition: []
-  action:
-  - service: homeassistant.turn_on
-    data: {}
+    trigger: sun
+  conditions:
+  - condition: state
+    entity_id: input_select.holiday
+    state: christmas
+  actions:
+  - data: {}
     target:
       entity_id: switch.exterior_christmas_lights
+    action: homeassistant.turn_on
   mode: single
 - id: '1669497868697'
   alias: Christmas Lights - Turn off at 12am
   description: ''
-  trigger:
-  - platform: time
-    at: 00:00:00
-  condition: []
-  action:
-  - service: homeassistant.turn_off
-    data: {}
+  triggers:
+  - at: 00:00:00
+    trigger: time
+  conditions:
+  - condition: state
+    entity_id: input_select.holiday
+    state: christmas
+  actions:
+  - data: {}
     target:
       entity_id: switch.exterior_christmas_lights
+    action: homeassistant.turn_off
   mode: single
 - id: '1689447603826'
   alias: Dehumidifier - Turn On
@@ -391,12 +397,13 @@
   triggers:
   - trigger: numeric_state
     entity_id:
+    - sensor.spare_bedroom_temphumi_sensor_air_temperature
     - sensor.upstairs_bathroom_temphumi_sensor_air_temperature
     for:
       hours: 0
-      minutes: 1
+      minutes: 10
       seconds: 0
-    below: 60
+    below: 62
   conditions:
   - condition: device
     device_id: d8051410a12924ca3c9525cbf65a3931
@@ -412,6 +419,9 @@
       entity_id: 4a99efe78e3766b9e0cbe5786988d84c
       type: is_hvac_mode
       hvac_mode: cool
+  - condition: state
+    entity_id: input_boolean.hvac_dual_fuel_auto_switch
+    state: 'on'
   actions:
   - action: climate.set_hvac_mode
     metadata: {}
@@ -432,18 +442,24 @@
   - trigger: numeric_state
     entity_id:
     - sensor.upstairs_bathroom_temphumi_sensor_air_temperature
+    - sensor.spare_bedroom_temphumi_sensor_air_temperature
     for:
       hours: 0
-      minutes: 10
+      minutes: 0
       seconds: 0
-    above: 65
+    above: 64
   conditions:
-  - condition: device
-    device_id: d8051410a12924ca3c9525cbf65a3931
-    domain: climate
-    entity_id: c939ced0e85b2a06f0361dd6aa982add
-    type: is_hvac_mode
-    hvac_mode: heat
+  - condition: and
+    conditions:
+    - condition: device
+      device_id: d8051410a12924ca3c9525cbf65a3931
+      domain: climate
+      entity_id: c939ced0e85b2a06f0361dd6aa982add
+      type: is_hvac_mode
+      hvac_mode: heat
+    - condition: state
+      entity_id: input_boolean.hvac_dual_fuel_auto_switch
+      state: 'on'
   actions:
   - action: climate.set_hvac_mode
     metadata: {}
@@ -477,4 +493,126 @@
       message: Espresso Machine has been on for 2 hours.
       title: Espresso Machine
     action: notify.mobile_app_mikes_iphone
+  mode: single
+- id: '1739683264585'
+  alias: Button - Turn on Office Lamp
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 0b384da99922d2aac96794c88fae560f
+    type: action
+    subtype: config_single
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    data: {}
+    target:
+      device_id: 33aa22486fda0bfed0fd696b08928fe4
+  mode: single
+- id: '1739861696187'
+  alias: Office Air Purifier - Turn On
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: 78af804be124fbb2800a9a499d743aac
+    entity_id: 34844f9a791400e5ac36c01ab642f0ac
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  conditions:
+  - condition: device
+    device_id: ff4454949c98c1a706c7192cefa0d410
+    domain: fan
+    entity_id: ef2f5a6f935b77c549b64dc7b3403223
+    type: is_off
+  actions:
+  - type: turn_on
+    device_id: ff4454949c98c1a706c7192cefa0d410
+    entity_id: ef2f5a6f935b77c549b64dc7b3403223
+    domain: fan
+  - action: fan.set_percentage
+    metadata: {}
+    data:
+      percentage: 25
+    target:
+      device_id: ff4454949c98c1a706c7192cefa0d410
+  mode: single
+- id: '1739861948576'
+  alias: Office Air Purifier - Turn Off
+  description: ''
+  triggers:
+  - type: not_occupied
+    device_id: 78af804be124fbb2800a9a499d743aac
+    entity_id: 34844f9a791400e5ac36c01ab642f0ac
+    domain: binary_sensor
+    trigger: device
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  conditions:
+  - condition: device
+    device_id: ff4454949c98c1a706c7192cefa0d410
+    domain: fan
+    entity_id: ef2f5a6f935b77c549b64dc7b3403223
+    type: is_on
+  - condition: or
+    conditions:
+    - condition: time
+      after: '18:00:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      before: 06:00:00
+    - condition: time
+      weekday:
+      - sat
+      - sun
+  actions:
+  - type: turn_off
+    device_id: ff4454949c98c1a706c7192cefa0d410
+    entity_id: ef2f5a6f935b77c549b64dc7b3403223
+    domain: fan
+  mode: single
+- id: '1743533542473'
+  alias: Turn on Pantry Light when Door Opens
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.pantry_door_window_door_is_open
+    from:
+    to: 'on'
+  conditions: []
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      area_id: pantry
+  mode: single
+- id: '1743533790033'
+  alias: Turn off Pantry Light when door closes
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.pantry_door_window_door_is_open
+    from: 'on'
+    to: 'off'
+  conditions: []
+  actions:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id: pantry
   mode: single

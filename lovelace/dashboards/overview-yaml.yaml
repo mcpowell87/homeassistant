@@ -15,7 +15,8 @@ views:
         "alerts alerts alerts"
         "climate people security"
         "mainarea kitchen bedroom"
-        "upstairs basement outside"
+        "office upstairs basement"
+        "outside . ."
       mediaquery:
         "(max-width: 600px)":
           grid-template-columns: 1fr
@@ -27,6 +28,7 @@ views:
             "mainarea"
             "kitchen"
             "bedroom"
+            "office"
             "upstairs"
             "basement"
             "outside"
@@ -37,7 +39,7 @@ views:
             "climate climate"
             "people security"
             "mainarea kitchen"
-            "bedroom ."
+            "bedroom office"
             "upstairs basement"
             "outside ."
     cards:
@@ -50,6 +52,7 @@ views:
       - !include /config/lovelace/cards/home/security.yaml
       - !include /config/lovelace/cards/home/mainarea.yaml
       - !include /config/lovelace/cards/home/bedroom.yaml
+      - !include /config/lovelace/cards/home/office.yaml
       - !include /config/lovelace/cards/home/upstairs.yaml
       - !include /config/lovelace/cards/home/basement.yaml
       - !include /config/lovelace/cards/home/kitchen.yaml

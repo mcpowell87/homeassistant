@@ -69,6 +69,12 @@ cards:
   - type: custom:decluttering-card
     template: bubble-light
     variables:
+      - entity: humidifier.humidifier
+      - icon: mdi:humidifier
+      - name: Humidifier
+  - type: custom:decluttering-card
+    template: bubble-light
+    variables:
       - name: Lamp
       - icon: hue:signe-gradient-floor
       - entity: light.living_room_lamp
@@ -102,12 +108,28 @@ cards:
           - entity: light.dining_room_lights
   - type: horizontal-stack
     cards:
-      - type: custom:decluttering-card
-        template: bubble-light
-        variables:
-          - name: Espresso
-          - icon: mdi:coffee-maker
-          - entity: switch.espresso_machine
+      - type: custom:bubble-card
+        card_type: button
+        name: Espresso
+        icon: mdi:coffee-maker
+        entity: switch.espresso_machine
+        show_last_changed: true
+        button_action:
+          tap_action:
+            action: toggle
+        tap_action:
+          action: toggle
+        sub_button:
+          # - entity: sensor.espresso_machine_electric_consumption_w
+          #   show_state: true
+          #   show_background: false
+          #   icon: mdi:lightning-bolt
+          - show_state: false
+            show_name: false
+            icon: mdi:power
+            show_background: false
+            tap_action:
+              action: toggle
       - type: custom:decluttering-card
         template: bubble-light
         variables:

@@ -7,6 +7,17 @@ cards:
     card_type: separator
     name: Bedroom
     icon: mdi:bed
+    sub_button:
+      - entity: sensor.bedroom_temperature
+        show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:thermometer
+      - entity: sensor.bedroom_humidity
+        show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:water-percent
   - type: custom:decluttering-card
     template: bubble-fan
     variables:
@@ -26,6 +37,14 @@ cards:
           - name: Lamps
           - icon: mdi:lamp
           - entity: light.bedroom_lamps
+  - type: horizontal-stack
+    cards:
+      - type: custom:decluttering-card
+        template: bubble-light
+        variables:
+          - entity: fan.bedroom_air_purifier
+          - icon: mdi:air-purifier
+          - name: Purifier
       # - type: custom:decluttering-card
       #   template: dimmer-light
       #   variables:
