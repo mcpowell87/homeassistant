@@ -1,0 +1,27 @@
+- sensor:
+    - name: "Open Door Count"
+      default_entity_id: sensor.open_door_count
+      state: >-
+        {% set ns = namespace(count=0) %}
+        {% for item in states %}
+          {% if item.entity_id.split(".")[1].endswith('door_sensor')
+                and item.state != 'unknown'
+                and item.state == 'on' %}
+            {% set ns.count = ns.count + 1 %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.count }}
+      icon: >-
+        {% set ns = namespace(open=true) %}
+        {% for item in states %}
+          {% if item.entity_id.split(".")[1].endswith('door_sensor')
+                and item.state != 'unknown'
+                and item.state == 'on' %}
+            {% set ns.open = true %}
+          {% endif %}
+        {% endfor %}
+        {% if ns.open == true %}
+          mdi:door-closed
+        {% else %}
+          mdi:door-open
+        {% endif %}

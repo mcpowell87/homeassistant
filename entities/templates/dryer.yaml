@@ -1,0 +1,23 @@
+---
+- sensor:
+    - name: "Dryer on Time"
+      default_entity_id: sensor.dryer_on_time
+      state: >
+        {{ (as_timestamp(now())
+            - state_attr('input_datetime.dryer_start', 'timestamp'))
+            | timestamp_custom('%H:%M:%S', false) }}
+
+    - name: "Dryer on Time Complete"
+      default_entity_id: sensor.dryer_on_time_complete
+      state: >
+        {% if is_state('input_select.dryer_status', 'Running') %}
+          {{ states('sensor.dryer_on_time') }}
+        {% else %}
+          '---'
+        {% endif %}
+      icon: >
+        {% if is_state('input_select.dryer_status', 'Running') %}
+          mdi:tumble-dryer
+        {% else %}
+          mdi:tumble-dryer-off
+        {% endif %}
