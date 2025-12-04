@@ -33,6 +33,17 @@ cards:
       - type: custom:bubble-card
         card_type: climate
         icon: mdi:heat-pump
+        name: Heat Pump
+        entity: climate.mitp_heat_pump_3b28e8_climate
+        show_state: true
+        sub_button:
+          - name: HVAC Modes
+            select_attribute: hvac_modes
+            show_arrow: false
+            state_background: false
+      - type: custom:bubble-card
+        card_type: climate
+        icon: mdi:heat-pump
         entity: climate.home
         show_state: true
         sub_button:
@@ -62,15 +73,29 @@ cards:
         cards:
           - type: custom:mini-graph-card
             icon: mdi:water-percent
+            name: Living Room
+            hours_to_show: 12
+            points_per_hour: 1
+            entities:
+              - entity: sensor.view_plus_temperature
+                name: Temperature
+                show_state: true
+              - entity: sensor.view_plus_humidity
+                name: Humidity
+                show_state: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            icon: mdi:water-percent
             name: Bathroom
             hours_to_show: 12
             points_per_hour: 1
             entities:
-              - entity: sensor.bathroom_temphumi_sensor_humidity
-                name: Humidity
-                show_state: true
               - entity: sensor.bathroom_temphumi_sensor_air_temperature
                 name: Temperature
+                show_state: true
+              - entity: sensor.bathroom_temphumi_sensor_humidity
+                name: Humidity
                 show_state: true
           - type: custom:mini-graph-card
             icon: mdi:thermometer
@@ -78,39 +103,35 @@ cards:
             hours_to_show: 12
             points_per_hour: 1
             entities:
-              - entity: sensor.pantry_temphumi_sensor_humidity
-                name: Humidity
-                show_state: true
               - entity: sensor.pantry_temphumi_sensor_air_temperature
                 name: Temperature
                 show_state: true
-      # - type: tile
-      #   entity: climate.home
-      #   features:
-      #     - type: climate-hvac-modes
-      #       operation_modes:
-      #         - heat
-      #         - heat_cool
-      #         - cool
-      #         - "off"
-      #     - type: climate-preset-modes
-      #       style: "icons"
-      #       preset_modes:
-      #         - home
-      #         - away
-      #         - sleep
-      #     - type: target-temperature
-      # - type: tile
-      #   entity: climate.home_heat
-      #   features:
-      #     - type: climate-hvac-modes
-      #       operation_modes:
-      #         - heat
-      #         - "off"
-      #     - type: climate-preset-modes
-      #       style: "icons"
-      #       preset_modes:
-      #         - home
-      #         - away
-      #         - sleep
-      #     - type: target-temperature
+              - entity: sensor.pantry_temphumi_sensor_humidity
+                name: Humidity
+                show_state: true
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            icon: mdi:water-percent
+            name: Office
+            hours_to_show: 12
+            points_per_hour: 1
+            entities:
+              - entity: sensor.office_airgradient_temperature
+                name: Temperature
+                show_state: true
+              - entity: sensor.office_airgradient_humidity
+                name: Humidity
+                show_state: true
+          - type: custom:mini-graph-card
+            icon: mdi:thermometer
+            name: Bedroom
+            hours_to_show: 12
+            points_per_hour: 1
+            entities:
+              - entity: sensor.bedroom_temperature
+                name: Temperature
+                show_state: true
+              - entity: sensor.bedroom_humidity
+                name: Humidity
+                show_state: true

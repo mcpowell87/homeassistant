@@ -74,23 +74,6 @@
     entity_id: switch.smart_outlet_02_switch
     domain: switch
   mode: single
-- id: '1626362442938'
-  alias: Light Button - Toggle Living Room Lamp
-  description: ''
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 6793e66057e2677f386d017157af701e
-    type: action
-    subtype: single
-    discovery_id: 0x286d9700010df23d action_single
-  condition: []
-  action:
-  - type: toggle
-    device_id: 11219fe9c3294acd2502a8abe0cac72c
-    entity_id: ec12ade7c240de5ac1e3bc43d41577dc
-    domain: light
-  mode: single
 - id: '1649734825274'
   alias: Dehumidifier - Send notification when full
   description: ''
@@ -289,23 +272,6 @@
       entity_id: input_datetime.car_charger_start_time
     data:
       datetime: '{{ now() }}'
-  mode: single
-- id: '1701058348236'
-  alias: Button - Trigger Goodnight Scene
-  description: ''
-  trigger:
-  - platform: device
-    domain: mqtt
-    device_id: 4bef945ee6b1d8fe513a0be60895894f
-    type: action
-    subtype: single
-    discovery_id: 0x286d9700010d0502 action_single
-  condition: []
-  action:
-  - service: scene.turn_on
-    target:
-      entity_id: scene.bedtime
-    metadata: {}
   mode: single
 - id: '1705850483652'
   alias: Notify when server power turned off

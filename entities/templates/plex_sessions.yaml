@@ -3,253 +3,388 @@
     name: Plex Session 1 (Tautulli)
     icon: mdi:plex
     state: >
-      {% if (state_attr('sensor.tautulli_activity','sessions')|length >= 1)%}{{ state_attr('sensor.tautulli_activity','sessions')[0].state }}{%else%}off{%endif %}
+      {% set sessions = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if sessions and sessions | length >= 1 %}
+        {{ sessions[0].state }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].user }}{%endif%}
+      user: >
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].user if s and s | length >= 1 and s[0].user is defined else 'unknown' }}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].progress_percent }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].progress_percent if s and s | length >= 1 and s[0].progress_percent is defined else 'unknown' }}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].media_type }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].media_type if s and s | length >= 1 and s[0].media_type is defined else 'unknown' }}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].full_title }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].full_title if s and s | length >= 1 and s[0].full_title is defined else 'unknown' }}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].grandparent_thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].grandparent_thumb if s and s | length >= 1 and s[0].grandparent_thumb is defined else 'unknown' }}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].thumb if s and s | length >= 1 and s[0].thumb is defined else 'unknown' }}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].parent_media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].parent_media_index if s and s | length >= 1 and s[0].parent_media_index is defined else 'unknown' }}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].media_index if s and s | length >= 1 and s[0].media_index is defined else 'unknown' }}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].year }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].year if s and s | length >= 1 and s[0].year is defined else 'unknown' }}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].product }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].product if s and s | length >= 1 and s[0].product is defined else 'unknown' }}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].player }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].player if s and s | length >= 1 and s[0].player is defined else 'unknown' }}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].device }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].device if s and s | length >= 1 and s[0].device is defined else 'unknown' }}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].platform }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].platform if s and s | length >= 1 and s[0].platform is defined else 'unknown' }}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].location }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].location if s and s | length >= 1 and s[0].location is defined else 'unknown' }}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].ip_address }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].ip_address if s and s | length >= 1 and s[0].ip_address is defined else 'unknown' }}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].ip_address_public }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].ip_address_public if s and s | length >= 1 and s[0].ip_address_public is defined else 'unknown' }}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].local }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].local if s and s | length >= 1 and s[0].local is defined else 'unknown' }}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].relayed }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].relayed if s and s | length >= 1 and s[0].relayed is defined else 'unknown' }}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].bandwidth }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].bandwidth if s and s | length >= 1 and s[0].bandwidth is defined else 'unknown' }}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].video_resolution if s and s | length >= 1 and s[0].video_resolution is defined else 'unknown' }}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].stream_video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].stream_video_resolution if s and s | length >= 1 and s[0].stream_video_resolution is defined else 'unknown' }}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[0].transcode_decision }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[0].transcode_decision if s and s | length >= 1 and s[0].transcode_decision is defined else 'unknown' }}
 - sensor:
   - unique_id: plex_session_2
     name: Plex Session 2 (Tautulli)
     icon: mdi:plex
     state: >
-      {% if (state_attr('sensor.tautulli_activity','sessions')|length >= 2)%}{{state_attr('sensor.tautulli_activity','sessions')[1].state }}{%else%}off{%endif %}
+      {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if s and s | length >= 2 %}
+        {{ s[1].state }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].user }}{%endif%}
+      user: >
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].user if s and s | length >= 2 and s[1].user is defined else 'unknown' }}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].progress_percent }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].progress_percent if s and s | length >= 2 and s[1].progress_percent is defined else 'unknown' }}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].media_type }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].media_type if s and s | length >= 2 and s[1].media_type is defined else 'unknown' }}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].full_title }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].full_title if s and s | length >= 2 and s[1].full_title is defined else 'unknown' }}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].grandparent_thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].grandparent_thumb if s and s | length >= 2 and s[1].grandparent_thumb is defined else 'unknown' }}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].thumb if s and s | length >= 2 and s[1].thumb is defined else 'unknown' }}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].parent_media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].parent_media_index if s and s | length >= 2 and s[1].parent_media_index is defined else 'unknown' }}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].media_index if s and s | length >= 2 and s[1].media_index is defined else 'unknown' }}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].year }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].year if s and s | length >= 2 and s[1].year is defined else 'unknown' }}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].product }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].product if s and s | length >= 2 and s[1].product is defined else 'unknown' }}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].player }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].player if s and s | length >= 2 and s[1].player is defined else 'unknown' }}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].device }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].device if s and s | length >= 2 and s[1].device is defined else 'unknown' }}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].platform }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].platform if s and s | length >= 2 and s[1].platform is defined else 'unknown' }}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].location }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].location if s and s | length >= 2 and s[1].location is defined else 'unknown' }}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].ip_address }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].ip_address if s and s | length >= 2 and s[1].ip_address is defined else 'unknown' }}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].ip_address_public }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].ip_address_public if s and s | length >= 2 and s[1].ip_address_public is defined else 'unknown' }}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].local }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].local if s and s | length >= 2 and s[1].local is defined else 'unknown' }}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].relayed }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].relayed if s and s | length >= 2 and s[1].relayed is defined else 'unknown' }}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].bandwidth }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].bandwidth if s and s | length >= 2 and s[1].bandwidth is defined else 'unknown' }}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].video_resolution if s and s | length >= 2 and s[1].video_resolution is defined else 'unknown' }}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].stream_video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].stream_video_resolution if s and s | length >= 2 and s[1].stream_video_resolution is defined else 'unknown' }}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[1].transcode_decision }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[1].transcode_decision if s and s | length >= 2 and s[1].transcode_decision is defined else 'unknown' }}
 - sensor:
   - unique_id: plex_session_3
     name: Plex Session 3 (Tautulli)
     icon: mdi:plex
     state: >
-      {% if (state_attr('sensor.tautulli_activity','sessions')|length >= 3)%}{{state_attr('sensor.tautulli_activity','sessions')[2].state }}{%else%}off{%endif %}
+      {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if s and s | length >= 3 %}
+        {{ s[2].state }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].user }}{%endif%}
+      user: >
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].user if s and s | length >= 3 and s[2].user is defined else 'unknown' }}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].progress_percent }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].progress_percent if s and s | length >= 3 and s[2].progress_percent is defined else 'unknown' }}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].media_type }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].media_type if s and s | length >= 3 and s[2].media_type is defined else 'unknown' }}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].full_title }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].full_title if s and s | length >= 3 and s[2].full_title is defined else 'unknown' }}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].grandparent_thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].grandparent_thumb if s and s | length >= 3 and s[2].grandparent_thumb is defined else 'unknown' }}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].thumb if s and s | length >= 3 and s[2].thumb is defined else 'unknown' }}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].parent_media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].parent_media_index if s and s | length >= 3 and s[2].parent_media_index is defined else 'unknown' }}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].media_index if s and s | length >= 3 and s[2].media_index is defined else 'unknown' }}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].year }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].year if s and s | length >= 3 and s[2].year is defined else 'unknown' }}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].product }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].product if s and s | length >= 3 and s[2].product is defined else 'unknown' }}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].player }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].player if s and s | length >= 3 and s[2].player is defined else 'unknown' }}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].device }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].device if s and s | length >= 3 and s[2].device is defined else 'unknown' }}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].platform }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].platform if s and s | length >= 3 and s[2].platform is defined else 'unknown' }}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].location }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].location if s and s | length >= 3 and s[2].location is defined else 'unknown' }}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].ip_address }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].ip_address if s and s | length >= 3 and s[2].ip_address is defined else 'unknown' }}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].ip_address_public }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].ip_address_public if s and s | length >= 3 and s[2].ip_address_public is defined else 'unknown' }}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].local }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].local if s and s | length >= 3 and s[2].local is defined else 'unknown' }}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].relayed }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].relayed if s and s | length >= 3 and s[2].relayed is defined else 'unknown' }}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].bandwidth }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].bandwidth if s and s | length >= 3 and s[2].bandwidth is defined else 'unknown' }}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].video_resolution if s and s | length >= 3 and s[2].video_resolution is defined else 'unknown' }}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].stream_video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].stream_video_resolution if s and s | length >= 3 and s[2].stream_video_resolution is defined else 'unknown' }}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[2].transcode_decision }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[2].transcode_decision if s and s | length >= 3 and s[2].transcode_decision is defined else 'unknown' }}
 - sensor:
   - unique_id: plex_session_4
     name: Plex Session 4 (Tautulli)
     icon: mdi:plex
     state: >
-      {% if (state_attr('sensor.tautulli_activity','sessions')|length >= 4)%}{{state_attr('sensor.tautulli_activity','sessions')[3].state }}{%else%}off{%endif %}
+      {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if s and s | length >= 4 %}
+        {{ s[3].state }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].user }}{%endif%}
+      user: >
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].user if s and s | length >= 4 and s[3].user is defined else 'unknown' }}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].progress_percent }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].progress_percent if s and s | length >= 4 and s[3].progress_percent is defined else 'unknown' }}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].media_type }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].media_type if s and s | length >= 4 and s[3].media_type is defined else 'unknown' }}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].full_title }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].full_title if s and s | length >= 4 and s[3].full_title is defined else 'unknown' }}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].grandparent_thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].grandparent_thumb if s and s | length >= 4 and s[3].grandparent_thumb is defined else 'unknown' }}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].thumb if s and s | length >= 4 and s[3].thumb is defined else 'unknown' }}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].parent_media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].parent_media_index if s and s | length >= 4 and s[3].parent_media_index is defined else 'unknown' }}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].media_index if s and s | length >= 4 and s[3].media_index is defined else 'unknown' }}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].year }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].year if s and s | length >= 4 and s[3].year is defined else 'unknown' }}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].product }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].product if s and s | length >= 4 and s[3].product is defined else 'unknown' }}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].player }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].player if s and s | length >= 4 and s[3].player is defined else 'unknown' }}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].device }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].device if s and s | length >= 4 and s[3].device is defined else 'unknown' }}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].platform }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].platform if s and s | length >= 4 and s[3].platform is defined else 'unknown' }}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].location }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].location if s and s | length >= 4 and s[3].location is defined else 'unknown' }}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].ip_address }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].ip_address if s and s | length >= 4 and s[3].ip_address is defined else 'unknown' }}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].ip_address_public }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].ip_address_public if s and s | length >= 4 and s[3].ip_address_public is defined else 'unknown' }}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].local }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].local if s and s | length >= 4 and s[3].local is defined else 'unknown' }}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].relayed }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].relayed if s and s | length >= 4 and s[3].relayed is defined else 'unknown' }}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].bandwidth }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].bandwidth if s and s | length >= 4 and s[3].bandwidth is defined else 'unknown' }}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].video_resolution if s and s | length >= 4 and s[3].video_resolution is defined else 'unknown' }}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].stream_video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].stream_video_resolution if s and s | length >= 4 and s[3].stream_video_resolution is defined else 'unknown' }}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[3].transcode_decision }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[3].transcode_decision if s and s | length >= 4 and s[3].transcode_decision is defined else 'unknown' }}
 - sensor:
   - unique_id: plex_session_5
     name: Plex Session 5 (Tautulli)
     icon: mdi:plex
     state: >
-      {% if (state_attr('sensor.tautulli_activity','sessions')|length >= 5)%}{{state_attr('sensor.tautulli_activity','sessions')[4].state }}{%else%}off{%endif %}
+      {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+      {% if s and s | length >= 5 %}
+        {{ s[4].state }}
+      {% else %}
+        off
+      {% endif %}
     attributes:
-      user: > 
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].user }}{%endif%}
+      user: >
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].user if s and s | length >= 5 and s[4].user is defined else 'unknown' }}
       progress_percent: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].progress_percent }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].progress_percent if s and s | length >= 5 and s[4].progress_percent is defined else 'unknown' }}
       media_type: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].media_type }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].media_type if s and s | length >= 5 and s[4].media_type is defined else 'unknown' }}
       full_title: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].full_title }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].full_title if s and s | length >= 5 and s[4].full_title is defined else 'unknown' }}
       grandparent_thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].grandparent_thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].grandparent_thumb if s and s | length >= 5 and s[4].grandparent_thumb is defined else 'unknown' }}
       thumb: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].thumb }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].thumb if s and s | length >= 5 and s[4].thumb is defined else 'unknown' }}
       parent_media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].parent_media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].parent_media_index if s and s | length >= 5 and s[4].parent_media_index is defined else 'unknown' }}
       media_index: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].media_index }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].media_index if s and s | length >= 5 and s[4].media_index is defined else 'unknown' }}
       year: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].year }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].year if s and s | length >= 5 and s[4].year is defined else 'unknown' }}
       product: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].product }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].product if s and s | length >= 5 and s[4].product is defined else 'unknown' }}
       player: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].player }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].player if s and s | length >= 5 and s[4].player is defined else 'unknown' }}
       device: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].device }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].device if s and s | length >= 5 and s[4].device is defined else 'unknown' }}
       platform: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].platform }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].platform if s and s | length >= 5 and s[4].platform is defined else 'unknown' }}
       location: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].location }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].location if s and s | length >= 5 and s[4].location is defined else 'unknown' }}
       ip_address: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].ip_address }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].ip_address if s and s | length >= 5 and s[4].ip_address is defined else 'unknown' }}
       ip_address_public: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].ip_address_public }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].ip_address_public if s and s | length >= 5 and s[4].ip_address_public is defined else 'unknown' }}
       local: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].local }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].local if s and s | length >= 5 and s[4].local is defined else 'unknown' }}
       relayed: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].relayed }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].relayed if s and s | length >= 5 and s[4].relayed is defined else 'unknown' }}
       bandwidth: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].bandwidth }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].bandwidth if s and s | length >= 5 and s[4].bandwidth is defined else 'unknown' }}
       video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].video_resolution if s and s | length >= 5 and s[4].video_resolution is defined else 'unknown' }}
       stream_video_resolution: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].stream_video_resolution }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].stream_video_resolution if s and s | length >= 5 and s[4].stream_video_resolution is defined else 'unknown' }}
       transcode_decision: >
-        {% if this.state !='off'%}{{ state_attr('sensor.tautulli_activity','sessions')[4].transcode_decision }}{%endif%}
+        {% set s = state_attr('sensor.tautulli_activity', 'sessions') %}
+        {{ s[4].transcode_decision if s and s | length >= 5 and s[4].transcode_decision is defined else 'unknown' }}

@@ -1,0 +1,58 @@
+---
+show_name: true
+show_icon: true
+show_state: true
+type: glance
+view_layout:
+  grid-area: airquality
+entities:
+  - entity: sensor.office_airgradient_pm2_5
+    name: PM2.5
+    card_mod:
+      style: |
+        :host {
+          {% if states(config.entity) | int < 10 %} 
+            --paper-item-icon-color: green;
+            color: green;
+          {% elif states(config.entity) | int < 35 %}
+            --paper-item-icon-color: yellow;
+            color: yellow;
+          {% elif states(config.entity) | int >= 35 %}
+            --paper-item-icon-color: red;
+            color: red;
+          {% endif %}
+        }
+  - entity: sensor.office_airgradient_carbon_dioxide
+    name: C02
+    card_mod:
+      style: |
+        :host {
+          {% if states(config.entity) | int < 800 %} 
+            --paper-item-icon-color: green;
+            color: green;
+          {% elif states(config.entity) | int < 1000 %}
+            --paper-item-icon-color: yellow;
+            color: yellow;
+          {% elif states(config.entity) | int >= 1000 %}
+            --paper-item-icon-color: red;
+            color: red;
+          {% endif %}
+        }
+  - entity: sensor.office_airgradient_voc_index
+    name: VOC
+    card_mod:
+      style: |
+        :host {
+          {% if states(config.entity) | int < 250 %} 
+            --paper-item-icon-color: green;
+            color: green;
+          {% elif states(config.entity) | int < 2000 %}
+            --paper-item-icon-color: yellow;
+            color: yellow;
+          {% elif states(config.entity) | int >= 2000 %}
+            --paper-item-icon-color: red;
+            color: red;
+          {% endif %}
+        }
+state_color: true
+columns: 3

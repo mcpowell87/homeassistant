@@ -16,6 +16,31 @@ cards:
         show_state: true
         show_background: false
         icon: mdi:water-percent
+      - show_name: false
+        show_state: true
+        show_background: false
+        icon: mdi:home-thermometer
+        tap_action:
+          action: navigate
+          navigation_path: '#officeclimate'
+  - type: vertical-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: pop-up
+        hash: '#officeclimate'
+        name: Office Climate
+        icon: mdi:home-thermometer
+      - type: custom:mini-graph-card
+        icon: mdi:water-percent
+        name: 
+        entities:
+          - entity: sensor.office_airgradient_temperature
+            name: Temperature
+            show_state: true
+          - entity: sensor.office_airgradient_humidity
+            name: Humidity
+            show_state: true
+      - !include /config/lovelace/cards/office_air_quality.yaml
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card

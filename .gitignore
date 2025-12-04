@@ -24,6 +24,7 @@ www/image/mike.jpg
 www/image/trish.jpg
 home-assistant_v2.db-*
 harmony_*.conf
+.ha_run.lock
 
 deps
 .cloud

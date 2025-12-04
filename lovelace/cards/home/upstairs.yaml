@@ -22,26 +22,6 @@ cards:
         hash: '#upstairsclimate'
         name: Upstairs Climate
         icon: mdi:home-thermometer
-      # - type: tile
-      #   entity: climate.spare_bedroom_ac
-      #   view_layout:
-      #     grid-area: thermostat
-      #   features:
-      #     - type: climate-hvac-modes
-      #       operation_modes:
-      #         - auto
-      #         - cool
-      #         - dry
-      #         - fan_only
-      #         - "off"
-      #     - type: climate-preset-modes
-      #       style: "icons"
-      #       preset_modes:
-      #         - none
-      #         - eco
-      #         - sleep
-      #         - boost
-      #     - type: target-temperature
       - type: custom:bubble-card
         card_type: climate
         entity: climate.spare_bedroom_ac
