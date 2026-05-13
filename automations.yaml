@@ -38,13 +38,13 @@
 - id: '1610953656599'
   alias: Shut off all lights
   description: ''
-  trigger:
-  - platform: event
-    event_type: ios.action_fired
+  triggers:
+  - event_type: ios.action_fired
     event_data:
       actionName: Goodnight
-  condition: []
-  action:
+    trigger: event
+  conditions: []
+  actions:
   - domain: light
     entity_id: light.bedroom_lamp_left
     device_id: 4a50679438ce4fcbba908d6ed5acd59d
@@ -53,26 +53,6 @@
     entity_id: light.bedroom_lamp_right
     device_id: 2adff8e7c96a4a7d9867e6fedd4d01b8
     type: turn_off
-  - type: turn_off
-    device_id: 11219fe9c3294acd2502a8abe0cac72c
-    entity_id: ec12ade7c240de5ac1e3bc43d41577dc
-    domain: light
-  - type: turn_off
-    device_id: a79b842b4137b12d144a6fd377abd704
-    entity_id: 1848f38c479266833fe079e6077703dd
-    domain: light
-  - type: turn_off
-    device_id: bec2d42db3c544709390bdb2870e0f98
-    entity_id: light.kitchen_lights
-    domain: light
-  - type: turn_off
-    device_id: 5df6e8e94f57437498f57fedd091b127
-    entity_id: switch.smart_outlet_01_switch
-    domain: switch
-  - type: turn_off
-    device_id: 739e6b15044345985c552c3192f108bd
-    entity_id: switch.smart_outlet_02_switch
-    domain: switch
   mode: single
 - id: '1649734825274'
   alias: Dehumidifier - Send notification when full
@@ -554,9 +534,10 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.pantry_door_window_door_is_open
+    - binary_sensor.pantry_door
     from:
-    to: 'on'
+    to:
+    - 'on'
   conditions: []
   actions:
   - action: switch.turn_on
@@ -571,9 +552,11 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.pantry_door_window_door_is_open
-    from: 'on'
-    to: 'off'
+    - binary_sensor.pantry_door
+    from:
+    - 'on'
+    to:
+    - 'off'
   conditions: []
   actions:
   - action: switch.turn_off
@@ -581,4 +564,62 @@
     data: {}
     target:
       area_id: pantry
+  mode: single
+- id: '1765777088874'
+  alias: Tag Nightstand Goodnight is scanned
+  description: ''
+  triggers:
+  - trigger: tag
+    tag_id: 4c39f166-0521-4fbd-b2e8-590559fd6c12
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.bedtime
+    data: {}
+  mode: single
+- id: '1765782600288'
+  alias: Espresso - turn on automatically at 9 am
+  description: ''
+  triggers:
+  - trigger: time
+    at: 09:00:00
+    weekday:
+    - fri
+    - sat
+    - thu
+    - wed
+    - tue
+    - mon
+    - sun
+  conditions:
+  - condition: state
+    entity_id: input_boolean.auto_turn_on_espresso_machine
+    state:
+    - 'on'
+  actions:
+  - action: switch.turn_on
+    metadata: {}
+    target:
+      entity_id: switch.espresso_machine
+    data: {}
+  mode: single
+- id: '1766303566146'
+  alias: Webhook - Bedtime
+  description: ''
+  triggers:
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+    webhook_id: -dwKEvE_grtoC0XDcRTVKa71j
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.bedtime
+    data: {}
   mode: single

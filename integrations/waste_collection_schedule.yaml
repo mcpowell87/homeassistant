@@ -4,3 +4,12 @@ waste_collection_schedule:
     - name: multiple
       args:
         static: !include_dir_list ../entities/waste/types
+  sensors:
+    - name: Next Garbage Collection
+      types:
+        - Garbage
+      value_template: '{{ value.daysTo }}'
+    - name: Next Recycling Collection
+      types:
+        - Recycling
+      value_template: '{{ value.daysTo }}'

@@ -21,7 +21,7 @@
           {% endif %}
         {% endfor %}
         {% if ns.open == true %}
-          mdi:door-closed
-        {% else %}
           mdi:door-open
+        {% else %}
+          mdi:door-closed
         {% endif %}

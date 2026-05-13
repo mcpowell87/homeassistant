@@ -73,26 +73,3 @@ home_camera_stop_recording:
     option: Never
   mode: single
   icon: mdi:camcorder-off
-power_cycle_ap:
-  alias: Power Cycle AP
-  sequence:
-  - type: turn_off
-    device_id: cd1912d61969fc3d537c2bc222fb64bb
-    entity_id: 691b7ea805a06b8fe67a587e59f505ce
-    domain: switch
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - type: turn_off
-    device_id: cd1912d61969fc3d537c2bc222fb64bb
-    entity_id: 691b7ea805a06b8fe67a587e59f505ce
-    domain: switch
-  mode: single
-  icon: mdi:wifi-refresh
-clean_kitchen:
-  alias: Clean Kitchen
-  sequence: []
-  mode: single
-  icon: mdi:stove
