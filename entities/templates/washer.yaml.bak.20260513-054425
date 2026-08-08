@@ -1,6 +1,5 @@
 - sensor:
     - name: "Washer on Time"
-      unique_id: washer_on_time
       default_entity_id: sensor.washer_on_time
       state: >
         {{ (as_timestamp(now())
@@ -8,13 +7,12 @@
             | timestamp_custom('%H:%M:%S', false) }}
 
     - name: "Washer on Timer"
-      unique_id: washer_on_time_complete
       default_entity_id: sensor.washer_on_time_complete
       state: >
         {% if is_state('input_select.washer_status', 'Running') %}
           {{ states('sensor.washer_on_time') }}
         {% else %}
-          ---
+          '---'
         {% endif %}
       icon: >
         {% if is_state('input_select.washer_status', 'Running') %}

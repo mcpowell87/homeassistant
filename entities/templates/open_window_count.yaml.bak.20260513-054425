@@ -1,6 +1,5 @@
 - sensor:
     - name: "Open Window Count"
-      unique_id: open_window_count
       default_entity_id: sensor.open_window_count
       state: >-
         {% set ns = namespace(count=0) %}
@@ -13,16 +12,16 @@
         {% endfor %}
         {{ ns.count }}
       icon: >-
-        {% set ns = namespace(count=0) %}
+        {% set ns = namespace(open=true) %}
         {% for item in states %}
           {% if item.entity_id.split(".")[1].endswith('window_sensor')
                 and item.state != 'unknown'
                 and item.state == 'on' %}
-            {% set ns.count = ns.count + 1 %}
+            {% set ns.open = true %}
           {% endif %}
         {% endfor %}
-        {% if ns.count > 0 %}
-          mdi:window-open
-        {% else %}
+        {% if ns.open == true %}
           mdi:window-closed
+        {% else %}
+          mdi:window-open
         {% endif %}

@@ -12,11 +12,10 @@
       action: navigate
       #navigation_path: /overview-yaml/media
       navigation_path: '#plex_sessions'
-- type: vertical-stack
+- type: custom:bubble-card
+  card_type: pop-up
+  hash: '#plex_sessions'
+  name: Plex Sessions
+  icon: mdi:plex
   cards:
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#plex_sessions'
-      name: Plex Sessions
-      icon: mdi:plex
     - !include /config/lovelace/cards/plex_sessions.yaml

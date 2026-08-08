@@ -1,9 +1,10 @@
 - sensor:
     - name: "Living Room Lamp Brightness"
+      unique_id: living_room_lamp_brightness
       default_entity_id: sensor.living_room_lamp_brightness
+      unit_of_measurement: "%"
       state: >-
-        {% if is_state('light.living_room_lamp', 'on') %}
-          {{ (state_attr('light.living_room_lamp', 'brightness') / 2.54) | round }}
-        {% else %}
-          null
-        {% endif %}
+        {{ ((state_attr('light.living_room_lamp', 'brightness') | float(0)) / 2.54) | round }}
+      availability: >-
+        {{ is_state('light.living_room_lamp', 'on')
+           and state_attr('light.living_room_lamp', 'brightness') is not none }}

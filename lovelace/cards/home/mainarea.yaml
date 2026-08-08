@@ -23,13 +23,12 @@ cards:
         tap_action:
           action: navigate
           navigation_path: '#mainarea'
-  - type: vertical-stack
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: '#mainarea'
+    name: Main Area
+    icon: mdi:thermometer
     cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#mainarea'
-        name: Main Area
-        icon: mdi:thermometer
       - type: custom:bubble-card
         card_type: separator
         name: Scenes

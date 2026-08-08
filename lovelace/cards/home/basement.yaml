@@ -15,13 +15,12 @@ cards:
         tap_action:
           action: navigate
           navigation_path: '#basementclimate'
-  - type: vertical-stack
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: '#basementclimate'
+    name: Basement Climate
+    icon: mdi:home-thermometer
     cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#basementclimate'
-        name: Basement Climate
-        icon: mdi:home-thermometer
       - type: custom:mini-graph-card
         icon: mdi:water-percent
         name: Finished

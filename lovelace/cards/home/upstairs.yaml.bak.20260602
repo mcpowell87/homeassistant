@@ -21,18 +21,18 @@ cards:
     name: Upstairs Climate
     icon: mdi:home-thermometer
     cards:
-      - type: custom:bubble-card
-        card_type: climate
-        entity: climate.spare_bedroom_ac
-        sub_button:
-          - name: HVAC Modes
-            select_attribute: hvac_modes
-            show_arrow: false
-            state_background: false
-          - name: Preset Modes
-            select_attribute: preset_modes
-            show_arrow: false
-            state_background: false
+#      - type: custom:bubble-card
+#        card_type: climate
+#        entity: climate.spare_bedroom_ac
+#        sub_button:
+#          - name: HVAC Modes
+#            select_attribute: hvac_modes
+#            show_arrow: false
+#            state_background: false
+#          - name: Preset Modes
+#            select_attribute: preset_modes
+#            show_arrow: false
+#            state_background: false
       - type: horizontal-stack
         cards:
           - type: custom:mini-graph-card

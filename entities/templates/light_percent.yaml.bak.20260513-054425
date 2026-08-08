@@ -1,0 +1,9 @@
+- sensor:
+    - name: "Living Room Lamp Brightness"
+      default_entity_id: sensor.living_room_lamp_brightness
+      state: >-
+        {% if is_state('light.living_room_lamp', 'on') %}
+          {{ (state_attr('light.living_room_lamp', 'brightness') / 2.54) | round }}
+        {% else %}
+          null
+        {% endif %}

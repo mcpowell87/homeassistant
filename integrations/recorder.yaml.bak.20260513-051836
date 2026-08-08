@@ -13,4 +13,3 @@ recorder:
     entities:
       - sun.sun
       - sensor.date
-      - sensor.tautulli_activity  # excluded 2026-05-13: attribute payload exceeds 16KB recorder limit

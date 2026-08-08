@@ -19,13 +19,13 @@ entities:
     card_mod:
       style: |
         :host {
-          {% if states(config.entity) | int(0) < 10 %} 
+          {% if states(config.entity) | int < 10 %} 
             --paper-item-icon-color: green;
             color: green;
-          {% elif states(config.entity) | int(0) < 35 %}
+          {% elif states(config.entity) | int < 35 %}
             --paper-item-icon-color: yellow;
             color: yellow;
-          {% elif states(config.entity) | int(0) >= 35 %}
+          {% elif states(config.entity) | int >= 35 %}
             --paper-item-icon-color: red;
             color: red;
           {% endif %}
@@ -35,13 +35,13 @@ entities:
     card_mod:
       style: |
         :host {
-          {% if states(config.entity) | int(0) < 800 %} 
+          {% if states(config.entity) | int < 800 %} 
             --paper-item-icon-color: green;
             color: green;
-          {% elif states(config.entity) | int(0) < 1000 %}
+          {% elif states(config.entity) | int < 1000 %}
             --paper-item-icon-color: yellow;
             color: yellow;
-          {% elif states(config.entity) | int(0) >= 1000 %}
+          {% elif states(config.entity) | int >= 1000 %}
             --paper-item-icon-color: red;
             color: red;
           {% endif %}
@@ -51,13 +51,13 @@ entities:
     card_mod:
       style: |
         :host {
-          {% if states(config.entity) | int(0) < 250 %} 
+          {% if states(config.entity) | int < 250 %} 
             --paper-item-icon-color: green;
             color: green;
-          {% elif states(config.entity) | int(0) < 2000 %}
+          {% elif states(config.entity) | int < 2000 %}
             --paper-item-icon-color: yellow;
             color: yellow;
-          {% elif states(config.entity) | int(0) >= 2000 %}
+          {% elif states(config.entity) | int >= 2000 %}
             --paper-item-icon-color: red;
             color: red;
           {% endif %}
@@ -67,13 +67,13 @@ entities:
     card_mod:
       style: |
         :host {
-          {% if states(config.entity) | int(0) < 100 %} 
+          {% if states(config.entity) | int < 100 %} 
             --paper-item-icon-color: green;
             color: green;
-          {% elif states(config.entity) | int(0) < 150 %}
+          {% elif states(config.entity) | int < 150 %}
             --paper-item-icon-color: yellow;
             color: yellow;
-          {% elif states(config.entity) | int(0) >= 150 %}
+          {% elif states(config.entity) | int >= 150 %}
             --paper-item-icon-color: red;
             color: red;
           {% endif %}

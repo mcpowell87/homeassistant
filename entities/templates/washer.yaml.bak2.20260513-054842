@@ -14,7 +14,7 @@
         {% if is_state('input_select.washer_status', 'Running') %}
           {{ states('sensor.washer_on_time') }}
         {% else %}
-          ---
+          '---'
         {% endif %}
       icon: >
         {% if is_state('input_select.washer_status', 'Running') %}

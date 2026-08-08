@@ -23,16 +23,15 @@ cards:
         tap_action:
           action: navigate
           navigation_path: '#officeclimate'
-  - type: vertical-stack
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: '#officeclimate'
+    name: Office Climate
+    icon: mdi:home-thermometer
     cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#officeclimate'
-        name: Office Climate
-        icon: mdi:home-thermometer
       - type: custom:mini-graph-card
         icon: mdi:water-percent
-        name: 
+        name:
         entities:
           - entity: sensor.office_airgradient_temperature
             name: Temperature

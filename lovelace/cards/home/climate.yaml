@@ -23,13 +23,12 @@ cards:
   #   forecast_rows: 3
   - type: custom:simple-weather-card
     entity: weather.home
-  - type: vertical-stack
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: '#climate'
+    name: Climate
+    icon: mdi:home-thermometer
     cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#climate'
-        name: Climate
-        icon: mdi:home-thermometer
       - type: custom:bubble-card
         card_type: climate
         icon: mdi:heat-pump

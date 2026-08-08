@@ -1,6 +1,5 @@
 - sensor:
     - name: "Mike to Home Distance"
-      unique_id: waze_mike_to_home
       default_entity_id: sensor.waze_mike_to_home
       state: >-
         {% set d = state_attr("sensor.mike_to_home", "distance") | float(0) %}
@@ -8,7 +7,6 @@
       icon: mdi:map-marker-distance
 
     - name: "Trish to Home Distance"
-      unique_id: waze_trish_to_home
       default_entity_id: sensor.waze_trish_to_home
       state: >-
         {% set d = state_attr("sensor.trish_to_home", "distance") | float(0) %}

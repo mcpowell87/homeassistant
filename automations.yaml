@@ -57,16 +57,15 @@
 - id: '1649734825274'
   alias: Dehumidifier - Send notification when full
   description: ''
-  trigger:
-  - platform: state
-    entity_id:
-    - binary_sensor.finished_basement_tank_full
-    from: 'off'
-    to: 'on'
-  condition: []
-  action:
-  - service: notify.alexa_media
-    data:
+  triggers:
+  - entity_id:
+    - sensor.150633093152862_water_full_level
+    to:
+    - 'on'
+    trigger: state
+  conditions: []
+  actions:
+  - data:
       message: The dehumidifier is full.
       data:
         type: announce
@@ -76,10 +75,11 @@
       - media_player.kitchen_dot
       - media_player.master_bedroom_echo_spot
     enabled: false
-  - service: notify.notify
-    data:
+    action: notify.alexa_media
+  - data:
       message: The dehumidifier is full.
       title: Dehumidifier
+    action: notify.notify
   mode: single
 - id: '1662251793455'
   alias: Away - Performs action when everyone leaves home
@@ -277,26 +277,26 @@
   alias: Dehumidifier - Failsafe
   description: Turns off the dehumidifier if it has been running for an hour and is
     below the target humidity.
-  trigger:
-  - platform: device
-    type: turned_on
-    device_id: 5699bfac3d624082eb1296bb5abea4ae
-    entity_id: b4f5a80eff42e1e6836bd0fa3f76c9a1
-    domain: humidifier
+  triggers:
+  - type: turned_on
+    device_id: cf178460f88212f40ec8143647753c45
+    entity_id: b45f05787bde2d7e24ead9f0b1d875af
+    domain: switch
+    trigger: device
     for:
       hours: 1
       minutes: 0
       seconds: 0
-  condition:
+  conditions:
   - condition: template
     value_template: '{{ states(''sensor.basement_wave_plus_humidity'') | float <=
       states(''input_number.basement_humidity_target'') | float }}'
-  action:
-  - service: humidifier.turn_off
-    metadata: {}
+  actions:
+  - metadata: {}
     data: {}
     target:
-      device_id: 5699bfac3d624082eb1296bb5abea4ae
+      device_id: cf178460f88212f40ec8143647753c45
+    action: humidifier.turn_off
   mode: single
 - id: '1722979593224'
   alias: Water Leak - Notify
@@ -534,7 +534,7 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.pantry_door
+    - binary_sensor.pantry_door_contact
     from:
     to:
     - 'on'
@@ -552,7 +552,7 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.pantry_door
+    - binary_sensor.pantry_door_contact
     from:
     - 'on'
     to:
@@ -622,4 +622,48 @@
     target:
       entity_id: scene.bedtime
     data: {}
+  mode: single
+- id: '1779343706096'
+  alias: Turn on Infrared at Night
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.g4_doorbell_pro_poe_is_dark
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - action: select.select_option
+    metadata: {}
+    target:
+      entity_id: select.front_door_infrared_mode
+    data:
+      option: 'on'
+  mode: single
+- id: '1779343866185'
+  alias: Disable Infrared for Doorbell in the morning.
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.g4_doorbell_pro_poe_is_dark
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  conditions: []
+  actions:
+  - action: select.select_option
+    metadata: {}
+    target:
+      entity_id: select.front_door_infrared_mode
+    data:
+      option: 'off'
   mode: single
