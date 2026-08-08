@@ -28,6 +28,7 @@ alexa:
         - script.alexa_good_night
         - switch.christmas_tree
         - switch.espresso_machine
+        - input_boolean.vacation_mode
       exclude_domains:
         - alert
         - automation
