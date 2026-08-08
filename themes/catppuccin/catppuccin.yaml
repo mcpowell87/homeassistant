@@ -464,7 +464,8 @@ Catppuccin Latte:
 
   # Inform Home Assistant that this is a single-mode theme.
   modes:
-    light: {}
+    light:
+      catppuccin-rosewater: "#dc8a78"
 Catppuccin Frappe:
   #####################
   # Catppuccin Colors #
@@ -931,7 +932,8 @@ Catppuccin Frappe:
 
   # Inform Home Assistant that this is a single-mode theme.
   modes:
-    dark: {}
+    dark:
+      catppuccin-rosewater: "#f2d5cf"
 Catppuccin Macchiato:
   #####################
   # Catppuccin Colors #
@@ -1398,7 +1400,8 @@ Catppuccin Macchiato:
 
   # Inform Home Assistant that this is a single-mode theme.
   modes:
-    dark: {}
+    dark:
+      catppuccin-rosewater: "#f4dbd6"
 Catppuccin Mocha:
   #####################
   # Catppuccin Colors #
@@ -1865,7 +1868,8 @@ Catppuccin Mocha:
 
   # Inform Home Assistant that this is a single-mode theme.
   modes:
-    dark: {}
+    dark:
+      catppuccin-rosewater: "#f5e0dc"
 Catppuccin Auto Latte Frappe:
   modes:
     light:

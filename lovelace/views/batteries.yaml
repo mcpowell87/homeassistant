@@ -5,7 +5,6 @@
 path: batteries
 icon: mdi:battery-heart-variant
 title: Batteries
-theme: ios-dark-mode
 badges: []
 cards:
   - type: custom:auto-entities

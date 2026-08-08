@@ -5,7 +5,8 @@ Frosted Glass Dark:
   card-mod-theme: 'Frosted Glass Dark'
 
   modes:                         # 1.2.1 - change add modes: dark-only declaration
-    dark: {}
+    dark:
+      card-mod-theme: "Frosted Glass Dark"
 
   # =========================
   # HEADER (Top Bar)

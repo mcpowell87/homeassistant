@@ -5,7 +5,8 @@ Frosted Glass Light:
   card-mod-theme: "Frosted Glass Light"
 
   modes:                           # 1.2.1 - change add modes: light-only declaration
-    light: {}
+    light:
+      card-mod-theme: "Frosted Glass Light"
 
   # =========================
   # HEADER (Top Bar)

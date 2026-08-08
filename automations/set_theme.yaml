@@ -8,5 +8,5 @@
   action:
     - service: frontend.set_theme
       data:
-        name: "ios-dark-mode"
+        name: "Catppuccin Mocha"
         mode: "dark"
