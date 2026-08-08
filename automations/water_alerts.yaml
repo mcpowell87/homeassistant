@@ -8,7 +8,8 @@
 
 # Point leak sensors. Notifies every mobile app (notify.notify), not
 # just Mike's phone, since a leak matters to the whole household.
-# 30s debounce filters momentary false contacts.
+# 5s debounce filters sub-second sensor flaps; kept short because the
+# Third Reality sensors clear almost instantly when contact is lost.
   - alias: 'Water - Notify when a leak sensor is wet'
     mode: queued
     trigger:
@@ -22,7 +23,7 @@
         from: 'off'
         to: 'on'
         for:
-          seconds: 30
+          seconds: 5
     action:
       - service: notify.notify
         data:
