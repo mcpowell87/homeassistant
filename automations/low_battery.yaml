@@ -5,6 +5,8 @@
 # once a day and notifies if any are at or below the threshold.
 # Unavailable/unknown sensors are ignored - this triggers on real
 # battery readings only, never on an entity dropping offline.
+# Personal devices (phones, watches, tablets - anything from the
+# mobile_app integration) are excluded.
 # --------------------------------------------------------------
 
   - alias: 'Battery - Notify when any battery is low'
@@ -15,9 +17,11 @@
       threshold: 15
       low_batteries: >-
         {% set ns = namespace(items=[]) %}
+        {% set personal = integration_entities('mobile_app') %}
         {% for s in states.sensor %}
           {% if s.attributes.device_class | default('') == 'battery'
                 and s.attributes.unit_of_measurement | default('') == '%'
+                and s.entity_id not in personal
                 and s.state | is_number
                 and s.state | float <= threshold %}
             {% set ns.items = ns.items + [s.name ~ ': ' ~ s.state | float | round(0) ~ '%'] %}
