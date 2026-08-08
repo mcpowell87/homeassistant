@@ -45,14 +45,7 @@
     trigger: event
   conditions: []
   actions:
-  - domain: light
-    entity_id: light.bedroom_lamp_left
-    device_id: 4a50679438ce4fcbba908d6ed5acd59d
-    type: turn_off
-  - domain: light
-    entity_id: light.bedroom_lamp_right
-    device_id: 2adff8e7c96a4a7d9867e6fedd4d01b8
-    type: turn_off
+  - action: script.turn_off_all_lights
   mode: single
 - id: '1649734825274'
   alias: Dehumidifier - Send notification when full
@@ -573,11 +566,7 @@
     tag_id: 4c39f166-0521-4fbd-b2e8-590559fd6c12
   conditions: []
   actions:
-  - action: scene.turn_on
-    metadata: {}
-    target:
-      entity_id: scene.bedtime
-    data: {}
+  - action: script.turn_off_all_lights
   mode: single
 - id: '1765782600288'
   alias: Espresso - turn on automatically at 9 am
@@ -617,11 +606,7 @@
     webhook_id: -dwKEvE_grtoC0XDcRTVKa71j
   conditions: []
   actions:
-  - action: scene.turn_on
-    metadata: {}
-    target:
-      entity_id: scene.bedtime
-    data: {}
+  - action: script.turn_off_all_lights
   mode: single
 - id: '1779343706096'
   alias: Turn on Infrared at Night

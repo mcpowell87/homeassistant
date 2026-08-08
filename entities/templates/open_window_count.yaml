@@ -2,27 +2,12 @@
     - name: "Open Window Count"
       unique_id: open_window_count
       default_entity_id: sensor.open_window_count
+      # The only window with a live contact sensor. Add new window
+      # sensors to both lists as they are installed.
       state: >-
-        {% set ns = namespace(count=0) %}
-        {% for item in states %}
-          {% if item.entity_id.split(".")[1].endswith('window_sensor')
-                and item.state != 'unknown'
-                and item.state == 'on' %}
-            {% set ns.count = ns.count + 1 %}
-          {% endif %}
-        {% endfor %}
-        {{ ns.count }}
+        {{ ['binary_sensor.upstairs_bathroom_window_open']
+           | select('is_state', 'on') | list | count }}
       icon: >-
-        {% set ns = namespace(count=0) %}
-        {% for item in states %}
-          {% if item.entity_id.split(".")[1].endswith('window_sensor')
-                and item.state != 'unknown'
-                and item.state == 'on' %}
-            {% set ns.count = ns.count + 1 %}
-          {% endif %}
-        {% endfor %}
-        {% if ns.count > 0 %}
-          mdi:window-open
-        {% else %}
-          mdi:window-closed
-        {% endif %}
+        {% set open = ['binary_sensor.upstairs_bathroom_window_open']
+           | select('is_state', 'on') | list | count %}
+        {{ 'mdi:window-open' if open > 0 else 'mdi:window-closed' }}

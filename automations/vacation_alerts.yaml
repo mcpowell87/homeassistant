@@ -1,0 +1,214 @@
+---
+# --------------------------------------------------------------
+# Vacation mode - alerts
+# All alerts are active only while input_boolean.vacation_mode is on.
+# Entity names verified against the live instance on 2026-08-08.
+# --------------------------------------------------------------
+
+# Notify when any exterior door opens.
+# NOTE: the back door currently has no contact sensor - only its
+# camera covers it (person/motion alerts below).
+  - alias: 'Vacation Mode - Notify when a door opens'
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id:
+          # Front door state comes from the Z-Wave lock.
+          - binary_sensor.front_door_lock_current_status_of_the_door
+          - binary_sensor.basement_door_contact
+          # Sense power-monitoring entities: they turn on when an opener
+          # motor runs, so these fire on both open and close (and won't
+          # catch a manual lift).
+          - binary_sensor.garage_door_power
+          - binary_sensor.garage_door_2_power
+          # Uncomment to also alert on the only live window sensor:
+          # - binary_sensor.upstairs_bathroom_window_open
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - variables:
+          alert_message: >-
+            {{ {'binary_sensor.front_door_lock_current_status_of_the_door': 'The front door was opened',
+                'binary_sensor.basement_door_contact': 'The basement door was opened',
+                'binary_sensor.garage_door_power': 'The garage door opener ran',
+                'binary_sensor.garage_door_2_power': 'The garage door 2 opener ran'}
+               .get(trigger.entity_id, trigger.to_state.attributes.friendly_name ~ ' was opened') }}
+      - choose:
+          # Doors with camera coverage: attach the camera to the alert.
+          - conditions:
+              - condition: template
+                value_template: >-
+                  {{ trigger.entity_id in ['binary_sensor.front_door_lock_current_status_of_the_door',
+                                           'binary_sensor.basement_door_contact'] }}
+            sequence:
+              - service: notify.mobile_app_mikes_iphone
+                data:
+                  title: 'Vacation Alert'
+                  message: "{{ alert_message }} at {{ now().strftime('%-I:%M %p') }}."
+                  data:
+                    entity_id: "{{ 'camera.front_door_high' if 'front_door' in trigger.entity_id else 'camera.basement_high' }}"
+                    push:
+                      interruption-level: time-sensitive
+        default:
+          - service: notify.mobile_app_mikes_iphone
+            data:
+              title: 'Vacation Alert'
+              message: "{{ alert_message }} at {{ now().strftime('%-I:%M %p') }}."
+              data:
+                push:
+                  interruption-level: time-sensitive
+
+# Notify when a camera sees a person, at most once every 5 minutes.
+  - alias: 'Vacation Mode - Notify when a person is detected on camera'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.front_door_person_detected
+          - binary_sensor.back_door_person_detected
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      # Throttle so a lingering visitor doesn't flood the phone.
+      - condition: template
+        value_template: >-
+          {{ this.attributes.last_triggered is none
+             or (now() - this.attributes.last_triggered).total_seconds() > 300 }}
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Vacation Alert'
+          message: "Person detected at the {{ 'front' if 'front' in trigger.entity_id else 'back' }} door at {{ now().strftime('%-I:%M %p') }}."
+          data:
+            entity_id: "{{ 'camera.front_door_high' if 'front' in trigger.entity_id else 'camera.back_door_high_resolution_channel' }}"
+            push:
+              interruption-level: time-sensitive
+
+# Notify on motion inside the house, at most once every 5 minutes.
+  - alias: 'Vacation Mode - Notify on interior motion'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.kitchen_motion
+          - binary_sensor.bedroom_motion
+          - binary_sensor.spare_bedroom_motion
+          - binary_sensor.spare_room_motion
+          - binary_sensor.basement_motion
+          - binary_sensor.living_room_motion
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - condition: template
+        value_template: >-
+          {{ this.attributes.last_triggered is none
+             or (now() - this.attributes.last_triggered).total_seconds() > 300 }}
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Vacation Alert'
+          message: "Motion detected inside: {{ trigger.to_state.attributes.friendly_name }} at {{ now().strftime('%-I:%M %p') }}."
+          data:
+            entity_id: >-
+              {{ {'binary_sensor.kitchen_motion': 'camera.kitchen_high',
+                  'binary_sensor.bedroom_motion': 'camera.bedroom_high',
+                  'binary_sensor.spare_bedroom_motion': 'camera.spare_bedroom_high',
+                  'binary_sensor.spare_room_motion': 'camera.spare_room_high',
+                  'binary_sensor.basement_motion': 'camera.basement_high',
+                  'binary_sensor.living_room_motion': 'camera.living_room_high'}[trigger.entity_id] }}
+            push:
+              interruption-level: time-sensitive
+
+# Notify when Flume sees sustained high flow or a leak while away.
+# Critical push: this usually means a burst pipe or running toilet.
+  - alias: 'Vacation Mode - Notify on unusual water flow'
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.flume_sensor_home_high_flow
+          - binary_sensor.flume_sensor_home_leak_detected
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Water Alert'
+          message: >-
+            {% if 'high_flow' in trigger.entity_id %}
+              Flume detected unusually high water flow while you are away.
+            {% else %}
+              Flume detected a possible leak while you are away.
+            {% endif %}
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1.0
+
+# Notify when a package is left at the front or back door.
+# UniFi Protect exposes package detection as event entities whose
+# state is the timestamp of the last detection.
+  - alias: 'Vacation Mode - Notify when a package is detected'
+    mode: single
+    trigger:
+      - platform: state
+        entity_id:
+          - event.front_porch_front_door_package
+          - event.backyard_back_door_package
+        not_from:
+          - 'unknown'
+          - 'unavailable'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - condition: template
+        value_template: >-
+          {{ this.attributes.last_triggered is none
+             or (now() - this.attributes.last_triggered).total_seconds() > 600 }}
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Package Delivered'
+          message: "A package was detected at the {{ 'front' if 'front' in trigger.entity_id else 'back' }} door at {{ now().strftime('%-I:%M %p') }}."
+          data:
+            entity_id: "{{ 'camera.front_door_package_camera' if 'front' in trigger.entity_id else 'camera.back_door_package_camera' }}"
+
+# Confirm on the phone whenever vacation mode is toggled.
+  - alias: 'Vacation Mode - Confirm when toggled'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.vacation_mode
+        from: 'off'
+        to: 'on'
+      - platform: state
+        entity_id: input_boolean.vacation_mode
+        from: 'on'
+        to: 'off'
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Vacation Mode'
+          message: >-
+            {% if trigger.to_state.state == 'on' %}
+              Vacation mode enabled: door, person, interior motion, water, and package
+              alerts are active, and light simulation is running.
+            {% else %}
+              Vacation mode disabled.
+            {% endif %}

@@ -1,0 +1,36 @@
+---
+# --------------------------------------------------------------
+# Battery monitoring
+# Checks every sensor with device_class battery (reported in %)
+# once a day and notifies if any are at or below the threshold.
+# Unavailable/unknown sensors are ignored - this triggers on real
+# battery readings only, never on an entity dropping offline.
+# --------------------------------------------------------------
+
+  - alias: 'Battery - Notify when any battery is low'
+    trigger:
+      - platform: time
+        at: '10:00:00'
+    variables:
+      threshold: 15
+      low_batteries: >-
+        {% set ns = namespace(items=[]) %}
+        {% for s in states.sensor %}
+          {% if s.attributes.device_class | default('') == 'battery'
+                and s.attributes.unit_of_measurement | default('') == '%'
+                and s.state | is_number
+                and s.state | float <= threshold %}
+            {% set ns.items = ns.items + [s.name ~ ': ' ~ s.state | float | round(0) ~ '%'] %}
+          {% endif %}
+        {% endfor %}
+        {{ ns.items }}
+    condition:
+      - condition: template
+        value_template: "{{ low_batteries | count > 0 }}"
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Low Battery'
+          message: >-
+            {{ low_batteries | count }} device{{ 's' if low_batteries | count > 1 }}
+            at or below {{ threshold }}%: {{ low_batteries | join(', ') }}

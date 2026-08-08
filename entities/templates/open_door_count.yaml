@@ -2,27 +2,14 @@
     - name: "Open Door Count"
       unique_id: open_door_count
       default_entity_id: sensor.open_door_count
+      # Exterior doors with live contact sensors (the back door has none).
+      # Front door state is reported by its Z-Wave lock.
       state: >-
-        {% set ns = namespace(count=0) %}
-        {% for item in states %}
-          {% if item.entity_id.split(".")[1].endswith('door_sensor')
-                and item.state != 'unknown'
-                and item.state == 'on' %}
-            {% set ns.count = ns.count + 1 %}
-          {% endif %}
-        {% endfor %}
-        {{ ns.count }}
+        {{ ['binary_sensor.front_door_lock_current_status_of_the_door',
+            'binary_sensor.basement_door_contact']
+           | select('is_state', 'on') | list | count }}
       icon: >-
-        {% set ns = namespace(count=0) %}
-        {% for item in states %}
-          {% if item.entity_id.split(".")[1].endswith('door_sensor')
-                and item.state != 'unknown'
-                and item.state == 'on' %}
-            {% set ns.count = ns.count + 1 %}
-          {% endif %}
-        {% endfor %}
-        {% if ns.count > 0 %}
-          mdi:door-open
-        {% else %}
-          mdi:door-closed
-        {% endif %}
+        {% set open = ['binary_sensor.front_door_lock_current_status_of_the_door',
+                       'binary_sensor.basement_door_contact']
+           | select('is_state', 'on') | list | count %}
+        {{ 'mdi:door-open' if open > 0 else 'mdi:door-closed' }}

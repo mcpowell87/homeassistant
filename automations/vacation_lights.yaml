@@ -1,0 +1,150 @@
+---
+# ----------------------------------------------------------------------
+# Vacation mode - presence simulation lighting
+#
+# Simulates a normal evening at home while input_boolean.vacation_mode
+# is on. Rough schedule (every step gets a random offset so the pattern
+# is different each night):
+#
+#   ~sunset       living room lamp + kitchen lights come on (staggered)
+#   ~sunset       office lamp comes on, but only ~60% of evenings
+#   ~21:00        kitchen goes dark, then the office lamp
+#   ~22:15        bedroom lamps on, then living room goes dark ("bedtime")
+#   ~23:15        bedroom lamps go out
+#    00:30        safety net: everything from the simulation turned off
+#
+# The front porch light is already handled by its own automations and
+# runs whether or not vacation mode is on.
+# ----------------------------------------------------------------------
+
+# Living room lamp on around sunset.
+  - alias: 'Vacation Lights - Living room on around sunset'
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: '-00:15:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - delay:
+          minutes: "{{ range(0, 30) | random }}"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - service: light.turn_on
+        entity_id: light.living_room_lamp
+
+# Kitchen lights on shortly after sunset.
+  - alias: 'Vacation Lights - Kitchen on around sunset'
+    trigger:
+      - platform: sun
+        event: sunset
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - delay:
+          minutes: "{{ range(5, 25) | random }}"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - service: light.turn_on
+        entity_id: light.kitchen_lights
+
+# Office lamp on for the evening, but only about 60% of nights.
+  - alias: 'Vacation Lights - Office lamp on some evenings'
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: '00:10:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - condition: template
+        value_template: "{{ range(1, 101) | random <= 60 }}"
+    action:
+      - delay:
+          minutes: "{{ range(0, 45) | random }}"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - service: light.turn_on
+        entity_id: light.office_lamp_bulb
+
+# Wind down: kitchen goes dark around 21:00, office a bit later.
+  - alias: 'Vacation Lights - Wind down kitchen and office'
+    trigger:
+      - platform: time
+        at: '21:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - delay:
+          minutes: "{{ range(0, 40) | random }}"
+      - service: light.turn_off
+        entity_id: light.kitchen_lights
+      - delay:
+          minutes: "{{ range(5, 25) | random }}"
+      - service: light.turn_off
+        entity_id: light.office_lamp_bulb
+
+# Bedtime: bedroom lamps on, then the living room goes dark a few
+# minutes later, as if someone walked upstairs.
+  - alias: 'Vacation Lights - Bedtime around 22:15'
+    trigger:
+      - platform: time
+        at: '22:15:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - delay:
+          minutes: "{{ range(0, 30) | random }}"
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+      - service: light.turn_on
+        entity_id: light.bedroom_lamps
+      - delay:
+          minutes: "{{ range(2, 8) | random }}"
+      - service: light.turn_off
+        entity_id: light.living_room_lamp
+
+# Lights out: bedroom lamps off around 23:15.
+  - alias: 'Vacation Lights - Lights out around 23:15'
+    trigger:
+      - platform: time
+        at: '23:15:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - delay:
+          minutes: "{{ range(0, 30) | random }}"
+      - service: light.turn_off
+        entity_id: light.bedroom_lamps
+
+# Safety net: make sure everything the simulation touches is off.
+  - alias: 'Vacation Lights - Safety net all off'
+    trigger:
+      - platform: time
+        at: '00:30:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.vacation_mode
+        state: 'on'
+    action:
+      - service: light.turn_off
+        entity_id:
+          - light.living_room_lamp
+          - light.kitchen_lights
+          - light.office_lamp_bulb
+          - light.bedroom_lamps
