@@ -14,7 +14,7 @@ cards:
       grid-template-rows: 1fr 1fr
       grid-template-areas: |
         "frontlock alarmo"
-        "basementlock vacation"
+        "basementlock ."
     cards:
       - type: tile
         name: Front
@@ -42,17 +42,3 @@ cards:
           - type: "lock-commands"
         view_layout:
           grid-area: basementlock
-
-      - type: tile
-        name: Vacation
-        entity: input_boolean.vacation_mode
-        color: amber
-        tap_action:
-          action: toggle
-        # Admin-only: visible just to Mike's user for now
-        visibility:
-          - condition: user
-            users:
-              - 0186ffc6a6094488bbfed07ad97b071a
-        view_layout:
-          grid-area: vacation
