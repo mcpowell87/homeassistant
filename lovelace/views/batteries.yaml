@@ -1,0 +1,148 @@
+---
+# Automatic battery overview: each card auto-populates from the
+# integration that owns the device, sorted lowest battery first.
+# New battery devices appear here with no YAML changes.
+path: batteries
+icon: mdi:battery-heart-variant
+title: Batteries
+theme: ios-dark-mode
+badges: []
+cards:
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Z-Wave
+    filter:
+      include:
+        - integration: zwave_js
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Zigbee
+    filter:
+      include:
+        - integration: mqtt
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Hue Remotes
+    filter:
+      include:
+        - integration: hue
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Air Quality Monitors
+    filter:
+      include:
+        - integration: airthings
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Vacuums
+    filter:
+      include:
+        - integration: roborock
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Personal Devices
+    filter:
+      include:
+        - integration: mobile_app
+          domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true
+
+  # Catch-all: battery sensors from any integration not listed above.
+  - type: custom:auto-entities
+    show_empty: false
+    card:
+      type: custom:battery-state-card
+      title: Other
+    filter:
+      include:
+        - domain: sensor
+          attributes:
+            device_class: battery
+            unit_of_measurement: '%'
+      exclude:
+        - integration: zwave_js
+        - integration: mqtt
+        - integration: hue
+        - integration: airthings
+        - integration: roborock
+        - integration: mobile_app
+        - state: unavailable
+        - state: unknown
+    sort:
+      method: state
+      numeric: true

@@ -64,3 +64,4 @@ views:
     cards:
       - !include /config/lovelace/cards/surveillance.yaml
     type: panel
+  - !include /config/lovelace/views/batteries.yaml
