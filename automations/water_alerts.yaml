@@ -6,6 +6,35 @@
 # Critical push: breaks through silent mode and Do Not Disturb.
 # --------------------------------------------------------------
 
+# Point leak sensors. Notifies every mobile app (notify.notify), not
+# just Mike's phone, since a leak matters to the whole household.
+# 30s debounce filters momentary false contacts.
+  - alias: 'Water - Notify when a leak sensor is wet'
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.boiler_leak_sensor_water_leak_detected
+          - binary_sensor.basement_window_leak_sensor_water_leak_detected
+          - binary_sensor.basement_leak_sensor_finished_basement_water_leak_detected
+          - binary_sensor.basement_leak_sensor_washer_water_leak_detected
+          - binary_sensor.leak_sensor_basement_main_water_leak
+        from: 'off'
+        to: 'on'
+        for:
+          seconds: 30
+    action:
+      - service: notify.notify
+        data:
+          title: 'Water Leak Detected'
+          message: "{{ trigger.to_state.attributes.friendly_name }}"
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1.0
+
   - alias: 'Water - Notify on Flume high flow or leak'
     mode: queued
     trigger:

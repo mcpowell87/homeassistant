@@ -21,3 +21,36 @@
     hide_state: true
     entity: binary_sensor.basement_window_leak_sensor_water_leak_detected
     name: Basement Window Leak Detected
+- type: conditional
+  conditions:
+    - condition: state
+      entity: binary_sensor.basement_leak_sensor_finished_basement_water_leak_detected
+      state: 'on'
+  card:
+    color: amber
+    type: tile
+    hide_state: true
+    entity: binary_sensor.basement_leak_sensor_finished_basement_water_leak_detected
+    name: Finished Basement Leak Detected
+- type: conditional
+  conditions:
+    - condition: state
+      entity: binary_sensor.basement_leak_sensor_washer_water_leak_detected
+      state: 'on'
+  card:
+    color: amber
+    type: tile
+    hide_state: true
+    entity: binary_sensor.basement_leak_sensor_washer_water_leak_detected
+    name: Washer Leak Detected
+- type: conditional
+  conditions:
+    - condition: state
+      entity: binary_sensor.leak_sensor_basement_main_water_leak
+      state: 'on'
+  card:
+    color: amber
+    type: tile
+    hide_state: true
+    entity: binary_sensor.leak_sensor_basement_main_water_leak
+    name: Basement Main Leak Detected
