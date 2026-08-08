@@ -1,0 +1,33 @@
+---
+# --------------------------------------------------------------
+# Water alerts - always on, home or away.
+# Complements the UI "Water Leak - Notify" automation (point leak
+# sensors); this covers whole-house flow anomalies seen by Flume.
+# Critical push: breaks through silent mode and Do Not Disturb.
+# --------------------------------------------------------------
+
+  - alias: 'Water - Notify on Flume high flow or leak'
+    mode: queued
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.flume_sensor_home_high_flow
+          - binary_sensor.flume_sensor_home_leak_detected
+        from: 'off'
+        to: 'on'
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Water Alert'
+          message: >-
+            {% if 'high_flow' in trigger.entity_id %}
+              Flume detected unusually high water flow.
+            {% else %}
+              Flume detected a possible leak.
+            {% endif %}
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1.0
