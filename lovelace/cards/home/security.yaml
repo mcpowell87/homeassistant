@@ -49,5 +49,10 @@ cards:
         color: amber
         tap_action:
           action: toggle
+        # Admin-only: visible just to Mike's user for now
+        visibility:
+          - condition: user
+            users:
+              - 0186ffc6a6094488bbfed07ad97b071a
         view_layout:
           grid-area: vacation
