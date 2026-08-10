@@ -26,9 +26,7 @@ cards:
           - !include ../cards/doors_state.yaml
           - !include ../cards/windows_state.yaml
           - !include ../cards/washer.yaml
-          - !include ../cards/dryer.yaml
-      - type: custom:vacuum-card
-        entity: vacuum.alfred    
+          - !include ../cards/dryer.yaml 
   ### Living Room ###
   - !include ../cards/home/livingroom.yaml
   ### Bedroom ###
