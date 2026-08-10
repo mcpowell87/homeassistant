@@ -1,5 +1,14 @@
 # Main /lovelace dashboard is YAML mode, served from ui-lovelace.yaml
-# (a symlink to lovelace/dashboards/overview-yaml.yaml). UI-created
-# dashboards (Admin, Map) live in .storage and stay UI-editable.
+# (a symlink to lovelace/dashboards/overview-yaml.yaml). Defined as an
+# explicit dashboard entry per the 2026.8 deprecation of top-level
+# mode: yaml. Resources stay storage-managed (.storage/lovelace_resources),
+# so no resource_mode here. UI-created dashboards (Admin, Map) live in
+# .storage and stay UI-editable.
 lovelace:
-  mode: yaml
+  dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Overview
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
