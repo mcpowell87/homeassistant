@@ -1,10 +1,5 @@
-lovelace: 
-  mode: storage
-  #resources: !include_dir_list /config/lovelace/resources
-  dashboards:
-    overview-yaml:
-      mode: yaml
-      title: Home
-      icon: mdi:home-assistant
-      show_in_sidebar: true
-      filename: /config/lovelace/dashboards/overview-yaml.yaml
+# Main /lovelace dashboard is YAML mode, served from ui-lovelace.yaml
+# (a symlink to lovelace/dashboards/overview-yaml.yaml). UI-created
+# dashboards (Admin, Map) live in .storage and stay UI-editable.
+lovelace:
+  mode: yaml
