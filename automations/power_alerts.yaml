@@ -1,0 +1,55 @@
+---
+# --------------------------------------------------------------
+# Power alerts - always on, Mike's phone only.
+# Watches the Eaton 5PX via NUT: status_data contains "OB" while
+# on battery and "OL" while on line power. input_boolean.power_outage
+# latches the outage so the restore alert only fires after a real
+# outage, not after a NUT server blip (unavailable -> OL).
+# Critical push on outage: breaks through silent mode and DND.
+# 5s debounce filters transfer flickers from brownouts.
+# --------------------------------------------------------------
+
+  - alias: 'Power - Notify on outage'
+    mode: single
+    trigger:
+      - platform: template
+        value_template: "{{ 'OB' in states('sensor.eaton5px_status_data') }}"
+        for:
+          seconds: 5
+    action:
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.power_outage
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Power Outage'
+          message: >-
+            UPS is on battery.
+            {{ states('sensor.eaton5px_battery_charge') }}% charge,
+            about {{ (states('sensor.eaton5px_battery_runtime') | int(0) / 60) | round }} min of runtime left.
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1.0
+
+  - alias: 'Power - Notify when restored'
+    mode: single
+    trigger:
+      - platform: template
+        value_template: "{{ 'OL' in states('sensor.eaton5px_status_data') }}"
+        for:
+          seconds: 5
+    condition:
+      - condition: state
+        entity_id: input_boolean.power_outage
+        state: 'on'
+    action:
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.power_outage
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Power Restored'
+          message: >-
+            Power is back. UPS is online,
+            battery at {{ states('sensor.eaton5px_battery_charge') }}%.

@@ -1,0 +1,4 @@
+---
+power_outage:
+  name: Power Outage Active
+  icon: mdi:power-plug-off
