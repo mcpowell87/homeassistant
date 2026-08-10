@@ -80,6 +80,35 @@ cards:
           service: input_number.increment
           target:
             entity_id: input_number.basement_humidity_target
+  # Piped unit that self-regulates at its own setpoint; +/- write the
+  # setpoint straight to the device via the ext_dehumidifier scripts.
+  - type: custom:bubble-card
+    card_type: button
+    icon: mdi:air-humidifier
+    entity: humidifier.dehumidifier_extension
+    name: Ext Dehumidifier
+    show_last_updated: true
+    styles: |
+      .bubble-sub-button {
+        padding: 0px !important;
+      }
+    sub_button:
+      - icon: mdi:minus
+        show_background: false
+        tap_action:
+          action: call-service
+          service: script.ext_dehumidifier_humidity_down
+      - entity: humidifier.dehumidifier_extension
+        show_attribute: true
+        attribute: humidity
+        show_state: false
+        show_background: false
+        show_icon: false
+      - icon: mdi:plus
+        show_background: false
+        tap_action:
+          action: call-service
+          service: script.ext_dehumidifier_humidity_up
   - type: horizontal-stack
     cards:
       - type: custom:decluttering-card

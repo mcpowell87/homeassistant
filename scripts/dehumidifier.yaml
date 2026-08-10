@@ -1,0 +1,32 @@
+---
+# +/- setpoint controls for the extension dehumidifier on the basement
+# card. The humidifier domain has no increment/decrement service, so
+# these read the current device setpoint and write it back +/- 5 (the
+# device's step), snapped to a multiple of 5 and clamped to min/max.
+ext_dehumidifier_humidity_up:
+  alias: Ext Dehumidifier - Humidity Up
+  mode: single
+  icon: mdi:water-plus
+  sequence:
+    - service: humidifier.set_humidity
+      target:
+        entity_id: humidifier.dehumidifier_extension
+      data:
+        humidity: >-
+          {{ [((state_attr('humidifier.dehumidifier_extension', 'humidity') | float(45) / 5)
+              | round(0, 'floor') | int * 5) + 5,
+              state_attr('humidifier.dehumidifier_extension', 'max_humidity') | int(85)] | min }}
+
+ext_dehumidifier_humidity_down:
+  alias: Ext Dehumidifier - Humidity Down
+  mode: single
+  icon: mdi:water-minus
+  sequence:
+    - service: humidifier.set_humidity
+      target:
+        entity_id: humidifier.dehumidifier_extension
+      data:
+        humidity: >-
+          {{ [((state_attr('humidifier.dehumidifier_extension', 'humidity') | float(45) / 5)
+              | round(0, 'ceil') | int * 5) - 5,
+              state_attr('humidifier.dehumidifier_extension', 'min_humidity') | int(35)] | max }}
