@@ -27,6 +27,17 @@
     hide_state: true
 - type: conditional
   conditions:
+    - entity: binary_sensor.gate_sensor
+      state: "on"
+  card:
+    color: amber
+    type: tile
+    entity: binary_sensor.gate_sensor
+    icon: mdi:gate-open
+    name: Gate Open
+    hide_state: true
+- type: conditional
+  conditions:
     - entity: lock.basement_door_lock
       state_not: locked
   card:
