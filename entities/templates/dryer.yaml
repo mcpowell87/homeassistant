@@ -1,4 +1,14 @@
 ---
+# Smoothed vibration state. The raw Zigbee vibration sensor is bursty: it
+# drops to 'off' for up to a few minutes mid-cycle, so this sensor only
+# reports 'off' after 5 continuous minutes without vibration.
+- binary_sensor:
+    - name: "Dryer Vibrating"
+      default_entity_id: binary_sensor.dryer_vibrating
+      state: "{{ is_state('binary_sensor.dryer_vibration_sensor_vibration', 'on') }}"
+      delay_off:
+        minutes: 5
+
 - sensor:
     - name: "Dryer on Time"
       default_entity_id: sensor.dryer_on_time

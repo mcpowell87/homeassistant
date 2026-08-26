@@ -1,0 +1,114 @@
+---
+# Detect when the dryer runs and set it to the 'Running' state. A single
+# bump (e.g. closing the door) registers one vibration event, so require
+# repeated events within 15 minutes before treating it as a real cycle.
+  - alias: Dryer - Set to running on repeated vibration with door closed
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.dryer_vibration_events
+        above: 2
+    condition:
+      - condition: state
+        entity_id: input_select.dryer_status
+        state: Idle
+      - condition: state
+        entity_id: binary_sensor.basement_dryer_door
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.dryer_vibrating
+        state: 'on'
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dryer_status
+          option: Running
+      - service: input_datetime.set_datetime
+        entity_id: input_datetime.dryer_start
+        data_template:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+
+# Update dryer home assistant entity.
+  - alias: dryer - Timer
+    trigger:
+      - platform: time_pattern
+        seconds: '*'
+    condition:
+      - condition: state
+        entity_id: input_select.dryer_status
+        state: Running
+    action:
+      - service: homeassistant.update_entity
+        entity_id: sensor.dryer_on_time
+
+# When vibration stops (binary_sensor.dryer_vibrating already waits out
+# 5 quiet minutes), mark the dryer as finished and send a notification.
+# It stays 'Finished' until the door is opened.
+  - alias: Dryer - Set to finished and send notification after vibration stops
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.dryer_vibrating
+        to: 'off'
+    condition:
+      - condition: state
+        entity_id: input_select.dryer_status
+        state: Running
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dryer_status
+          option: Finished
+      - service: notify.alexa_media
+        data:
+          message: 'The dryer is finished.'
+          data:
+            type: announce
+            method: all
+          target:
+            - media_player.kitchen_echo_show
+      - service: notify.notify
+        data:
+          message: 'The dryer is finished.'
+          title: 'Dryer'
+
+# If the door still hasn't been opened an hour after finishing, send a
+# reminder that the clothes are still in the dryer.
+  - alias: Dryer - Remind if clothes are left in the dryer
+    trigger:
+      - platform: state
+        entity_id: input_select.dryer_status
+        to: Finished
+        for:
+          hours: 1
+    condition:
+      - condition: state
+        entity_id: binary_sensor.basement_dryer_door
+        state: 'off'
+    action:
+      - service: notify.alexa_media
+        data:
+          message: 'The clothes are still in the dryer.'
+          data:
+            type: announce
+            method: all
+          target:
+            - media_player.kitchen_echo_show
+      - service: notify.notify
+        data:
+          message: 'The clothes are still in the dryer.'
+          title: 'Dryer'
+
+# Opening the door after the dryer finishes resets it back to idle.
+  - alias: Dryer - Reset to idle when the door is opened
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.basement_dryer_door
+        to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_select.dryer_status
+        state: Finished
+    action:
+      - service: input_select.select_option
+        data:
+          entity_id: input_select.dryer_status
+          option: Idle
