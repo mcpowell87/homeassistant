@@ -1,0 +1,66 @@
+---
+# --------------------------------------------------------------
+# Gate sensor alerts (binary_sensor.gate_sensor).
+#
+#   - Warn when the gate has been open for 30 minutes (dog!).
+#   - All-clear when it closes after that warning fired.
+#   - Daily health check: the sensor lives outdoors on battery,
+#     so a dead battery or radio dropout would silently disable
+#     the alerts above. Checks alongside the 10:00 low-battery
+#     sweep.
+# --------------------------------------------------------------
+
+  - alias: 'Gate - Notify when left open 30 minutes'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.gate_sensor
+        to: 'on'
+        for: '00:30:00'
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Gate Open'
+          message: "The gate has been open for 30 minutes (since {{ trigger.from_state.last_changed.astimezone().strftime('%-I:%M %p') }})."
+          data:
+            push:
+              interruption-level: time-sensitive
+
+# All-clear, but only if the gate was open long enough for the
+# 30-minute warning above to have fired.
+  - alias: 'Gate - Notify when closed after the open warning'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.gate_sensor
+        from: 'on'
+        to: 'off'
+    condition:
+      - condition: template
+        value_template: "{{ (now() - trigger.from_state.last_changed).total_seconds() > 1800 }}"
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Gate Closed'
+          message: "The gate was closed after being open for {{ ((now() - trigger.from_state.last_changed).total_seconds() / 60) | round }} minutes."
+
+# Health check: complain once a day if the sensor hasn't reported
+# in over 24 hours (or has never reported at all).
+  - alias: 'Gate - Notify when the sensor stops reporting'
+    trigger:
+      - platform: time
+        at: '10:00:00'
+    condition:
+      - condition: template
+        value_template: >-
+          {{ states('sensor.gate_sensor_last_reported') in ['unknown', 'unavailable']
+             or (now() - states('sensor.gate_sensor_last_reported') | as_datetime).total_seconds() > 86400 }}
+    action:
+      - service: notify.mobile_app_mikes_iphone
+        data:
+          title: 'Gate Sensor Offline'
+          message: >-
+            {% set last = states('sensor.gate_sensor_last_reported') %}
+            {% if last in ['unknown', 'unavailable'] %}
+              The gate sensor has never reported in - check its battery and pairing.
+            {% else %}
+              The gate sensor last reported at {{ (last | as_datetime).astimezone().strftime('%-I:%M %p on %b %-d') }} - check its battery.
+            {% endif %}
