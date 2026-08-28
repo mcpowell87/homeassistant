@@ -1,11 +1,11 @@
 ---
-# Counts how many times the raw dryer vibration sensor has flipped 'on' in
-# the last 15 minutes. A running dryer produces a burst every 2-4 minutes;
-# a one-off bump (closing the door, etc.) produces a single event.
+# Counts door-closed vibration events in the last 15 minutes. A running
+# dryer produces a burst every 2-4 minutes; loading bumps happen with the
+# door open and a one-off bump (closing the door, etc.) is a single event.
 platform: history_stats
 unique_id: dryer_vibration_events
 name: Dryer Vibration Events
-entity_id: binary_sensor.dryer_vibration_sensor_vibration
+entity_id: binary_sensor.dryer_vibration_closed
 state: "on"
 type: count
 start: "{{ now() - timedelta(minutes=15) }}"

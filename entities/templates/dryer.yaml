@@ -9,6 +9,15 @@
       delay_off:
         minutes: 5
 
+    # Vibration occurring while the door is closed. Loading the dryer bumps
+    # the sensor with the door open, so counting only door-closed events
+    # distinguishes a running dryer from someone loading it.
+    - name: "Dryer Vibration Closed"
+      default_entity_id: binary_sensor.dryer_vibration_closed
+      state: >
+        {{ is_state('binary_sensor.dryer_vibration_sensor_vibration', 'on')
+           and is_state('binary_sensor.basement_dryer_door', 'off') }}
+
 - sensor:
     - name: "Dryer on Time"
       default_entity_id: sensor.dryer_on_time

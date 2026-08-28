@@ -1,12 +1,24 @@
 ---
-# Detect when the dryer runs and set it to the 'Running' state. A single
-# bump (e.g. closing the door) registers one vibration event, so require
-# repeated events within 15 minutes before treating it as a real cycle.
-  - alias: Dryer - Set to running on repeated vibration with door closed
+# Detect when the dryer runs and set it to the 'Running' state. No real
+# cycle has been observed yet, so cover both possible signatures: the
+# sensor pinned 'on' continuously (5 minutes straight — a hand bump or
+# door slam only holds it ~90s), or repeated short bursts (3+ door-closed
+# events in 15 minutes; loading bumps happen with the door open and don't
+# count). The per-event trigger also starts the cycle when the count is
+# already over the threshold and never crosses it again.
+  - alias: Dryer - Set to running on sustained or repeated vibration
     trigger:
+      - platform: state
+        entity_id: binary_sensor.dryer_vibration_sensor_vibration
+        to: 'on'
+        for:
+          minutes: 5
       - platform: numeric_state
         entity_id: sensor.dryer_vibration_events
         above: 2
+      - platform: state
+        entity_id: binary_sensor.dryer_vibration_closed
+        to: 'on'
     condition:
       - condition: state
         entity_id: input_select.dryer_status
@@ -14,9 +26,16 @@
       - condition: state
         entity_id: binary_sensor.basement_dryer_door
         state: 'off'
-      - condition: state
-        entity_id: binary_sensor.dryer_vibrating
-        state: 'on'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.dryer_vibration_sensor_vibration
+            state: 'on'
+            for:
+              minutes: 5
+          - condition: numeric_state
+            entity_id: sensor.dryer_vibration_events
+            above: 2
     action:
       - service: input_select.select_option
         data:
