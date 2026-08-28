@@ -20,7 +20,7 @@
       - service: notify.mobile_app_mikes_iphone
         data:
           title: 'Gate Open'
-          message: "The gate has been open for 30 minutes (since {{ trigger.from_state.last_changed.astimezone().strftime('%-I:%M %p') }})."
+          message: 'The gate has been open for 30 minutes.'
           data:
             push:
               interruption-level: time-sensitive
