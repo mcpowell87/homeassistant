@@ -432,14 +432,12 @@
   alias: Office Air Purifier - Turn On
   description: ''
   triggers:
-  - type: occupied
-    device_id: 78af804be124fbb2800a9a499d743aac
-    entity_id: 34844f9a791400e5ac36c01ab642f0ac
-    domain: binary_sensor
-    trigger: device
+  - trigger: state
+    entity_id: binary_sensor.office_office_desk_lights_motion_detection
+    to: 'on'
     for:
       hours: 0
-      minutes: 10
+      minutes: 5
       seconds: 0
   conditions:
   - condition: device
@@ -463,14 +461,12 @@
   alias: Office Air Purifier - Turn Off
   description: ''
   triggers:
-  - type: not_occupied
-    device_id: 78af804be124fbb2800a9a499d743aac
-    entity_id: 34844f9a791400e5ac36c01ab642f0ac
-    domain: binary_sensor
-    trigger: device
+  - trigger: state
+    entity_id: binary_sensor.office_office_desk_lights_motion_detection
+    to: 'off'
     for:
       hours: 0
-      minutes: 30
+      minutes: 15
       seconds: 0
   conditions:
   - condition: device
