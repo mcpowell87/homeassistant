@@ -658,7 +658,7 @@
     target:
       entity_id: number.backyard_gate_display_closed_brightness
     data:
-      value: "{{ 3 if is_state('input_boolean.vacation_mode', 'on') else (60 if is_state('sun.sun',
-        'above_horizon') else (60 if is_state('light.kitchen_lights', 'on') or is_state('light.kitchen_island',
-        'on') else 10)) }}"
+      value: '{{ 3 if is_state(''input_boolean.vacation_mode'', ''on'') else (60 if
+        is_state(''sun.sun'', ''above_horizon'') else (60 if is_state(''light.kitchen_lights'',
+        ''on'') or is_state(''light.kitchen_island'', ''on'') else 10)) }}'
   mode: restart
