@@ -151,8 +151,10 @@ custom_fields:
         <ha-icon icon="mdi:car-clock" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
         </ha-icon> `;
       } else {
-        return `<span>\<span>${states[variables.time_sensor].state} minutes</span></span>
-        <ha-icon icon="mdi:car-clock" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)"> 
+        var raw = states[variables.time_sensor].state;
+        var t = isNaN(parseFloat(raw)) ? raw : Math.round(parseFloat(raw));
+        return `<span>\<span>${t} minutes</span></span>
+        <ha-icon icon="mdi:car-clock" style="width: 20px; height: 20px; margin: 1px; vertical-align: 1px; color: var(--icon-color)">
         </ha-icon> `;
       }
     ]]]
