@@ -415,11 +415,16 @@
   alias: Button - Turn on Office Lamp
   description: ''
   triggers:
-  - domain: mqtt
-    device_id: 0b384da99922d2aac96794c88fae560f
-    type: action
-    subtype: config_single
+  - device_id: 3a488c157bc31e12281e09f8cffce102
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '003'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 003
     trigger: device
+    value: '0'
   conditions: []
   actions:
   - action: light.toggle
