@@ -1,1 +1,11 @@
 mqtt:
+  sensor:
+    # Mirror of the z2m strength reading with force_update, so every report
+    # creates a state event even when the value repeats (z2m resends the
+    # last strength in every payload). Feeds binary_sensor.dryer_strength_active,
+    # which needs the report cadence, not just the value.
+    - name: "Dryer Vibration Strength"
+      unique_id: dryer_vibration_strength
+      state_topic: "zigbee2mqtt/Dryer Vibration Sensor"
+      value_template: "{{ value_json.strength }}"
+      force_update: true

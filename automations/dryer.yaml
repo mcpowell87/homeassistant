@@ -1,23 +1,11 @@
 ---
-# Detect when the dryer runs and set it to the 'Running' state. No real
-# cycle has been observed yet, so cover both possible signatures: the
-# sensor pinned 'on' continuously (5 minutes straight — a hand bump or
-# door slam only holds it ~90s), or repeated short bursts (3+ door-closed
-# events in 15 minutes; loading bumps happen with the door open and don't
-# count). The per-event trigger also starts the cycle when the count is
-# already over the threshold and never crosses it again.
-  - alias: Dryer - Set to running on sustained or repeated vibration
+# Detect when the dryer runs and set it to the 'Running' state. Strength
+# activity requires repeated high-strength reports, so loading bumps and
+# door slams (single or low-strength readings) can't look like a cycle.
+  - alias: Dryer - Set to running on strength activity with door closed
     trigger:
       - platform: state
-        entity_id: binary_sensor.dryer_vibration_sensor_vibration
-        to: 'on'
-        for:
-          minutes: 5
-      - platform: numeric_state
-        entity_id: sensor.dryer_vibration_events
-        above: 2
-      - platform: state
-        entity_id: binary_sensor.dryer_vibration_closed
+        entity_id: binary_sensor.dryer_strength_active
         to: 'on'
     condition:
       - condition: state
@@ -26,16 +14,6 @@
       - condition: state
         entity_id: binary_sensor.basement_dryer_door
         state: 'off'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: binary_sensor.dryer_vibration_sensor_vibration
-            state: 'on'
-            for:
-              minutes: 5
-          - condition: numeric_state
-            entity_id: sensor.dryer_vibration_events
-            above: 2
     action:
       - service: input_select.select_option
         data:
@@ -59,13 +37,13 @@
       - service: homeassistant.update_entity
         entity_id: sensor.dryer_on_time
 
-# When vibration stops (binary_sensor.dryer_vibrating already waits out
-# 5 quiet minutes), mark the dryer as finished and send a notification.
-# It stays 'Finished' until the door is opened.
-  - alias: Dryer - Set to finished and send notification after vibration stops
+# When strength activity stops (no high-strength report for 15 minutes, or
+# a weak reading arrives), mark the dryer as finished and send a
+# notification. It stays 'Finished' until the door is opened.
+  - alias: Dryer - Set to finished and send notification after activity stops
     trigger:
       - platform: state
-        entity_id: binary_sensor.dryer_vibrating
+        entity_id: binary_sensor.dryer_strength_active
         to: 'off'
     condition:
       - condition: state

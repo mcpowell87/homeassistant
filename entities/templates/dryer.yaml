@@ -1,22 +1,24 @@
 ---
-# Smoothed vibration state. The raw Zigbee vibration sensor is bursty: it
-# drops to 'off' for up to a few minutes mid-cycle, so this sensor only
-# reports 'off' after 5 continuous minutes without vibration.
-- binary_sensor:
-    - name: "Dryer Vibrating"
-      default_entity_id: binary_sensor.dryer_vibrating
-      state: "{{ is_state('binary_sensor.dryer_vibration_sensor_vibration', 'on') }}"
-      delay_off:
-        minutes: 5
-
-    # Vibration occurring while the door is closed. Loading the dryer bumps
-    # the sensor with the door open, so counting only door-closed events
-    # distinguishes a running dryer from someone loading it.
-    - name: "Dryer Vibration Closed"
-      default_entity_id: binary_sensor.dryer_vibration_closed
+# Strength-based activity detection. The binary vibration signal proved
+# unreliable (16-minute blackouts mid-cycle at default sensitivity), but a
+# running dryer produces strength reports of 105-130 at most ~10 minutes
+# apart, while loading bumps read 38-65 and idle checkins are ~hourly
+# repeats of a stale value. Active therefore means two consecutive reports
+# above 90 within 15 minutes, clearing after 15 minutes without one.
+- trigger:
+    - platform: state
+      entity_id: sensor.dryer_vibration_strength
+  binary_sensor:
+    - name: "Dryer Strength Active"
+      default_entity_id: binary_sensor.dryer_strength_active
       state: >
-        {{ is_state('binary_sensor.dryer_vibration_sensor_vibration', 'on')
-           and is_state('binary_sensor.basement_dryer_door', 'off') }}
+        {{ trigger.to_state.state | float(0) > 90
+           and trigger.from_state is not none
+           and trigger.from_state.state | float(0) > 90
+           and (trigger.to_state.last_updated
+                - trigger.from_state.last_updated).total_seconds() < 900 }}
+      auto_off:
+        minutes: 15
 
 - sensor:
     - name: "Dryer on Time"
