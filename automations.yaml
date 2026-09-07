@@ -221,8 +221,11 @@
   action:
   - service: notify.notify
     data:
-      message: Car finished charging in {{ now() - states('input_datetime.car_charger_start_time')
-        | as_datetime | as_local }}
+      message: >-
+        {% set start = states('input_datetime.car_charger_start_time') | as_datetime | as_local %}
+        {% set mins = ((now() - start).total_seconds() / 60) | int %}
+        Car finished charging in {{ mins // 60 }}h {{ '%02d' | format(mins % 60) }}m,
+        adding {{ states('sensor.tesla_wall_connector_session_energy') | float(0) | round(1) }} kWh.
       title: Car Charging
   mode: single
 - id: '1697431620883'
