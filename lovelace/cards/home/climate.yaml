@@ -16,13 +16,13 @@ cards:
         tap_action:
           action: navigate
           navigation_path: '#climate'
-  # - type: custom:clock-weather-card
-  #   entity: weather.home
-  #   locale: en-US
-  #   time_format: 12
-  #   forecast_rows: 3
-  - type: custom:simple-weather-card
-    entity: weather.home
+  # Forecast from OpenWeatherMap; the old simple-weather-card pointed at
+  # the ecobee weather.home entity, which renders blank.
+  - type: custom:clock-weather-card
+    entity: weather.openweathermap
+    locale: en-US
+    time_format: 12
+    forecast_rows: 3
   - type: custom:bubble-card
     card_type: pop-up
     hash: '#climate'
@@ -36,6 +36,12 @@ cards:
         entity: climate.mitp_heat_pump_3b28e8_climate
         show_state: true
         sub_button:
+          - entity: sensor.mitp_heat_pump_3b28e8_outdoor_temperature
+            name: Outdoor
+            icon: mdi:sun-thermometer
+            show_state: true
+            show_name: false
+            show_background: false
           - name: HVAC Modes
             select_attribute: hvac_modes
             show_arrow: false
@@ -80,6 +86,18 @@ cards:
                 name: Temperature
                 show_state: true
               - entity: sensor.view_plus_humidity
+                name: Humidity
+                show_state: true
+          - type: custom:mini-graph-card
+            icon: mdi:thermometer
+            name: Garage
+            hours_to_show: 12
+            points_per_hour: 1
+            entities:
+              - entity: sensor.garage_garage_temphumi_temperature
+                name: Temperature
+                show_state: true
+              - entity: sensor.garage_garage_temphumi_humidity
                 name: Humidity
                 show_state: true
       - type: horizontal-stack
