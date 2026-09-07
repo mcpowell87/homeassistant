@@ -22,7 +22,9 @@
       - service: switch.turn_off
         entity_id: switch.front_porch_lights
 
-# Turn on the light when doorbell detects motion.  
+# Turn on the light when the doorbell detects motion, but only in the
+# midnight-to-morning window after the scheduled midnight turn-off (the
+# sunset automation already keeps it on from sunset to midnight).
   - alias: 'Front Porch Light - Turn on when doorbell detects motion'
     trigger:
       - platform: state
@@ -37,6 +39,7 @@
             state: below_horizon
           - condition: time
             after: '00:00:00'
+            before: '08:00:00'
     action:
       - service: switch.turn_on
         entity_id: switch.front_porch_lights
