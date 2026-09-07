@@ -1,0 +1,11 @@
+---
+- type: conditional
+  conditions:
+    - entity: input_boolean.vacation_mode
+      state: 'on'
+  card:
+    type: tile
+    entity: input_boolean.vacation_mode
+    name: Vacation Mode Active
+    hide_state: true
+    icon: mdi:palm-tree

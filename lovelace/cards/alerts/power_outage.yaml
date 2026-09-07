@@ -1,0 +1,14 @@
+---
+# input_boolean.power_outage is latched by the power_alerts automations
+# while the UPS is on battery.
+- type: conditional
+  conditions:
+    - entity: input_boolean.power_outage
+      state: 'on'
+  card:
+    type: tile
+    color: red
+    entity: input_boolean.power_outage
+    name: Power Outage
+    hide_state: true
+    icon: mdi:power-plug-off
