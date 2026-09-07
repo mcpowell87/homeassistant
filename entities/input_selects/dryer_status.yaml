@@ -5,4 +5,3 @@ dryer_status:
     - Idle
     - Running
     - Finished
-  initial: Idle

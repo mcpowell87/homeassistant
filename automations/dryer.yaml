@@ -1,12 +1,14 @@
 ---
-# Detect when the dryer runs and set it to the 'Running' state. Strength
-# activity requires repeated high-strength reports, so loading bumps and
-# door slams (single or low-strength readings) can't look like a cycle.
-  - alias: Dryer - Set to running on strength activity with door closed
+# Detect when the dryer runs and set it to the 'Running' state: vibration
+# with the door closed for 5 minutes straight. A healthy sensor stays 'on'
+# for the whole cycle, while a bump or door slam only holds it ~90s.
+  - alias: Dryer - Set to running on sustained vibration with door closed
     trigger:
       - platform: state
-        entity_id: binary_sensor.dryer_strength_active
+        entity_id: binary_sensor.dryer_vibration_closed
         to: 'on'
+        for:
+          minutes: 5
     condition:
       - condition: state
         entity_id: input_select.dryer_status
@@ -24,27 +26,16 @@
         data_template:
           datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
 
-# Update dryer home assistant entity.
-  - alias: dryer - Timer
-    trigger:
-      - platform: time_pattern
-        seconds: '*'
-    condition:
-      - condition: state
-        entity_id: input_select.dryer_status
-        state: Running
-    action:
-      - service: homeassistant.update_entity
-        entity_id: sensor.dryer_on_time
-
-# When strength activity stops (no high-strength report for 15 minutes, or
-# a weak reading arrives), mark the dryer as finished and send a
-# notification. It stays 'Finished' until the door is opened.
-  - alias: Dryer - Set to finished and send notification after activity stops
+# When vibration stops for 3 minutes (on top of z2m's 90s decay), mark the
+# dryer as finished and send a notification. It stays 'Finished' until the
+# door is opened.
+  - alias: Dryer - Set to finished and send notification after vibration stops
     trigger:
       - platform: state
-        entity_id: binary_sensor.dryer_strength_active
+        entity_id: binary_sensor.dryer_vibration_sensor_vibration
         to: 'off'
+        for:
+          minutes: 3
     condition:
       - condition: state
         entity_id: input_select.dryer_status
@@ -54,6 +45,10 @@
         data:
           entity_id: input_select.dryer_status
           option: Finished
+      - service: input_datetime.set_datetime
+        entity_id: input_datetime.dryer_stop
+        data_template:
+          datetime: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
       - service: notify.alexa_media
         data:
           message: 'The dryer is finished.'
