@@ -11,9 +11,19 @@
 - type: conditional
   conditions:
     - entity: input_select.dryer_status
-      state_not: Idle
+      state: Running
   card:
     type: tile
     entity: sensor.dryer_on_time
     name: Dryer Elapsed Time
     icon: mdi:tumble-dryer
+- type: conditional
+  conditions:
+    - entity: input_select.dryer_status
+      state: Finished
+  card:
+    type: tile
+    entity: sensor.dryer_off_time
+    name: Dryer is done
+    icon: mdi:tumble-dryer-off
+    color: green
