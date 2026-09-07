@@ -63,18 +63,34 @@
           title: 'Dryer'
 
 # If the door still hasn't been opened an hour after finishing, send a
-# reminder that the clothes are still in the dryer.
+# reminder that the clothes are still in the dryer. Measured from the
+# dryer_stop timestamp rather than a 'for:' on the status, because a
+# restart loses the 'for:' timer when the state is already Finished at
+# boot. The startup trigger covers a restart after the hour has passed,
+# and last_triggered keeps it to one reminder per load.
   - alias: Dryer - Remind if clothes are left in the dryer
     trigger:
-      - platform: state
-        entity_id: input_select.dryer_status
-        to: Finished
-        for:
-          hours: 1
+      - platform: template
+        value_template: >
+          {{ is_state('input_select.dryer_status', 'Finished')
+             and (as_timestamp(now())
+                  - (state_attr('input_datetime.dryer_stop', 'timestamp') or 0)) > 3600 }}
+      - platform: homeassistant
+        event: start
     condition:
+      - condition: state
+        entity_id: input_select.dryer_status
+        state: Finished
       - condition: state
         entity_id: binary_sensor.basement_dryer_door
         state: 'off'
+      - condition: template
+        value_template: >
+          {% set stop = state_attr('input_datetime.dryer_stop', 'timestamp') %}
+          {% set last = state_attr('automation.dryer_remind_if_clothes_are_left_in_the_dryer', 'last_triggered') %}
+          {{ stop is not none
+             and as_timestamp(now()) - stop > 3600
+             and (last is none or as_timestamp(last) < stop) }}
     action:
       - service: notify.alexa_media
         data:
