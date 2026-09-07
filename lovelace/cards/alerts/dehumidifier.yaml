@@ -1,11 +1,14 @@
 ---
+# Same entity the "Dehumidifier - Send notification when full" automation
+# watches (the old binary_sensor.finished_basement_tank_full no longer exists).
 - type: conditional
   conditions:
-    - entity: binary_sensor.finished_basement_tank_full
+    - entity: sensor.150633093152862_water_full_level
       state: 'on'
   card:
     type: tile
-    entity: binary_sensor.finished_basement_tank_full
-    name: Finished Basement Humidifier Full
+    color: amber
+    entity: sensor.150633093152862_water_full_level
+    name: Finished Basement Dehumidifier Full
     hide_state: true
     icon: mdi:water-alert
