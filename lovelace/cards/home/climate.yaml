@@ -34,6 +34,10 @@ cards:
         icon: mdi:heat-pump
         name: Heat Pump
         entity: climate.mitp_heat_pump_3b28e8_climate
+        styles: |
+          ${['heat', 'cool'].includes(state)
+            ? '.bubble-target-temperature-container { display: none !important; }'
+            : ''}
         show_state: true
         sub_button:
           - entity: sensor.mitp_heat_pump_3b28e8_outdoor_temperature
